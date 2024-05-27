@@ -1,13 +1,13 @@
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Layout } from "./components/Layout/Layout";
-import { useDispatch, useSelector } from "react-redux";
-import { Suspense, lazy, useEffect, useState } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { setUser } from "./store/auth/authSlice";
-import { selectUser } from "./store/auth/selectors";
+import { useSelector } from "react-redux";
+import { Suspense, lazy } from "react";
+// import { getAuth, onAuthStateChanged } from "firebase/auth";
+// import { setUser } from "./store/auth/authSlice";
+import { selectIsLoading } from "./store/auth/selectors";
 import PrivateRoute from "./routes/PrivateRoute";
-import { selectFavorites } from "./store/psychologists/selectors";
+// import { selectFavorites } from "./store/psychologists/selectors";
 import { Loader } from "./components/Loader/Loader";
 const HomePage = lazy(() => import("../src/Pages/HomePage/HomePage"));
 const PsychologistsPage = lazy(() =>
@@ -18,48 +18,49 @@ const FavoritesPage = lazy(() =>
 );
 
 function App() {
-  const dispatch = useDispatch();
-  const { pathname } = useLocation();
-  const user = useSelector(selectUser);
-  const [location, setLocation] = useState(pathname);
-  const favorites = useSelector(selectFavorites);
-  const [countFavorites, setCountFavorites] = useState(favorites.length);
-  const [loading, setLoading] = useState(false);
+  const isLoading = useSelector(selectIsLoading);
+  // const dispatch = useDispatch();
+  // const { pathname } = useLocation();
+  // const user = useSelector(selectUser);
+  // const [location, setLocation] = useState(pathname);
+  // const favorites = useSelector(selectFavorites);
+  // const [countFavorites, setCountFavorites] = useState(favorites.length);
+  // const [loading, setLoading] = useState(false);
 
-  const setCount = () => {
-    setCountFavorites(favorites.length);
-  };
+  // const setCount = () => {
+  //   setCountFavorites(favorites.length);
+  // };
 
-  useEffect(() => {
-    setLocation(pathname);
-  }, [pathname, location]);
+  // useEffect(() => {
+  //   setLocation(pathname);
+  // }, [pathname, location]);
 
-  useEffect(() => {
-    if (!user) {
-      setLoading(true);
-      const auth = getAuth();
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          dispatch(
-            setUser({
-              user: {
-                email: user.email,
-                id: user.uid,
-                name: user.displayName,
-              },
-              token: user.accessToken,
-            })
-          );
-          setLoading(false);
-        } else {
-          setLoading(false);
-        }
-      });
-    }
-  }, [dispatch, user]);
+  // useEffect(() => {
+  //   if (!user) {
+  //     setLoading(true);
+  //     const auth = getAuth();
+  //     onAuthStateChanged(auth, (user) => {
+  //       if (user) {
+  //         dispatch(
+  //           setUser({
+  //             user: {
+  //               email: user.email,
+  //               id: user.uid,
+  //               name: user.displayName,
+  //             },
+  //             token: user.accessToken,
+  //           })
+  //         );
+  //         setLoading(false);
+  //       } else {
+  //         setLoading(false);
+  //       }
+  //     });
+  //   }
+  // }, [dispatch, user]);
   return (
     <>
-      {loading && <Loader />}
+      {isLoading && <Loader />}
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -68,20 +69,20 @@ function App() {
               path="/psychologists"
               element={
                 <PsychologistsPage
-                  location={location}
-                  countFavorites={countFavorites}
-                  setCount={setCount}
+                // location={location}
+                // countFavorites={countFavorites}
+                // setCount={setCount}
                 />
               }
             />
             <Route
-              path="/favorites"
+              path="/recommended"
               element={
                 <PrivateRoute>
                   <FavoritesPage
-                    location={location}
-                    countFavorites={countFavorites}
-                    setCount={setCount}
+                  // location={location}
+                  // countFavorites={countFavorites}
+                  // setCount={setCount}
                   />
                 </PrivateRoute>
               }

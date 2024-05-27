@@ -1,5 +1,5 @@
 {
-  "name": "psychologists-services",
+  "name": "read-journey",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -19,6 +19,7 @@
     "@mui/x-date-pickers": "^7.5.0",
     "@react-input/mask": "^1.2.4",
     "@reduxjs/toolkit": "^2.2.3",
+    "axios": "^1.7.2",
     "dayjs": "^1.11.11",
     "firebase": "^10.11.1",
     "modern-normalize": "^2.0.0",

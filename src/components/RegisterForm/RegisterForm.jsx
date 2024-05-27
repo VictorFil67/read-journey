@@ -5,40 +5,32 @@ import s from "./RegisterForm.module.css";
 import SvgClose from "../../images/modalIcons/SvgClose";
 import EyeOpenSvg from "../../images/modalIcons/EyeOpenSvg";
 import EyeCloseSvg from "../../images/modalIcons/EyeCloseSvg";
-import { useDispatch } from "react-redux";
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-  updateProfile,
-} from "firebase/auth";
-import { setUser } from "../../store/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { Loader } from "../Loader/Loader";
+import { signUpThunk } from "../../store/auth/operations";
+import { selectIsLoading } from "../../store/auth/selectors";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup.object({
-  name: yup
-    .string()
-    .max(32, "The name must contain a maximum of 32 characters")
-    .required("The name is required"),
+  name: yup.string().required("The name is required"),
   email: yup
     .string()
     .email("Please write a valid email")
-    .matches(
-      /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
-      "Please write a valid email"
-    )
+    .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, "Please write a valid email")
     .required("The email is required"),
   password: yup
     .string()
-    .min(6, "The password must contain a minimum of 6 characters")
+    .min(7, "The password must contain a minimum of 7 characters")
     .required("The password is required"),
 });
 
 export const RegisterForm = ({ close }) => {
+  const isLoading = useSelector(selectIsLoading);
   const [eye, setEye] = useState(false);
-  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -50,34 +42,13 @@ export const RegisterForm = ({ close }) => {
   });
 
   function onSubmit({ email, password, name }) {
-    setLoading(true);
-    const auth = getAuth();
-
-    createUserWithEmailAndPassword(auth, email, password, name)
-      .then(({ user }) => {
-        updateProfile(user, {
-          displayName: name,
-        }).then(() => {
-          dispatch(
-            setUser({
-              user: {
-                email: user.email,
-                id: user.uid,
-                name: user.displayName,
-              },
-              token: user.accessToken,
-            })
-          );
-        });
-        close();
-        toast.success(`Welcome`);
+    dispatch(signUpThunk({ email, password, name }))
+      .unwrap()
+      .then(() => {
+        toast.success("Sign up done!");
+        navigate("/recommended");
       })
-      .catch((error) => {
-        const errorMessage = error.message;
-        toast.error(errorMessage);
-        // ..
-      })
-      .finally(() => setLoading(false));
+      .catch(() => toast.error("Ooops... Something went wrong!"));
   }
 
   function handleClick(e) {
@@ -96,7 +67,7 @@ export const RegisterForm = ({ close }) => {
 
   return (
     <>
-      {loading && <Loader />}
+      {isLoading && <Loader />}
       <div className={s.overlay} onClick={handleClick}>
         <div className={s.modal}>
           <button className={s.closeButton} onClick={close} aria-label="close">

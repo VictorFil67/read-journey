@@ -4,19 +4,20 @@ import {
   NavLink,
   Outlet,
   useLocation,
-  useNavigate,
+  // useNavigate,
 } from "react-router-dom";
 import { RegisterForm } from "../RegisterForm/RegisterForm";
 import { LoginForm } from "../LoginForm/LoginForm";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../store/auth/selectors";
-import { logout } from "../../store/auth/authSlice";
-import { getAuth, signOut } from "firebase/auth";
-import { toast } from "react-toastify";
+// import { logout } from "../../store/auth/authSlice";
+// import { getAuth, signOut } from "firebase/auth";
+// import { toast } from "react-toastify";
 import s from "./Layout.module.css";
-import AvatarIconSvg from "../../images/SvgAvatarIcon";
+// import AvatarIconSvg from "../../images/SvgAvatarIcon";
 import SvgBurgerMenu from "../../images/SvgBurgerMenu";
 import SvgClose from "../../images/modalIcons/SvgClose";
+import { logoutThunk } from "../../store/auth/operations";
 
 export const Layout = () => {
   const [modalRegistration, setModalRegistration] = useState(false);
@@ -24,7 +25,7 @@ export const Layout = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const location = useLocation();
 
   function open(setModal) {
@@ -44,21 +45,23 @@ export const Layout = () => {
       setMobileMenu(false);
     }
   }
-  function getExit() {
-    const auth = getAuth();
-    signOut(auth)
-      .then(() => {
-        dispatch(logout());
-        toast.success(`Sign-out successful. Goodbye!`);
-        navigate("/");
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        toast.error(errorMessage);
-      });
-  }
-  function handleExit() {
-    getExit();
+  // function getExit() {
+  //   const auth = getAuth();
+  //   signOut(auth)
+  //     .then(() => {
+  //       dispatch(logout());
+  //       toast.success(`Sign-out successful. Goodbye!`);
+  //       navigate("/");
+  //     })
+  //     .catch((error) => {
+  //       const errorMessage = error.message;
+  //       toast.error(errorMessage);
+  //     });
+  // }
+  function handleLogout() {
+    // getExit();
+    dispatch(logoutThunk());
+    console.log(user);
     setMobileMenu(false);
   }
   useEffect(() => {
@@ -152,16 +155,28 @@ export const Layout = () => {
                     </button>
                   </>
                 ) : (
+                  //     <>
+                  //       <div className={s.avatar}>
+                  //         {/* <AvatarIconSvg /> */}
+                  //         <p className={s.username}>{user?.name ?? "user"}</p>
+                  //       </div>
+                  //       {/* <button
+                  //         className={s.logoutButton}
+                  //         onClick={handleExit}
+                  //         aria-label="log out"
+                  //       >
+                  //         Log Out
+                  //       </button> */}
+                  //     </>
+                  //   )}
+                  // </div>
+                  // <div className={s.log}>
+                  //   {user && (
                   <>
                     <div className={s.avatar}>
-                      <AvatarIconSvg />
-                      <p className={s.username}>{user?.name ?? "user"}</p>
+                      <span className={s.letter}>reviewer.slice(0, 1)</span>
                     </div>
-                    <button
-                      className={s.logoutButton}
-                      onClick={handleExit}
-                      aria-label="log out"
-                    >
+                    <button onClick={handleLogout} className={s.logoutButton}>
                       Log Out
                     </button>
                   </>

@@ -1,9 +1,10 @@
-import { Hero } from "../../components/Hero/Hero";
+// import { Hero } from "../../components/Hero/Hero";
 
 const HomePage = () => {
   return (
     <>
-      <Hero />
+      <p>HomePage</p>
+      {/* <Hero /> */}
     </>
   );
 };

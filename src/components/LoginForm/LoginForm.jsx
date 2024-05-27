@@ -3,22 +3,23 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import s from "./LoginForm.module.css";
 import SvgClose from "../../images/modalIcons/SvgClose";
-import { useDispatch } from "react-redux";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { setUser } from "../../store/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+// import { setUser } from "../../store/auth/authSlice";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import EyeOpenSvg from "../../images/modalIcons/EyeOpenSvg";
 import EyeCloseSvg from "../../images/modalIcons/EyeCloseSvg";
 import { Loader } from "../Loader/Loader";
+import { signInThunk } from "../../store/auth/operations";
+import { useNavigate } from "react-router-dom";
+import { selectIsLoading } from "../../store/auth/selectors";
 
 const schema = yup.object({
   email: yup
     .string()
     .email("Please write a valid email")
-    .matches(
-      /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
-    )
+    .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
     .required("The email is required"),
   password: yup
     .string()
@@ -27,9 +28,11 @@ const schema = yup.object({
 });
 
 export const LoginForm = ({ close }) => {
+  const isLoading = useSelector(selectIsLoading);
   const [eye, setEye] = useState(false);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -41,31 +44,15 @@ export const LoginForm = ({ close }) => {
   });
 
   function onSubmit({ email, password }) {
-    setLoading(true);
-    const auth = getAuth();
-
-    signInWithEmailAndPassword(auth, email, password)
-      .then(({ user }) => {
-        dispatch(
-          setUser({
-            user: {
-              email: user.email,
-              id: user.uid,
-              name: user.displayName,
-            },
-            token: user.accessToken,
-          })
-        );
-
-        close();
-        toast.success(`Welcome!`);
+    dispatch(signInThunk({ email, password }))
+      .unwrap()
+      .then(() => {
+        toast.success(`Welcome`);
+        navigate("/recommended");
       })
       .catch((err) => {
-        const errorCode = err.code;
-        toast.error(errorCode);
-        // ..
-      })
-      .finally(() => setLoading(false));
+        toast.error(err);
+      });
   }
 
   function handleClick(e) {
@@ -84,7 +71,7 @@ export const LoginForm = ({ close }) => {
 
   return (
     <>
-      {loading && <Loader />}
+      {isLoading && <Loader />}
       <div className={s.overlay} onClick={handleClick}>
         <div className={s.modal}>
           <button className={s.closeButton} onClick={close} aria-label="close">
