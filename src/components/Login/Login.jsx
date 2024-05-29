@@ -10,10 +10,7 @@ import { Loader } from "../Loader/Loader";
 import { signInThunk } from "../../store/auth/operations";
 import { selectIsLoading } from "../../store/auth/selectors";
 import { Link, useNavigate } from "react-router-dom";
-// import SvgFavicon from "../../images/favicon/SvgFavicon";
 import { Container } from "../Layout/Layout.Styled";
-// import { Logo } from "../Logo/Logo";
-// import LogoTitleSvg from "../../images/LogoTitleSvg";
 import {
   AuthForm,
   EnterWrap,
@@ -85,11 +82,6 @@ export const Login = () => {
             <Slogan>
               Expand your mind, reading <span> a book</span>
             </Slogan>
-            {/* <p>
-            Welcome back! Please enter your credentials to access your account
-            and continue your search for a psychologist.
-          </p>
-        </div> */}
             <InputWrap>
               <label>
                 <input placeholder="Mail:" type="text" {...register("email")} />

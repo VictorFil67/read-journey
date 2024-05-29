@@ -54,9 +54,30 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route path="/recommended" element={<RecommendedPage />} />
-            <Route path="/library" element={<Library />} />
-            <Route path="/reading" element={<Reading />} />
+            <Route
+              path="/recommended"
+              element={
+                <PrivateRoute>
+                  <RecommendedPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/library"
+              element={
+                <PrivateRoute>
+                  <Library />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/reading"
+              element={
+                <PrivateRoute>
+                  <Reading />
+                </PrivateRoute>
+              }
+            />
           </Route>
 
           <>
