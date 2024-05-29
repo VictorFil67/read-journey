@@ -1,94 +1,84 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import "./App.css";
-import { Layout } from "./components/Layout/Layout";
-import { useSelector } from "react-redux";
-import { Suspense, lazy } from "react";
-// import { getAuth, onAuthStateChanged } from "firebase/auth";
-// import { setUser } from "./store/auth/authSlice";
-import { selectIsLoading } from "./store/auth/selectors";
-import PrivateRoute from "./routes/PrivateRoute";
-// import { selectFavorites } from "./store/psychologists/selectors";
+import { Suspense, useEffect, useState } from "react";
+
+import { Route, Routes, useLocation } from "react-router-dom";
+import Layout from "./components/Layout/Layout";
+// import IsLoading from "../IsLoading/IsLoading";
+import Home from "./pages/Home/Home";
+
+import Library from "./pages/Library/Library";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import Reading from "./pages/Reading/Reading";
+// import Register from "../../pages/Authorization/Register/Register";
+// import Login from "../../pages/Authorization/Login/Login";
+
 import { Loader } from "./components/Loader/Loader";
-const HomePage = lazy(() => import("../src/Pages/HomePage/HomePage"));
-const PsychologistsPage = lazy(() =>
-  import("../src/Pages/PsychologistsPage/PsychologistsPage")
-);
-const FavoritesPage = lazy(() =>
-  import("../src/Pages/FavoritesPage/FavoritesPage")
-);
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+
+import { currentThunk } from "./store/auth/operations";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "./store/auth/selectors";
+import PublicRoute from "./routes/PublicRoute";
+import PrivateRoute from "./routes/PrivateRoute";
+import RecommendedPage from "./pages/RecommendedPage/RecommendedPage";
 
 function App() {
-  const isLoading = useSelector(selectIsLoading);
-  // const dispatch = useDispatch();
-  // const { pathname } = useLocation();
-  // const user = useSelector(selectUser);
-  // const [location, setLocation] = useState(pathname);
-  // const favorites = useSelector(selectFavorites);
-  // const [countFavorites, setCountFavorites] = useState(favorites.length);
-  // const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  const { pathname } = useLocation();
 
-  // const setCount = () => {
-  //   setCountFavorites(favorites.length);
-  // };
+  const [location, setLocation] = useState(pathname);
 
-  // useEffect(() => {
-  //   setLocation(pathname);
-  // }, [pathname, location]);
+  useEffect(() => {
+    setLocation(pathname);
+  }, [pathname, location]);
 
-  // useEffect(() => {
-  //   if (!user) {
-  //     setLoading(true);
-  //     const auth = getAuth();
-  //     onAuthStateChanged(auth, (user) => {
-  //       if (user) {
-  //         dispatch(
-  //           setUser({
-  //             user: {
-  //               email: user.email,
-  //               id: user.uid,
-  //               name: user.displayName,
-  //             },
-  //             token: user.accessToken,
-  //           })
-  //         );
-  //         setLoading(false);
-  //       } else {
-  //         setLoading(false);
-  //       }
-  //     });
-  //   }
-  // }, [dispatch, user]);
+  console.log(user);
+  useEffect(() => {
+    if (!user) {
+      dispatch(currentThunk()).catch((error) => {
+        console.error("Error fetching user data:", error);
+      });
+    }
+  }, [dispatch, user]);
   return (
     <>
-      {isLoading && <Loader />}
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage />} />
+          <Route element={<Layout />}>
             <Route
-              path="/psychologists"
-              element={
-                <PsychologistsPage
-                // location={location}
-                // countFavorites={countFavorites}
-                // setCount={setCount}
-                />
-              }
-            />
-            <Route
-              path="/recommended"
+              path="/"
               element={
                 <PrivateRoute>
-                  <FavoritesPage
-                  // location={location}
-                  // countFavorites={countFavorites}
-                  // setCount={setCount}
-                  />
+                  <Home />
                 </PrivateRoute>
               }
             />
+            <Route path="/recommended" element={<RecommendedPage />} />
+            <Route path="/library" element={<Library />} />
+            <Route path="/reading" element={<Reading />} />
           </Route>
-          <Route path="*" element={<Navigate to="/" />} />
+
+          <>
+            <Route
+              path="/register"
+              element={
+                <PublicRoute>
+                  <RegisterPage />
+                </PublicRoute>
+              }
+            />
+
+            <Route
+              path="/login"
+              element={
+                <PublicRoute>
+                  <LoginPage />
+                </PublicRoute>
+              }
+            />
+          </>
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Suspense>
     </>

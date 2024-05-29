@@ -1,15 +1,10 @@
-import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 import { selectUser } from "../store/auth/selectors";
-import { Navigate } from "react-router";
+import { useSelector } from "react-redux";
 
 const PrivateRoute = ({ children }) => {
   const user = useSelector(selectUser);
-
-  if (!user) {
-    return <Navigate to={"/"} />;
-  }
-  console.log(user);
-  return children;
+  return user ? children : <Navigate to="/register" />;
 };
 
 export default PrivateRoute;

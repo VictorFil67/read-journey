@@ -1,12 +1,13 @@
-@import url(../node_modules/modern-normalize/modern-normalize.css);
-@import "./styles/fonts.css";
-@import "./styles/variables.css";
+@import "modern-normalize/modern-normalize.css";
+
+@import "./styles/fonts/fonts.css";
 
 body {
-  font-family: Inter;
-  font-weight: 400;
+  background-color: #141414;
+  color: #f9f9f9;
+  font-family: Roboto;
   font-size: 16px;
-  background-color: #f3f3f3;
+  font-weight: 400;
 }
 h1,
 h2,
@@ -21,15 +22,6 @@ p {
 a {
   text-decoration: none;
   color: inherit;
-  transition: color 0.3s ease;
-
-  transition: transform 0.3s ease;
-
-  &:hover,
-  &:focus {
-    color: var(--green);
-    transform: scale(1.1);
-  }
 }
 ul,
 ol {
@@ -44,26 +36,6 @@ img {
 }
 button {
   cursor: pointer;
-  transition: transform 0.3s ease;
-
-  &:hover,
-  &:focus {
-    transform: scale(1.1);
-  }
-}
-.active {
-  position: relative;
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: -8px;
-    background-color: var(--green);
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    left: 47%;
-  }
-}
-.MuiList-root-MuiMultiSectionDigitalClockSection-root {
-  width: 50%;
+  padding: 0;
+  margin: 0;
 }
