@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Logo from "../../images/Logo";
+import LogoTitleSvg from "../../images/LogoTitleSvg";
 
 export const EnterWrap = styled.div`
   display: flex;
@@ -7,34 +9,38 @@ export const EnterWrap = styled.div`
   padding: 20px 20px 40px;
   gap: 40px;
   border-radius: 30px;
-  background-color: #1f1f1f;
+  background-color: var(--dark-grey);
   @media only screen and (min-width: 768px) {
     padding: 40px 64px;
+    gap: 157px;
   }
 `;
-export const LogoWrap = styled.div`
+export const LogoStyled = styled(Logo)`
   height: 17px;
   @media only screen and (min-width: 768px) {
     display: none;
   }
 `;
-export const LogoTitleSvgWrap = styled.div`
+export const LogoTitleSvgStyled = styled(LogoTitleSvg)`
+  height: 17px;
   @media only screen and (max-width: 767px) {
     display: none;
   }
 `;
 export const AuthSlogan = styled.h1`
-  font: 700 32px / 1 "Gilroy", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1;
   letter-spacing: 0.02em;
-  color: #f9f9f9;
+  color: var(--white);
   @media only screen and (min-width: 768px) {
   }
 `;
 export const AuthSpan = styled.span`
-  font: 700 32px / 1 "Gilroy", sans-serif;
-  letter-spacing: 0.02em;
   color: rgba(227, 227, 227, 0.5);
   @media only screen and (min-width: 768px) {
+    font-size: 64px;
+    line-height: 0.9375;
   }
 `;
 
@@ -43,6 +49,7 @@ export const AuthForm = styled.form`
   flex-direction: column;
   gap: 20px;
   @media only screen and (min-width: 768px) {
+    gap: 40px;
   }
 `;
 export const AuthInputWrap = styled.div`
@@ -50,6 +57,7 @@ export const AuthInputWrap = styled.div`
   flex-direction: column;
   gap: 8px;
   @media only screen and (min-width: 768px) {
+    gap: 14px;
   }
 `;
 export const AuthSubmitBlock = styled.div`
@@ -62,6 +70,7 @@ export const AuthSubmitBlock = styled.div`
 export const EmtyBlock = styled.div`
   height: 44px;
   @media only screen and (min-width: 768px) {
+    height: 92px;
   }
 `;
 export const AuthLabel = styled.label`
@@ -78,15 +87,15 @@ export const AuthInputContainer = styled.div`
   /* border: 1px solid red; */
   border-radius: 12px;
   align-items: center;
-  background: #262626;
+  background: var(--input-bg);
   @media only screen and (min-width: 768px) {
   }
 `;
 export const AuthInputTitle = styled.p`
   padding: 14px 0 14px 14px;
-  /* border-radius: 12px 0 0 12px; */
-  color: #686868;
-  background: #262626;
+  border-radius: 12px 0 0 12px;
+  color: var(--input-title);
+  background: var(--input-bg);
   font: 500 12px / 1.33333 "Gilroy", sans-serif;
   letter-spacing: -0.02em;
   text-align: center;
@@ -96,22 +105,22 @@ export const AuthInputTitle = styled.p`
 `;
 export const AuthInput = styled.input`
   padding: 14px 14px 14px 0;
-  /* border-radius: 0 12px 12px 0; */
-  background: #262626;
-  color: #f9f9f9;
+  border-radius: 0 12px 12px 0;
+  background: var(--input-bg);
+  color: var(--white);
   width: 100%;
   outline: none;
   border: none;
   font: 500 12px / 1.33333 "Gilroy", sans-serif;
   letter-spacing: -0.02em;
   &::placeholder {
-    background: #262626;
-    color: #f9f9f9;
+    background: var(--input-bg);
+    color: var(--white);
   }
   /* &:focus, */
   &:active {
-    background: #262626;
-    color: #f9f9f9;
+    background: var(--input-bg);
+    color: var(--white);
   }
   @media only screen and (min-width: 768px) {
     padding: 16px 16px 16px 0;
@@ -133,13 +142,13 @@ export const AuthButton = styled.button`
   border-radius: 30px;
   padding: 12px 15px;
   border: none;
-  background-color: #f9f9f9;
+  background-color: var(--white);
   transition: all 0.3s;
   width: 131px;
   /* white-space: nowrap; */
   font: 700 14px / 1.28571 "Gilroy", sans-serif;
   letter-spacing: 0.02em;
-  color: #1f1f1f;
+  color: var(--dark-grey);
   &:hover {
     background-color: var(--hover-green);
   }
@@ -150,5 +159,5 @@ export const LinkStyled = styled(Link)`
   text-decoration: underline;
   text-decoration-skip-ink: none;
   text-align: center;
-  color: #686868;
+  color: var(--input-bg);
 `;

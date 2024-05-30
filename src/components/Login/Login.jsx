@@ -26,11 +26,13 @@ import {
   EmtyBlock,
   EnterWrap,
   LinkStyled,
-  LogoTitleSvgWrap,
-  LogoWrap,
+  LogoStyled,
+  LogoTitleSvgStyled,
+  // LogoTitleSvgWrap,
+  // LogoWrap,
 } from "./Login.Styled";
-import Logo from "../../images/Logo";
-import LogoTitleSvg from "../../images/LogoTitleSvg";
+// import Logo from "../../images/Logo";
+// import LogoTitleSvg from "../../images/LogoTitleSvg";
 
 const schema = yup.object({
   email: yup
@@ -79,15 +81,9 @@ export const Login = () => {
       {isLoading && <Loader />}
       <Container>
         <EnterWrap>
-          <LogoWrap>
-            <Logo />
-          </LogoWrap>
-          <LogoTitleSvgWrap>
-            <LogoTitleSvg />
-          </LogoTitleSvgWrap>
-          {/* {window.innerWidth < 768 ? <Logo /> : <LogoTitleSvg />} */}
+          <LogoStyled />
+          <LogoTitleSvgStyled />
           <AuthForm onSubmit={handleSubmit(onSubmit)}>
-            {/* <div> */}
             <AuthSlogan>
               Expand your mind, reading <AuthSpan>a book</AuthSpan>
             </AuthSlogan>
