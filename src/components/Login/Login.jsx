@@ -1,8 +1,8 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import EyeOpenSvg from "../../images/EyeOpenSvg";
-import EyeCloseSvg from "../../images/EyeCloseSvg";
+import EyeOpenSvg from "../../images/authIcons/EyeOpenSvg";
+import EyeCloseSvg from "../../images/authIcons/EyeCloseSvg";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
@@ -25,12 +25,17 @@ import {
   AuthSubmitBlock,
   EmtyBlock,
   EnterWrap,
+  ErrorSpan,
+  ErrorSvgStyled,
   LinkStyled,
   LogoStyled,
   LogoTitleSvgStyled,
+  OkSvgStyled,
   // LogoTitleSvgWrap,
   // LogoWrap,
 } from "./Login.Styled";
+// import ErrorSvg from "../../images/authIcons/ErrorSvg";
+// import OkSvg from "../../images/authIcons/OkSvg";
 // import Logo from "../../images/Logo";
 // import LogoTitleSvg from "../../images/LogoTitleSvg";
 
@@ -89,27 +94,34 @@ export const Login = () => {
             </AuthSlogan>
             <AuthInputWrap>
               <AuthLabel>
-                <AuthInputContainer>
+                <AuthInputContainer $err={errors.email}>
                   <AuthInputTitle>Mail:</AuthInputTitle>
                   <AuthInput
                     placeholder="Mail:"
                     type="text"
                     {...register("email")}
+                    id="email"
+                    $value={register.value}
                   />
+                  <ErrorSvgStyled $err={errors.email} />
+                  <OkSvgStyled $err={errors.email} />
                 </AuthInputContainer>
-                <span>{errors.email?.message}</span>
+                <ErrorSpan>{errors.email?.message}</ErrorSpan>
               </AuthLabel>
               <AuthLabel>
-                <AuthInputContainer>
+                <AuthInputContainer $err={errors.password}>
                   <AuthInputTitle>Password:</AuthInputTitle>
                   <AuthInput
                     placeholder="Password:"
                     type={eye ? "text" : "password"}
                     {...register("password")}
                   />
+                  <ErrorSvgStyled $err={errors.password} />
+                  <OkSvgStyled $err={errors.password} />
                 </AuthInputContainer>
-                <span>{errors.password?.message}</span>
+                <ErrorSpan>{errors.password?.message}</ErrorSpan>
                 <AuthEyeBtn
+                  $err={errors.password}
                   type="button"
                   onClick={() => setEye(!eye)}
                   aria-label="show or hide password"

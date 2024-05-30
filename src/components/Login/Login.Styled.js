@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "../../images/Logo";
 import LogoTitleSvg from "../../images/LogoTitleSvg";
+import ErrorSvg from "../../images/authIcons/ErrorSvg";
+import OkSvg from "../../images/authIcons/OkSvg";
 
 export const EnterWrap = styled.div`
   display: flex;
@@ -47,8 +49,6 @@ export const AuthSlogan = styled.h1`
 export const AuthSpan = styled.span`
   color: rgba(227, 227, 227, 0.5);
   @media only screen and (min-width: 768px) {
-    /* font-size: 64px;
-    line-height: 0.9375; */
   }
 `;
 
@@ -98,6 +98,29 @@ export const AuthInputContainer = styled.div`
   border-radius: 12px;
   align-items: center;
   background: var(--input-bg);
+  /* border: 1px solid transparent; */
+  margin-bottom: ${(props) => (props.$err ? "4px" : "")};
+  &:focus-within {
+    border: 1px solid ${(props) => (props.$err ? "#e90516" : "#30b94d")};
+  }
+  @media only screen and (min-width: 768px) {
+  }
+`;
+export const ErrorSvgStyled = styled(ErrorSvg)`
+  display: ${(props) => (props.$err ? "block" : "none")};
+  position: absolute;
+  right: 16px;
+  top: 13px;
+  z-index: 3;
+  @media only screen and (min-width: 768px) {
+  }
+`;
+export const OkSvgStyled = styled(OkSvg)`
+  /* display: ${(props) => (!props.$err ? "block" : "none")}; */
+  display: none;
+  position: absolute;
+  right: 16px;
+  top: 13px;
   @media only screen and (min-width: 768px) {
   }
 `;
@@ -109,7 +132,6 @@ export const AuthInputTitle = styled.p`
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33333;
-  /* font: 500 12px / 1.33333 "Gilroy", sans-serif; */
   letter-spacing: -0.02em;
   text-align: center;
   @media only screen and (min-width: 768px) {
@@ -129,13 +151,11 @@ export const AuthInput = styled.input`
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33333;
-  /* font: 500 12px / 1.33333 "Gilroy", sans-serif; */
   letter-spacing: -0.02em;
   &::placeholder {
     background: var(--input-bg);
     color: var(--white);
   }
-  /* &:focus, */
   &:active {
     background: var(--input-bg);
     color: var(--white);
@@ -145,6 +165,12 @@ export const AuthInput = styled.input`
     font-size: 14px;
     line-height: 1.28571;
   }
+`;
+export const ErrorSpan = styled.span`
+  color: #e90516;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.2;
 `;
 export const AuthEyeBtn = styled.button`
   position: absolute;
@@ -156,6 +182,7 @@ export const AuthEyeBtn = styled.button`
   height: 20px;
   width: 20px;
   z-index: 2;
+  display: ${(props) => (props.$err ? "none" : "block")};
   @media only screen and (min-width: 768px) {
     right: 18px;
     top: 15px;
