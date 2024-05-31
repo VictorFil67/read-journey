@@ -195,18 +195,19 @@ export const AuthButton = styled.button`
   background-color: var(--white);
   transition: all 0.3s;
   width: 131px;
-  /* white-space: nowrap; */
   font-weight: 700;
   font-size: 14px;
   line-height: 1.28571;
-  /* font: 700  / 1.28571 "Gilroy", sans-serif; */
   letter-spacing: 0.02em;
   color: var(--dark-grey);
-  &:hover {
-    background-color: var(--hover-green);
+  &:hover,
+  &:active {
+    border: 1px solid rgba(249, 249, 249, 0.2);
+    background-color: var(--dark-grey);
+    color: var(--white);
   }
   @media only screen and (min-width: 768px) {
-    padding: 16px 54px;
+    padding: 16px 45px;
     width: 166px;
     font-size: 20px;
     line-height: 1;
@@ -216,12 +217,14 @@ export const LinkStyled = styled(Link)`
   font-weight: 500;
   font-size: 12px;
   line-height: 1.16667;
-  /* font: 500 12px / 1.16667 "Gilroy", sans-serif; */
   letter-spacing: -0.02em;
   text-decoration: underline;
   text-decoration-skip-ink: none;
   text-align: center;
-  color: var(--input-bg);
+  color: var(--input-title);
+  &:hover {
+    color: var(--white);
+  }
   @media only screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 1.28571;

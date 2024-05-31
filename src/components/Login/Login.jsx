@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { Loader } from "../Loader/Loader";
 import { signInThunk } from "../../store/auth/operations";
 import { selectIsLoading } from "../../store/auth/selectors";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Container } from "../Layout/Layout.Styled";
 import {
   AuthButton,
@@ -86,8 +86,10 @@ export const Login = () => {
       {isLoading && <Loader />}
       <Container>
         <EnterWrap>
-          <LogoStyled />
-          <LogoTitleSvgStyled />
+          <Link to={"/register"}>
+            <LogoStyled />
+            <LogoTitleSvgStyled />
+          </Link>
           <AuthForm onSubmit={handleSubmit(onSubmit)}>
             <AuthSlogan>
               Expand your mind, reading <AuthSpan>a book</AuthSpan>
