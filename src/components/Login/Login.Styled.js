@@ -22,6 +22,12 @@ export const EnterWrap = styled.div`
     gap: 107px;
   }
 `;
+export const LogoLink = styled(Link)`
+  height: 17px;
+  @media only screen and (min-width: 768px) {
+    /* display: none; */
+  }
+`;
 export const LogoStyled = styled(Logo)`
   height: 17px;
   @media only screen and (min-width: 768px) {
@@ -80,7 +86,7 @@ export const AuthSubmitBlock = styled.div`
 export const EmtyBlock = styled.div`
   height: 44px;
   @media only screen and (min-width: 768px) {
-    height: 92px;
+    height: 50px;
   }
 `;
 export const AuthLabel = styled.label`
@@ -89,6 +95,9 @@ export const AuthLabel = styled.label`
   position: relative;
   /* gap: 8px; */
   @media only screen and (min-width: 768px) {
+    &:last-child {
+      margin-bottom: 42px;
+    }
   }
 `;
 export const AuthInputContainer = styled.div`
