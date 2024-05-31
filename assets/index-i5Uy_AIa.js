@@ -327,6 +327,12 @@ attempted value: ${s}
   margin-bottom: ${e=>e.$err?"4px":""};
   &:focus-within {
     border: 1px solid ${e=>e.$err?"#e90516":"#30b94d"};
+    svg:last-child {
+      display: ${e=>e.$err?"none":"block"};
+    }
+  }
+  &:focus-within ~ button {
+    display: none;
   }
   @media only screen and (min-width: 768px) {
   }
@@ -337,14 +343,18 @@ attempted value: ${s}
   top: 13px;
   z-index: 3;
   @media only screen and (min-width: 768px) {
+    right: 18px;
+    top: 15px;
   }
 `,Jh=H(C4)`
-  /* display: ${e=>e.$err?"none":"block"}; */
   display: none;
   position: absolute;
   right: 16px;
   top: 13px;
+  z-index: 3;
   @media only screen and (min-width: 768px) {
+    right: 18px;
+    top: 15px;
   }
 `,em=H.p`
   padding: 14px 0 14px 14px;
@@ -401,7 +411,7 @@ attempted value: ${s}
   height: 20px;
   width: 20px;
   z-index: 2;
-  display: ${e=>e.$err?"none":"block"};
+  /* display: ${e=>e.$err?"none":"block"}; */
   @media only screen and (min-width: 768px) {
     right: 18px;
     top: 15px;
