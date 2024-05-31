@@ -98,7 +98,6 @@ export const Register = () => {
                     placeholder="Name:"
                     type="text"
                     {...register("name")}
-                    // $value={register.value}
                   />
                   <ErrorSvgStyled $err={errors.name} />
                   <OkSvgStyled $err={errors.name} />
@@ -112,7 +111,6 @@ export const Register = () => {
                     placeholder="Mail:"
                     type="text"
                     {...register("email")}
-                    // $value={register.value}
                   />
                   <ErrorSvgStyled $err={errors.email} />
                   <OkSvgStyled $err={errors.email} />
@@ -140,7 +138,6 @@ export const Register = () => {
                   {eye ? <EyeOpenSvg /> : <EyeCloseSvg />}
                 </AuthEyeBtn>
               </AuthLabel>
-              {/* <EmtyBlock></EmtyBlock> */}
             </AuthInputWrap>
             <AuthSubmitBlock>
               <AuthButton name="submit" type="submit" aria-label="Log In">

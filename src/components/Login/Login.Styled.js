@@ -25,7 +25,6 @@ export const EnterWrap = styled.div`
 export const LogoLink = styled(Link)`
   height: 17px;
   @media only screen and (min-width: 768px) {
-    /* display: none; */
   }
 `;
 export const LogoStyled = styled(Logo)`
@@ -93,7 +92,6 @@ export const AuthLabel = styled.label`
   display: flex;
   flex-direction: column;
   position: relative;
-  /* gap: 8px; */
   @media only screen and (min-width: 768px) {
     &:last-child {
       margin-bottom: 42px;
@@ -103,11 +101,9 @@ export const AuthLabel = styled.label`
 export const AuthInputContainer = styled.div`
   display: flex;
   gap: 10px;
-  /* border: 1px solid red; */
   border-radius: 12px;
   align-items: center;
   background: var(--input-bg);
-  /* border: 1px solid transparent; */
   margin-bottom: ${(props) => (props.$err ? "4px" : "")};
   &:focus-within {
     border: 1px solid ${(props) => (props.$err ? "#e90516" : "#30b94d")};
@@ -201,7 +197,6 @@ export const AuthEyeBtn = styled.button`
   height: 20px;
   width: 20px;
   z-index: 2;
-  /* display: ${(props) => (props.$err ? "none" : "block")}; */
   @media only screen and (min-width: 768px) {
     right: 18px;
     top: 15px;

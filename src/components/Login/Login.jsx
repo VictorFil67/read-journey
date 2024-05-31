@@ -32,13 +32,7 @@ import {
   LogoStyled,
   LogoTitleSvgStyled,
   OkSvgStyled,
-  // LogoTitleSvgWrap,
-  // LogoWrap,
 } from "./Login.Styled";
-// import ErrorSvg from "../../images/authIcons/ErrorSvg";
-// import OkSvg from "../../images/authIcons/OkSvg";
-// import Logo from "../../images/Logo";
-// import LogoTitleSvg from "../../images/LogoTitleSvg";
 
 const schema = yup.object({
   email: yup
