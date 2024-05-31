@@ -312,6 +312,7 @@ attempted value: ${s}
   height: 44px;
   @media only screen and (min-width: 768px) {
     height: 50px;
+    margin-bottom: 42px;
   }
 `,Xi=W.label`
   display: flex;
