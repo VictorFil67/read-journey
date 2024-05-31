@@ -260,7 +260,6 @@ attempted value: ${s}
 `,A1=W(Kf)`
   height: 17px;
   @media only screen and (min-width: 768px) {
-    /* display: none; */
   }
 `,$1=W(wg)`
   height: 17px;
@@ -318,7 +317,6 @@ attempted value: ${s}
   display: flex;
   flex-direction: column;
   position: relative;
-  /* gap: 8px; */
   @media only screen and (min-width: 768px) {
     &:last-child {
       margin-bottom: 42px;
@@ -327,11 +325,9 @@ attempted value: ${s}
 `,Ji=W.div`
   display: flex;
   gap: 10px;
-  /* border: 1px solid red; */
   border-radius: 12px;
   align-items: center;
   background: var(--input-bg);
-  /* border: 1px solid transparent; */
   margin-bottom: ${e=>e.$err?"4px":""};
   &:focus-within {
     border: 1px solid ${e=>e.$err?"#e90516":"#30b94d"};
@@ -419,7 +415,6 @@ attempted value: ${s}
   height: 20px;
   width: 20px;
   z-index: 2;
-  /* display: ${e=>e.$err?"none":"block"}; */
   @media only screen and (min-width: 768px) {
     right: 18px;
     top: 15px;
