@@ -66,14 +66,14 @@ export const Register = () => {
       .unwrap()
       .then(() => {
         toast.success("Sign up done!");
-        // dispatch(signInThunk({ email, password }))
-        //   .unwrap()
-        //   .then(() => {
-        //     toast.success(`Welcome`);
-        navigate("/recommended");
+        dispatch(signInThunk({ email, password }))
+          .unwrap()
+          .then(() => {
+            toast.success(`Welcome`);
+            navigate("/recommended");
+          })
+          .catch((err) => toast.error(err));
       })
-      //     .catch((err) => toast.error(err));
-      // })
       .catch(() => toast.error("Ooops... Something went wrong!"));
   }
 
