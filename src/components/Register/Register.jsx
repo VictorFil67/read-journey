@@ -80,7 +80,6 @@ export const Register = () => {
   return (
     <>
       {isLoading && <Loader />}
-      {/* <Container> */}
       <EnterWrap>
         <LogoLink to={"/register"}>
           <LogoStyled />
@@ -147,7 +146,6 @@ export const Register = () => {
           </AuthSubmitBlock>
         </AuthForm>
       </EnterWrap>
-      {/* </Container> */}
     </>
   );
 };
