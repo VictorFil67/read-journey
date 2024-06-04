@@ -12,6 +12,6 @@ export function clearToken() {
   api.defaults.headers.authorization = ``;
 }
 
-export function setRefreshToken(refreshToken) {
-  localStorage.setItem("refreshToken", refreshToken);
-}
+// export function setRefreshToken(refreshToken) {
+//   localStorage.setItem("refreshToken", refreshToken);
+// }

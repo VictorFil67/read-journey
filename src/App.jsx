@@ -8,16 +8,18 @@ import Reading from "./pages/Reading/Reading";
 import { Loader } from "./components/Loader/Loader";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import { currentThunk } from "./store/auth/operations";
+import { currentThunk, refreshTokensThunk } from "./store/auth/operations";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUser } from "./store/auth/selectors";
+import { selectExpireTime, selectUser } from "./store/auth/selectors";
 import PublicRoute from "./routes/PublicRoute";
 import PrivateRoute from "./routes/PrivateRoute";
 import RecommendedPage from "./pages/RecommendedPage/RecommendedPage";
+import { toast } from "react-toastify";
 
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const expireTime = useSelector(selectExpireTime);
   const { pathname } = useLocation();
 
   const [location, setLocation] = useState(pathname);
@@ -29,11 +31,20 @@ function App() {
   console.log(user);
   useEffect(() => {
     if (!user) {
-      dispatch(currentThunk()).catch((error) => {
-        console.error("Error fetching user data:", error);
-      });
+      if (expireTime >= Date.now()) {
+        dispatch(currentThunk()).catch((error) => {
+          console.error("Error fetching user data:", error);
+        });
+      } else {
+        dispatch(refreshTokensThunk())
+          .unwrap()
+          .then(() => {
+            dispatch(currentThunk()).catch((error) => toast.error(error));
+          })
+          .catch((error) => toast.error(error));
+      }
     }
-  }, [dispatch, user]);
+  }, [dispatch, user, expireTime]);
   return (
     <>
       <Suspense fallback={<Loader />}>
