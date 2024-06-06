@@ -1,8 +1,8 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
-import Home from "./pages/Home/Home";
-import Library from "./pages/Library/Library";
+// import Home from "./pages/Home/Home";
+// import Library from "./pages/Library/Library";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Reading from "./pages/Reading/Reading";
 import { Loader } from "./components/Loader/Loader";
@@ -15,6 +15,8 @@ import PublicRoute from "./routes/PublicRoute";
 import PrivateRoute from "./routes/PrivateRoute";
 import RecommendedPage from "./pages/RecommendedPage/RecommendedPage";
 import { toast } from "react-toastify";
+import MyLibraryPage from "./pages/MyLibraryPage/MyLibraryPage";
+import { setPath } from "./store/books/booksSlise";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,13 +24,17 @@ function App() {
   const expireTime = useSelector(selectExpireTime);
   const { pathname } = useLocation();
 
-  const [location, setLocation] = useState(pathname);
-
+  // const [location, setLocation] = useState(pathname);
+  console.log(pathname);
   useEffect(() => {
-    setLocation(pathname);
-  }, [pathname, location]);
+    if (pathname === "/register" || pathname === "/login") {
+      return;
+    }
+    dispatch(setPath(pathname));
+    // setLocation(pathname);
+  });
 
-  console.log(user);
+  // console.log(user);
   useEffect(() => {
     if (!user) {
       if (expireTime >= Date.now()) {
@@ -49,15 +55,14 @@ function App() {
     <>
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route element={<Layout />}>
-            <Route
-              path="/"
+          <Route path="/" element={<Layout />}>
+            {/* <Route
               element={
                 <PrivateRoute>
                   <Home />
                 </PrivateRoute>
               }
-            />
+            /> */}
             <Route
               path="/recommended"
               element={
@@ -70,7 +75,7 @@ function App() {
               path="/library"
               element={
                 <PrivateRoute>
-                  <Library />
+                  <MyLibraryPage />
                 </PrivateRoute>
               }
             />

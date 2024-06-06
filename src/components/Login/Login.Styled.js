@@ -246,3 +246,11 @@ export const LinkStyled = styled(Link)`
     line-height: 1.28571;
   }
 `;
+export const ContentWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #1f1f1f;
+  border-radius: 30px;
+  padding: 20px;
+`;

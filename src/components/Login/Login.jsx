@@ -95,8 +95,8 @@ export const Login = () => {
                   placeholder="Mail:"
                   type="text"
                   {...register("email")}
-                  id="email"
-                  $value={register.value}
+                  // id="email"
+                  // $value={register.value}
                 />
                 <ErrorSvgStyled $err={errors.email} />
                 <OkSvgStyled $err={errors.email} />

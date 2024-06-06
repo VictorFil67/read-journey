@@ -9,7 +9,6 @@ export const signUpThunk = createAsyncThunk(
       console.log(data);
       return data;
     } catch (error) {
-      console.log(error);
       return thunkAPI.rejectWithValue(
         error.response.data.message ?? error.message
       );
@@ -79,7 +78,7 @@ export const refreshTokensThunk = createAsyncThunk(
         return thunkAPI.rejectWithValue("Refresh token does not exist");
       }
 
-      const { data } = await api.get("users/current/refresh");
+      const { data } = await api("users/current/refresh");
       setToken(data.token);
       return data;
     } catch (error) {

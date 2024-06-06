@@ -19,11 +19,18 @@ const persistConfig = {
   storage,
   whitelist: ["token", "refreshToken", "expireTime"],
 };
+const persistConfigBooks = {
+  key: "books",
+  version: 1,
+  storage,
+  whitelist: ["path"],
+};
 
 const persistedReducer = persistReducer(persistConfig, authReducer);
+const persistedReducerBooks = persistReducer(persistConfigBooks, booksReducer);
 
 export const store = configureStore({
-  reducer: { auth: persistedReducer, books: booksReducer },
+  reducer: { auth: persistedReducer, books: persistedReducerBooks },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
