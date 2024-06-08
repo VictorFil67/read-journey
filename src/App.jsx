@@ -1,7 +1,7 @@
 import { Suspense, useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
-// import Home from "./pages/Home/Home";
+import Home from "./pages/Home/Home";
 // import Library from "./pages/Library/Library";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Reading from "./pages/Reading/Reading";
@@ -13,10 +13,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectExpireTime, selectUser } from "./store/auth/selectors";
 import PublicRoute from "./routes/PublicRoute";
 import PrivateRoute from "./routes/PrivateRoute";
-import RecommendedPage from "./pages/RecommendedPage/RecommendedPage";
+
 import { toast } from "react-toastify";
-import MyLibraryPage from "./pages/MyLibraryPage/MyLibraryPage";
+// import MyLibraryPage from "./pages/MyLibraryPage/MyLibraryPage";
 import { setPath } from "./store/books/booksSlise";
+// import styled from "styled-components";
+// import LibraryP from "./components/LibraryP/LibraryP";
+// import { LibraryPage } from "./pages/LibraryPage/LibraryPage";
+// import Testtest from "./components/LibraryP/LibraryP";
+
+import styled from "styled-components";
+import LibraryP from "./components/LibraryP/LibraryP";
+import RecommendPage from "./pages/RecommendPage/RecommendPage";
+import MyLibraryPage from "./pages/MyLibraryPage/MyLibraryPage";
+const Test = styled.div``;
 
 function App() {
   const dispatch = useDispatch();
@@ -56,18 +66,19 @@ function App() {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            {/* <Route
+            <Route
               element={
                 <PrivateRoute>
-                  <Home />
+                  <LibraryP />
+                  {/* <Home /> */}
                 </PrivateRoute>
               }
-            /> */}
+            />
             <Route
               path="/recommended"
               element={
                 <PrivateRoute>
-                  <RecommendedPage />
+                  <RecommendPage />
                 </PrivateRoute>
               }
             />
@@ -83,6 +94,7 @@ function App() {
               path="/reading"
               element={
                 <PrivateRoute>
+                  <LibraryP />
                   <Reading />
                 </PrivateRoute>
               }

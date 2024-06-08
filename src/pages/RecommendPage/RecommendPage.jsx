@@ -1,13 +1,14 @@
+// import styled from "styled-components";
 import Filter from "../../components/Filter/Filter";
-
 import RecommendedList from "../../components/RecommendedList/RecommendedList";
 
-const RecommendedPage = () => {
+// const Test = styled.div``;
+const RecommendPage = () => {
   return (
     <>
       <>
+        {" "}
         <Filter />
-        {/* <Filters /> */}
       </>
       <>
         <RecommendedList />
@@ -16,4 +17,4 @@ const RecommendedPage = () => {
   );
 };
 
-export default RecommendedPage;
+export default RecommendPage;

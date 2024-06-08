@@ -1,6 +1,7 @@
 // import { ContentWraper } from "../Filters/Filters.Styled";
 
-import styled from "styled-components";
+// import styled from "styled-components";
+import { RecommendedBooks } from "../RecommendedBooks/RecommendedBooks";
 import {
   ContentWrap,
   FiltersFormWrap,
@@ -11,6 +12,7 @@ import {
   InputTitle,
   InputWrap,
   Label,
+  SubmitButton,
 } from "./Dashboard.Styled";
 
 // import { ContentWraper } from "../AnotherStyles/AnotherStyles.Styled";
@@ -20,18 +22,23 @@ import {
 export const Dashboard = ({ title, inputs, titleButton, secondPart }) => {
   function chooseSecondPart(string) {
     switch (string) {
-      case "statistics":
+      case "Start your workout":
         return <></>;
-      case "2":
-        return <></>;
-      case "3":
+      case "Recommended books":
+        return (
+          <>
+            <RecommendedBooks />
+          </>
+        );
+      case "":
         return <></>;
       case "4":
         return <></>;
-      case "5":
+      case "statistics":
         return <></>;
 
       default:
+        "Start your workout";
         break;
     }
   }
@@ -53,7 +60,7 @@ export const Dashboard = ({ title, inputs, titleButton, secondPart }) => {
               ))}
             </InputWrap>
           </FiltersFormWrap>
-          <button>{titleButton}</button>
+          <SubmitButton>{titleButton}</SubmitButton>
         </Form>
         <div>{chooseSecondPart(secondPart)}</div>
       </ContentWrap>

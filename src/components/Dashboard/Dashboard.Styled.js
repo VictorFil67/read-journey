@@ -1,15 +1,25 @@
 import styled from "styled-components";
-import { ContentWraper, FiltersFormWraper } from "../Filters/Filters.Styled";
+// import { ContentWraper, FiltersFormWraper } from "../Filters/Filters.Styled";
 
-export const ContentWrap = styled(ContentWraper)`
+export const ContentWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  background: #1f1f1f;
+  border-radius: 30px;
+  padding: 18px 20px 20px;
 `;
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 20px;
+`;
+export const FiltersFormWrap = styled.div`
+  display: flex;
+  width: 100%;
+  gap: 8px;
+  flex-direction: column;
+  /* padding-bottom: 20px; */
 `;
 export const FiltersTitle = styled.h3`
   padding-left: 13px;
@@ -19,7 +29,6 @@ export const FiltersTitle = styled.h3`
   letter-spacing: -0.02em;
   color: #f9f9f9;
 `;
-export const FiltersFormWrap = styled(FiltersFormWraper)``;
 // export const Rrrr = styled.div``;
 
 export const InputWrap = styled.ul`
@@ -88,4 +97,17 @@ export const Input = styled.input`
     font-size: 14px;
     line-height: 1.28571;
   }
+`;
+export const SubmitButton = styled.button`
+  border: 1px solid rgba(249, 249, 249, 0.2);
+  border-radius: 30px;
+  padding: 9px 20px;
+  /* cursor: pointer; */
+  background: transparent;
+  align-self: flex-start;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: 0.02em;
+  color: #f9f9f9;
 `;

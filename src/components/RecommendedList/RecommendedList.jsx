@@ -1,12 +1,11 @@
 import { useSelector } from "react-redux";
 import { selectRecommendedBooks } from "../../store/books/selectors";
-import { ContentWraper } from "../Filters/Filters.Styled";
 
 const RecommendedList = () => {
   const booksList = useSelector(selectRecommendedBooks);
   console.log(booksList);
   return (
-    <ContentWraper>
+    <>
       <div>
         <h1>Recommended</h1>
         <div>
@@ -27,7 +26,7 @@ const RecommendedList = () => {
           </ul>
         </div>
       </div>
-    </ContentWraper>
+    </>
   );
 };
 
