@@ -11,7 +11,7 @@ export const RecommendedBooksWrap = styled.div`
   /* align-items: flex-start; */
   padding: 20px;
 `;
-export const Title = styled.h1`
+export const Title = styled.h2`
   font-weight: 700;
   line-height: 1;
   font-size: 18px;

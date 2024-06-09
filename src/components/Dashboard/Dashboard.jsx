@@ -1,9 +1,7 @@
-// import { ContentWraper } from "../Filters/Filters.Styled";
-
-// import styled from "styled-components";
 import { RecommendedBooks } from "../RecommendedBooks/RecommendedBooks";
 import {
   ContentWrap,
+  ErrorSpan,
   FiltersFormWrap,
   FiltersTitle,
   Form,
@@ -15,11 +13,16 @@ import {
   SubmitButton,
 } from "./Dashboard.Styled";
 
-// import { ContentWraper } from "../AnotherStyles/AnotherStyles.Styled";
-
-// import { ContentWraper } from "../ControlBoard/ControlBoard.Styled";
-
-export const Dashboard = ({ title, inputs, titleButton, secondPart }) => {
+export const Dashboard = ({
+  title,
+  inputs,
+  titleButton,
+  secondPart,
+  register,
+  handleSubmit,
+  onSubmit,
+  errors,
+}) => {
   function chooseSecondPart(string) {
     switch (string) {
       case "Start your workout":
@@ -45,7 +48,7 @@ export const Dashboard = ({ title, inputs, titleButton, secondPart }) => {
   return (
     <>
       <ContentWrap>
-        <Form>
+        <Form onSubmit={handleSubmit(onSubmit)}>
           <FiltersFormWrap>
             <FiltersTitle>{title}</FiltersTitle>
             <InputWrap>
@@ -54,13 +57,28 @@ export const Dashboard = ({ title, inputs, titleButton, secondPart }) => {
                   <Label>
                     {el.label}
                     <InputTitle>{el.title}</InputTitle>
-                    <Input placeholder={el.placeholder} type="text"></Input>
+                    <Input
+                      placeholder={el.placeholder}
+                      type={el.type}
+                      {...register(el.name, {
+                        required: {
+                          value: true,
+                          message: "The field must not be empty!",
+                        },
+                      })}
+                    ></Input>
+                    {/* {console.log(register(el.name))} */}
                   </Label>
+                  <ErrorSpan>
+                    {errors[register(el.name).name]?.message}
+                  </ErrorSpan>
                 </InputContainer>
               ))}
             </InputWrap>
           </FiltersFormWrap>
-          <SubmitButton>{titleButton}</SubmitButton>
+          <SubmitButton name="submit" type="submit" aria-label={titleButton}>
+            {titleButton}
+          </SubmitButton>
         </Form>
         <div>{chooseSecondPart(secondPart)}</div>
       </ContentWrap>

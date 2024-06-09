@@ -1,9 +1,9 @@
 import { Suspense, useEffect } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
-import Home from "./pages/Home/Home";
+// import Home from "./pages/Home/Home";
 // import Library from "./pages/Library/Library";
-import ErrorPage from "./pages/ErrorPage/ErrorPage";
+// import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Reading from "./pages/Reading/Reading";
 import { Loader } from "./components/Loader/Loader";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
@@ -22,11 +22,11 @@ import { setPath } from "./store/books/booksSlise";
 // import { LibraryPage } from "./pages/LibraryPage/LibraryPage";
 // import Testtest from "./components/LibraryP/LibraryP";
 
-import styled from "styled-components";
+// import styled from "styled-components";
 import LibraryP from "./components/LibraryP/LibraryP";
 import RecommendPage from "./pages/RecommendPage/RecommendPage";
 import MyLibraryPage from "./pages/MyLibraryPage/MyLibraryPage";
-const Test = styled.div``;
+// const Test = styled.div``;
 
 function App() {
   const dispatch = useDispatch();
@@ -66,14 +66,14 @@ function App() {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route
+            {/* <Route
               element={
                 <PrivateRoute>
                   <LibraryP />
-                  {/* <Home /> */}
+                  <Home />
                 </PrivateRoute>
               }
-            />
+            /> */}
             <Route
               path="/recommended"
               element={
@@ -120,7 +120,8 @@ function App() {
               }
             />
           </>
-          <Route path="*" element={<ErrorPage />} />
+          {/* <Route path="*" element={<ErrorPage />} /> */}
+          <Route path="*" element={<Navigate to="/recommended" />} />
         </Routes>
       </Suspense>
     </>

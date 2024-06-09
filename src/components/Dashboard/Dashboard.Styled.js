@@ -98,6 +98,12 @@ export const Input = styled.input`
     line-height: 1.28571;
   }
 `;
+export const ErrorSpan = styled.span`
+  color: #e90516;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.2;
+`;
 export const SubmitButton = styled.button`
   border: 1px solid rgba(249, 249, 249, 0.2);
   border-radius: 30px;
