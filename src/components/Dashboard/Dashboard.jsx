@@ -22,7 +22,9 @@ export const Dashboard = ({
   handleSubmit,
   onSubmit,
   errors,
+  validation,
 }) => {
+  // const validation = false;
   function chooseSecondPart(string) {
     switch (string) {
       case "Start your workout":
@@ -60,12 +62,15 @@ export const Dashboard = ({
                     <Input
                       placeholder={el.placeholder}
                       type={el.type}
-                      {...register(el.name, {
-                        required: {
-                          value: true,
-                          message: "The field must not be empty!",
-                        },
-                      })}
+                      {...register(
+                        el.name,
+                        validation && {
+                          required: {
+                            value: true,
+                            message: "The field must not be empty!",
+                          },
+                        }
+                      )}
                     ></Input>
                     {/* {console.log(register(el.name))} */}
                   </Label>

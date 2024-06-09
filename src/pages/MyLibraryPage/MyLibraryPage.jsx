@@ -72,6 +72,7 @@ const MyLibraryPage = () => {
         handleSubmit={handleSubmit}
         onSubmit={onSubmit}
         errors={errors}
+        validation={true}
       />
       <MyLibraryBooks />
     </PageContainer>
