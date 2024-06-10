@@ -81,7 +81,12 @@ export const Dashboard = ({
               ))}
             </InputWrap>
           </FiltersFormWrap>
-          <SubmitButton name="submit" type="submit" aria-label={titleButton}>
+          <SubmitButton
+            name="submit"
+            type="submit"
+            aria-label={titleButton}
+            // onSubmit={handleClick}
+          >
             {titleButton}
           </SubmitButton>
         </Form>

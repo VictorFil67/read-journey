@@ -9,6 +9,9 @@ import { useDispatch } from "react-redux";
 import { addBookThunk } from "../../store/books/operations";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { createPortal } from "react-dom";
+import { AddBookModal } from "../../components/AddBookModal/AddBookModal";
 
 // const schema = yup.object({
 //   title: yup.string(),
@@ -18,6 +21,7 @@ import { useForm } from "react-hook-form";
 
 const MyLibraryPage = () => {
   const dispatch = useDispatch();
+  const [modal, setModal] = useState(false);
 
   const inputs = [
     {
@@ -44,6 +48,7 @@ const MyLibraryPage = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     mode: "onChange",
     // resolver: yupResolver(schema),
@@ -54,15 +59,20 @@ const MyLibraryPage = () => {
       .unwrap()
       .then(() => {
         toast.success("Congratulations! The book is added successfully!");
+        reset();
+        setModal(true);
       })
       .catch((err) => {
         toast.error(err);
       });
   }
-  // const Test = styled.div``;
+
+  // function handleClick() {
+  //   setModal(true);
+  // }
+
   return (
     <PageContainer>
-      {/* <Test>апвыапвапавпвапва</Test> */}
       <Dashboard
         title={"Filters:"}
         inputs={inputs}
@@ -73,8 +83,11 @@ const MyLibraryPage = () => {
         onSubmit={onSubmit}
         errors={errors}
         validation={true}
+        // handleClick={handleClick}
       />
       <MyLibraryBooks />
+      {modal &&
+        createPortal(<AddBookModal setModal={setModal} />, document.body)}
     </PageContainer>
   );
 };
