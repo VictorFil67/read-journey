@@ -10,10 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectExpireTime, selectUser } from "./store/auth/selectors";
 import PublicRoute from "./routes/PublicRoute";
 import PrivateRoute from "./routes/PrivateRoute";
-
 import { toast } from "react-toastify";
 import { setPath } from "./store/books/booksSlise";
-import LibraryP from "./components/LibraryP/LibraryP";
 import RecommendPage from "./pages/RecommendPage/RecommendPage";
 import MyLibraryPage from "./pages/MyLibraryPage/MyLibraryPage";
 
@@ -29,7 +27,6 @@ function App() {
       return;
     }
     dispatch(setPath(pathname));
-    console.log(Date.now());
   });
 
   useEffect(() => {
@@ -73,7 +70,6 @@ function App() {
               path="/reading"
               element={
                 <PrivateRoute>
-                  <LibraryP />
                   <Reading />
                 </PrivateRoute>
               }

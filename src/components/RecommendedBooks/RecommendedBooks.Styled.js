@@ -16,7 +16,6 @@ export const Title = styled.h2`
   line-height: 1;
   font-size: 18px;
   letter-spacing: -0.02em;
-  /* text-align: center; */
   color: #e3e3e3;
 `;
 export const LinksWrap = styled.div`
@@ -37,7 +36,6 @@ export const LinkNextSVG = styled(Link)`
   width: 20px;
   height: 20px;
   display: flex;
-  /* align-self: flex-start; */
 `;
 export const NextSVGStyled = styled(NextSVG)`
   width: 20px;

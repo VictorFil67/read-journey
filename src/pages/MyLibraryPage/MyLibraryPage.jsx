@@ -1,26 +1,19 @@
-// import { Dashboard1 } from "../../components/ControlBoard/DashBoard1/DashBoard1";
-// import styled from "styled-components";
-// import * as yup from "yup";
-// import { yupResolver } from "@hookform/resolvers/yup";
 import { Dashboard } from "../../components/Dashboard/Dashboard";
 import { MyLibraryBooks } from "../../components/MyLibraryBooks/MyLibraryBooks";
 import { PageContainer } from "./MyLibraryPage.Styled";
 import { useDispatch } from "react-redux";
-import { addBookThunk } from "../../store/books/operations";
+import { addBookThunk, getUserBooks } from "../../store/books/operations";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { AddBookModal } from "../../components/AddBookModal/AddBookModal";
-
-// const schema = yup.object({
-//   title: yup.string(),
-//   author: yup.string(),
-//   pages: yup.number(),
-// });
+// import { selectUserBooks } from "../../store/books/selectors";
 
 const MyLibraryPage = () => {
   const dispatch = useDispatch();
+  // const userBooks = useSelector(selectUserBooks);
+  // console.log(userBooks);
   const [modal, setModal] = useState(false);
 
   const inputs = [
@@ -51,7 +44,6 @@ const MyLibraryPage = () => {
     reset,
   } = useForm({
     mode: "onChange",
-    // resolver: yupResolver(schema),
   });
 
   function onSubmit({ title, author, totalPages }) {
@@ -60,6 +52,7 @@ const MyLibraryPage = () => {
       .then(() => {
         toast.success("Congratulations! The book is added successfully!");
         reset();
+        dispatch(getUserBooks());
         setModal(true);
       })
       .catch((err) => {
@@ -67,9 +60,9 @@ const MyLibraryPage = () => {
       });
   }
 
-  // function handleClick() {
-  //   setModal(true);
-  // }
+  useEffect(() => {
+    dispatch(getUserBooks());
+  }, [dispatch]);
 
   return (
     <PageContainer>
@@ -83,7 +76,6 @@ const MyLibraryPage = () => {
         onSubmit={onSubmit}
         errors={errors}
         validation={true}
-        // handleClick={handleClick}
       />
       <MyLibraryBooks />
       {modal &&
