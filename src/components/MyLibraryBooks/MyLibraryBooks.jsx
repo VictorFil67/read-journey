@@ -7,6 +7,7 @@ import { selectUserBooks } from "../../store/books/selectors";
 import MyBooksFilter from "../MyBooksFilter/MyBooksFilter";
 import {
   ContentWrap,
+  MyBookList,
   MyLibraryWrap,
   Picture,
   Span,
@@ -19,35 +20,33 @@ export const MyLibraryBooks = () => {
   const userBooks = useSelector(selectUserBooks);
   console.log(userBooks);
   return (
-    <>
+    <MyLibraryWrap $length={userBooks?.length}>
+      <TopWrap>
+        <Title>My library</Title>
+        <MyBooksFilter />
+      </TopWrap>
       {userBooks?.length === 0 ? (
-        <MyLibraryWrap>
-          <TopWrap>
-            <Title>My library</Title>
-            <MyBooksFilter />
-          </TopWrap>
-          <ContentWrap>
-            <picture>
-              <source
-                media="(max-width:767px)"
-                srcSet={bookMobile + " 1x, " + bookMobile2x + " 2x"}
-              />
-              <source srcSet={book + " 1x, " + book2x + " 2x"} />
-              <Picture src={book} alt="book" loading="lazy" />
-            </picture>
-            <Text>
-              To start training, add <Span>some of your books</Span> or from the
-              recommended ones
-            </Text>
-          </ContentWrap>
-        </MyLibraryWrap>
+        <ContentWrap>
+          <picture>
+            <source
+              media="(max-width:767px)"
+              srcSet={bookMobile + " 1x, " + bookMobile2x + " 2x"}
+            />
+            <source srcSet={book + " 1x, " + book2x + " 2x"} />
+            <Picture src={book} alt="book" loading="lazy" />
+          </picture>
+          <Text>
+            To start training, add <Span>some of your books</Span> or from the
+            recommended ones
+          </Text>
+        </ContentWrap>
       ) : (
-        <ul>
+        <MyBookList>
           {userBooks.map((book) => (
             <LibraryItem key={book._id} book={book} />
           ))}
-        </ul>
+        </MyBookList>
       )}
-    </>
+    </MyLibraryWrap>
   );
 };

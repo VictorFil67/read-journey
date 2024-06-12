@@ -64,7 +64,7 @@ export const getBookInfo = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const { data } = await api.get(`/books/${id}`);
-      // console.log("data", data);
+      console.log("data", data);
       return data;
     } catch (error) {
       console.log("error", error);

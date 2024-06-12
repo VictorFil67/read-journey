@@ -12,12 +12,16 @@ const booksSlice = createSlice({
   initialState: {
     recommendedBooks: [],
     userBooks: [],
+    bookInfo: null,
     isLoading: false,
     error: null,
     path: null,
   },
   reducers: {
     setPath(state, { payload }) {
+      state.path = payload;
+    },
+    getuserBook(state, { payload }) {
       state.path = payload;
     },
   },
