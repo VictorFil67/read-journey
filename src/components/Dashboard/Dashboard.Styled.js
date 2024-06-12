@@ -115,5 +115,5 @@ export const SubmitButton = styled.button`
   font-size: 14px;
   line-height: 1.29;
   letter-spacing: 0.02em;
-  color: #f9f9f9;
+  color: var(--white);
 `;

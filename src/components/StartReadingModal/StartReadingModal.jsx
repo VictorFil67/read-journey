@@ -1,21 +1,29 @@
+import { useNavigate } from "react-router-dom";
 import CloseSVG from "../../images/CloseSVG";
-import goodJob from "../../images/addBookImages/goodJob.png";
-import goodJob2x from "../../images/addBookImages/goodJob@2x.png";
-import goodJobMobile from "../../images/addBookImages/goodJobMobile.png";
-import goodJobMobile2x from "../../images/addBookImages/goodJobMobile@2x.png";
 import {
+  CoverText,
+  LibraryItemImg,
+  Span,
+} from "../LibraryItem/LibraryItem.Styled";
+import {
+  Author,
   CloseButton,
   ContentWrap,
+  Cover,
   Modal,
   Overlay,
-  Picture,
-  Span,
-  Text,
+  Pages,
+  //   Picture,
+  //   Span,
+  StartReadingtButton,
+  //   Text,
   TextWrap,
   Title,
 } from "./StartReadingModal.Styled";
 
 export const StartReadingModal = ({ setModal, book }) => {
+  const navigate = useNavigate();
+
   function handleClick(e) {
     if (e.target === e.currentTarget) {
       setModal(false);
@@ -28,6 +36,9 @@ export const StartReadingModal = ({ setModal, book }) => {
       document.removeEventListener("keydown", onWindowEscape);
     }
   }
+  function handleFetchBookInfo(id) {
+    navigate(`/reading/${id}`);
+  }
 
   return (
     <Overlay onClick={handleClick}>
@@ -36,22 +47,28 @@ export const StartReadingModal = ({ setModal, book }) => {
           <CloseSVG />
         </CloseButton>
         <ContentWrap>
-          <picture>
-            <source
-              media="(max-width:767px)"
-              srcSet={goodJobMobile + " 1x, " + goodJobMobile2x + " 2x"}
-            />
-            <source srcSet={goodJob + " 1x, " + goodJob2x + " 2x"} />
-            <Picture src={goodJobMobile} alt="Good job" loading="lazy" />
-          </picture>
+          <Cover $image={book.imageUrl}>
+            {book.imageUrl ? (
+              <LibraryItemImg src={book.imageUrl} alt={book.title} />
+            ) : (
+              <CoverText>
+                There is no cover for <br /> <Span>{book.title}</Span>
+              </CoverText>
+            )}
+          </Cover>
           <TextWrap>
-            <Title>Good job</Title>
-            <Text>
-              Your book is now in <Span>the library!</Span> The joy knows no
-              bounds and now you can start your training
-            </Text>
+            <Title>{book.title}</Title>
+            <Author>{book.author}</Author>
+            <Pages>{book.totalPages}</Pages>
           </TextWrap>
         </ContentWrap>
+        <StartReadingtButton
+          aria-label="Start reading"
+          onClick={() => handleFetchBookInfo(book._id)}
+        >
+          {console.log(book._id)}
+          Start reading
+        </StartReadingtButton>
       </Modal>
     </Overlay>
   );
