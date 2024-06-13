@@ -8,12 +8,9 @@ import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { AddBookModal } from "../../components/AddBookModal/AddBookModal";
-// import { selectUserBooks } from "../../store/books/selectors";
 
 const MyLibraryPage = () => {
   const dispatch = useDispatch();
-  // const userBooks = useSelector(selectUserBooks);
-  // console.log(userBooks);
   const [modal, setModal] = useState(false);
 
   const inputs = [

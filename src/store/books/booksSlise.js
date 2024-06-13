@@ -12,17 +12,31 @@ const booksSlice = createSlice({
   initialState: {
     recommendedBooks: [],
     userBooks: [],
+    filteredUserBooks: [],
     bookInfo: null,
     isLoading: false,
     error: null,
     path: null,
+    option: null,
   },
   reducers: {
     setPath(state, { payload }) {
       state.path = payload;
     },
-    getuserBook(state, { payload }) {
-      state.path = payload;
+    getfilteredUserBooks(state, { payload }) {
+      if (state.userBooks.length !== 0) {
+        if (payload === "all-books") {
+          console.log(payload);
+          state.filteredUserBooks = state.userBooks;
+        } else {
+          state.filteredUserBooks = state.userBooks.filter(
+            (book) => book.status === payload
+          );
+        }
+      }
+    },
+    setOption(state, { payload }) {
+      state.option = payload;
     },
   },
   extraReducers: (builder) => {
@@ -97,4 +111,4 @@ const booksSlice = createSlice({
 });
 
 export const booksReducer = booksSlice.reducer;
-export const { setPath } = booksSlice.actions;
+export const { setPath, getfilteredUserBooks, setOption } = booksSlice.actions;

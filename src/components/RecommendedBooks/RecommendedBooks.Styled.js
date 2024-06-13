@@ -3,12 +3,8 @@ import NextSVG from "../../images/NextSVG";
 import { Link } from "react-router-dom";
 
 export const RecommendedBooksWrap = styled.div`
-  /* display: flex;
-  flex-direction: column;
-  gap: 20px; */
   background: var(--input-bg);
   border-radius: 12px;
-  /* align-items: flex-start; */
   padding: 20px;
 `;
 export const Title = styled.h2`
