@@ -11,6 +11,9 @@ const booksSlice = createSlice({
   name: "books",
   initialState: {
     recommendedBooks: [],
+    totalPages: 0,
+    page: 1,
+    limit: 10,
     userBooks: [],
     filteredUserBooks: [],
     bookInfo: null,
@@ -38,6 +41,15 @@ const booksSlice = createSlice({
     setOption(state, { payload }) {
       state.option = payload;
     },
+    setLimit(state, { payload }) {
+      state.limit = payload;
+    },
+    changePage(state, { payload }) {
+      state.page = state.page + payload;
+      if (payload === 0) {
+        state.page = 1;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -47,6 +59,7 @@ const booksSlice = createSlice({
       })
       .addCase(recommendedBooksThunk.fulfilled, (state, { payload }) => {
         state.recommendedBooks = payload.results;
+        state.totalPages = payload.totalPages;
         state.isLoading = false;
         state.error = null;
       })
@@ -111,4 +124,10 @@ const booksSlice = createSlice({
 });
 
 export const booksReducer = booksSlice.reducer;
-export const { setPath, getfilteredUserBooks, setOption } = booksSlice.actions;
+export const {
+  setPath,
+  getfilteredUserBooks,
+  setOption,
+  setLimit,
+  changePage,
+} = booksSlice.actions;

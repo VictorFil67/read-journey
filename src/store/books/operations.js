@@ -8,6 +8,7 @@ export const recommendedBooksThunk = createAsyncThunk(
       const { data } = await api("/books/recommend", {
         params: { title, author, page, limit },
       });
+      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
@@ -33,10 +34,10 @@ export const addBookThunk = createAsyncThunk(
 
 export const getUserBooks = createAsyncThunk(
   "books/own",
-  async ({ status } = {}, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      const config = status ? { params: { status } } : {};
-      const { data } = await api("/books/own", config);
+      // const config = status ? { params: { status } } : {};
+      const { data } = await api("/books/own");
       return data;
     } catch (error) {
       console.log("error", error);

@@ -1,16 +1,34 @@
-import { useSelector } from "react-redux";
-import { selectRecommendedBooks } from "../../store/books/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectPage,
+  selectRecommendedBooks,
+  selectTotalPages,
+} from "../../store/books/selectors";
+import { changePage } from "../../store/books/booksSlise";
 
 const RecommendedList = () => {
   const booksList = useSelector(selectRecommendedBooks);
+  const dispatch = useDispatch();
+  const page = useSelector(selectPage);
+  const totalPages = useSelector(selectTotalPages);
   console.log(booksList);
   return (
     <>
       <div>
         <h1>Recommended</h1>
         <div>
-          <button>Попередня</button>
-          <button>Наступна</button>
+          <button
+            onClick={() => dispatch(changePage(-1))}
+            disabled={page === 1 ? true : false}
+          >
+            Попередня
+          </button>
+          <button
+            onClick={() => dispatch(changePage(1))}
+            disabled={page === totalPages ? true : false}
+          >
+            Наступна
+          </button>
         </div>
         <div>
           <ul>

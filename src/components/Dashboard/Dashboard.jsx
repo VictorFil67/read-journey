@@ -24,7 +24,6 @@ export const Dashboard = ({
   errors,
   validation,
 }) => {
-  // const validation = false;
   function chooseSecondPart(string) {
     switch (string) {
       case "Start your workout":
@@ -72,11 +71,13 @@ export const Dashboard = ({
                         }
                       )}
                     ></Input>
-                    {/* {console.log(register(el.name))} */}
+                    {console.log(register(el.name))}
                   </Label>
-                  <ErrorSpan>
-                    {errors[register(el.name).name]?.message}
-                  </ErrorSpan>
+                  {validation && (
+                    <ErrorSpan>
+                      {errors[register(el.name).name]?.message}
+                    </ErrorSpan>
+                  )}
                 </InputContainer>
               ))}
             </InputWrap>

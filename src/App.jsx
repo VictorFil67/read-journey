@@ -12,8 +12,9 @@ import PublicRoute from "./routes/PublicRoute";
 import PrivateRoute from "./routes/PrivateRoute";
 import { toast } from "react-toastify";
 import { setPath } from "./store/books/booksSlise";
-import RecommendPage from "./pages/RecommendPage/RecommendPage";
+// import RecommendPage from "./pages/RecommendPage/RecommendPage";
 import MyLibraryPage from "./pages/MyLibraryPage/MyLibraryPage";
+import RecommendedPage from "./pages/RecommendedPage/RecommendedPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,7 +55,7 @@ function App() {
               path="/recommended"
               element={
                 <PrivateRoute>
-                  <RecommendPage />
+                  <RecommendedPage />
                 </PrivateRoute>
               }
             />
