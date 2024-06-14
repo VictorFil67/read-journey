@@ -789,6 +789,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   border-radius: 8px;
   width: 100%;
   height: 208px;
+  cursor: pointer;
   border: ${e=>e.$image?"none":"1px solid #3e3e3e"};
 `,gS=j.img`
   border-radius: 8px;
@@ -853,7 +854,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   flex-direction: column;
   gap: 20px;
   align-items: center;
-`,iA=j.div`
+`,iA=j.button`
   position: absolute;
   top: 16px;
   right: 16px;
@@ -947,7 +948,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   background-color: var(--dark-grey);
   border-radius: 12px;
   max-width: 335px;
-`,xA=j.div`
+`,xA=j.button`
   position: absolute;
   top: 16px;
   right: 12px;
