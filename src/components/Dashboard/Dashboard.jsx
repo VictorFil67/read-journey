@@ -1,4 +1,5 @@
 import { RecommendedBooks } from "../RecommendedBooks/RecommendedBooks";
+import { Workout } from "../Workout/Workout";
 import {
   ContentWrap,
   ErrorSpan,
@@ -27,7 +28,7 @@ export const Dashboard = ({
   function chooseSecondPart(string) {
     switch (string) {
       case "Start your workout":
-        return <></>;
+        return <Workout />;
       case "Recommended books":
         return (
           <>

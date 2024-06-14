@@ -7,13 +7,13 @@ import { PageContainer } from "../MyLibraryPage/MyLibraryPage.Styled";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { recommendedBooksThunk } from "../../store/books/operations";
-import { selectLimit, selectPage } from "../../store/books/selectors";
-import { changePage, setLimit } from "../../store/books/booksSlise";
+import { selectRequestData } from "../../store/books/selectors";
+import { setLimit, setRequestData } from "../../store/books/booksSlise";
 
 const RecommendedPage = () => {
   const dispatch = useDispatch();
-  const page = useSelector(selectPage);
-  const limit = useSelector(selectLimit);
+  // const page = useSelector(selectPage);
+  const { limit } = useSelector(selectRequestData);
   const inputs = [
     {
       title: "Book title:",
@@ -50,14 +50,14 @@ const RecommendedPage = () => {
       recommendedBooksThunk({
         // title,
         // author,
-        page,
+        // page,
         limit,
       })
     );
-  }, [dispatch, page]);
+  }, [dispatch]);
 
   const onSubmit = ({ title, author }) => {
-    dispatch(changePage(0));
+    dispatch(setRequestData({ title, author }));
     dispatch(recommendedBooksThunk({ title, author, limit }));
   };
 

@@ -12,8 +12,12 @@ const booksSlice = createSlice({
   initialState: {
     recommendedBooks: [],
     totalPages: 0,
-    page: 1,
-    limit: 10,
+    requestData: {
+      title: "",
+      author: "",
+      page: 1,
+      limit: 10,
+    },
     userBooks: [],
     filteredUserBooks: [],
     bookInfo: null,
@@ -42,13 +46,15 @@ const booksSlice = createSlice({
       state.option = payload;
     },
     setLimit(state, { payload }) {
-      state.limit = payload;
+      state.requestData.limit = payload;
     },
     changePage(state, { payload }) {
-      state.page = state.page + payload;
-      if (payload === 0) {
-        state.page = 1;
-      }
+      state.requestData.page = state.requestData.page + payload;
+    },
+    setRequestData(state, { payload }) {
+      state.requestData.page = 1;
+      state.requestData.title = payload.title;
+      state.requestData.author = payload.author;
     },
   },
   extraReducers: (builder) => {
@@ -130,4 +136,5 @@ export const {
   setOption,
   setLimit,
   changePage,
+  setRequestData,
 } = booksSlice.actions;
