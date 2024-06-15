@@ -32,6 +32,18 @@ export const addBookThunk = createAsyncThunk(
   }
 );
 
+export const addBookFromRecommend = createAsyncThunk(
+  "books/addRecommendBook",
+  async (id, thunkAPI) => {
+    try {
+      const { data } = await api.post(`/books/add/${id}`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
 export const getUserBooks = createAsyncThunk(
   "books/own",
   async (_, thunkAPI) => {
@@ -69,6 +81,30 @@ export const getBookInfo = createAsyncThunk(
       return data;
     } catch (error) {
       console.log("error", error);
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const startReadingBook = createAsyncThunk(
+  "books/startReadingBook",
+  async ({ id, page }, thunkAPI) => {
+    try {
+      const { data } = await api.post("/books/reading/start", { id, page });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const finishReadingBook = createAsyncThunk(
+  "books/finishReadingBook",
+  async ({ id, page }, thunkAPI) => {
+    try {
+      const { data } = await api.post("/books/reading/finish", { id, page });
+      return data;
+    } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }

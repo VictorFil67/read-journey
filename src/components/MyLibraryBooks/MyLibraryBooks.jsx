@@ -19,7 +19,7 @@ import {
   Title,
   TopWrap,
 } from "./MyLibraryBooks.Styled";
-import LibraryItem from "../LibraryItem/LibraryItem";
+import { LibraryItem } from "../LibraryItem/LibraryItem";
 import { useEffect, useState } from "react";
 import { getfilteredUserBooks, setOption } from "../../store/books/booksSlise";
 

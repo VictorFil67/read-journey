@@ -1,25 +1,26 @@
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import {
   Author,
   BookItem,
   Cover,
   CoverText,
-  DeleteButton,
+  // DeleteButton,
   Description,
   LibraryItemImg,
   Span,
   TextWrap,
   Title,
-} from "./LibraryItem.Styled";
-import { deleteUserBook } from "../../store/books/operations";
-import TrashCanSVG from "../../images/myLibraryBooksImages/TrashCanSVG";
+} from "../LibraryItem/LibraryItem.Styled";
+// import { deleteUserBook } from "../../store/books/operations";
+// import TrashCanSVG from "../../images/myLibraryBooksImages/TrashCanSVG";
 import { createPortal } from "react-dom";
-import { StartReadingModal } from "../StartReadingModal/StartReadingModal";
+// import { StartReadingModal } from "../StartReadingModal/StartReadingModal";
 import { useState } from "react";
 import { cutString } from "../../helpers/cutString";
+import { AddBookModal } from "../AddToLibrarymodal/AddToLibrarymodal";
 
-export const LibraryItem = ({ book }) => {
-  const dispatch = useDispatch();
+export const RecommendedItem = ({ book }) => {
+  // const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
 
   return (
@@ -36,17 +37,17 @@ export const LibraryItem = ({ book }) => {
         </Cover>
         <Description>
           <TextWrap>
-            <Title>{cutString(book.title, 16)}</Title>
-            <Author>{cutString(book.author, 20)}</Author>
+            <Title>{cutString(book.title, 22)}</Title>
+            <Author>{cutString(book.author, 25)}</Author>
           </TextWrap>
-          <DeleteButton onClick={() => dispatch(deleteUserBook(book._id))}>
-            <TrashCanSVG />
-          </DeleteButton>
+          {/* <DeleteButton onClick={() => dispatch(deleteUserBook(book._id))}> */}
+          {/* <TrashCanSVG />
+          </DeleteButton> */}
         </Description>
       </BookItem>
       {modal &&
         createPortal(
-          <StartReadingModal book={book} setModal={setModal} />,
+          <AddBookModal book={book} setModal={setModal} />,
           document.body
         )}
     </>

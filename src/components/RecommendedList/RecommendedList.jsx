@@ -7,6 +7,8 @@ import {
 } from "../../store/books/selectors";
 import { changePage } from "../../store/books/booksSlise";
 import { recommendedBooksThunk } from "../../store/books/operations";
+import { RecommendedItem } from "../RecommendedItem/RecommendedItem";
+import { MyBookList } from "../MyLibraryBooks/MyLibraryBooks.Styled";
 
 const RecommendedList = () => {
   const booksList = useSelector(selectRecommendedBooks);
@@ -40,17 +42,11 @@ const RecommendedList = () => {
           </button>
         </div>
         <div>
-          <ul>
+          <MyBookList>
             {booksList.map((book) => (
-              <li key={book._id}>
-                <img src={book.imageUrl} alt={book.title} />
-                <div>
-                  <span>{book.title}</span>
-                  <span>{book.author}</span>
-                </div>
-              </li>
+              <RecommendedItem key={book._id} book={book} />
             ))}
-          </ul>
+          </MyBookList>
         </div>
       </div>
     </>

@@ -67,6 +67,7 @@ export const Title = styled.h2`
   letter-spacing: -0.02em;
   color: var(--white);
   text-align: center;
+  /* margin-bottom: 2px; */
 `;
 export const Author = styled.p`
   font-weight: 500;
