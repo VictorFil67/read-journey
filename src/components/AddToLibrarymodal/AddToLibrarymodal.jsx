@@ -1,5 +1,5 @@
 // import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CloseSVG from "../../images/CloseSVG";
 import {
   addBookFromRecommend,
@@ -27,10 +27,12 @@ import {
   Title,
 } from "./AddToLibrarymodal.Styled";
 import { toast } from "react-toastify";
-// import { CloseButton } from "../StartReadingModal/StartReadingModal.Styled";
+import { selectUserBooks } from "../../store/books/selectors";
 
 export const AddBookModal = ({ setModal, book }) => {
   const dispatch = useDispatch();
+  const userBooks = useSelector(selectUserBooks);
+  console.log(userBooks);
 
   function handleClick(e) {
     if (e.target === e.currentTarget) {
@@ -44,7 +46,15 @@ export const AddBookModal = ({ setModal, book }) => {
       document.removeEventListener("keydown", onWindowEscape);
     }
   }
-  function addBookClick(id) {
+  function addBookClick(id, title) {
+    const searchBook = userBooks.find((book) => {
+      return book.title === title;
+    });
+    console.log(searchBook);
+    if (searchBook) {
+      toast.error("Such book already exists");
+      return;
+    }
     dispatch(addBookFromRecommend(id))
       .unwrap()
       .then(() => {
@@ -80,7 +90,7 @@ export const AddBookModal = ({ setModal, book }) => {
         </ContentWrap>
         <AddToLibraryBtn
           aria-label="Add to library"
-          onClick={() => addBookClick(book._id)}
+          onClick={() => addBookClick(book._id, book.title)}
         >
           {console.log(book._id)}
           Add to library

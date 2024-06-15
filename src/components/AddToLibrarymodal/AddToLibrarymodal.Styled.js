@@ -32,8 +32,6 @@ export const AddToLibraryBtn = styled.button`
   border: 1px solid rgba(249, 249, 249, 0.2);
   border-radius: 30px;
   padding: 12px 22px;
-  /* width: 141px;
-  height: 42px; */
   background: transparent;
   font-weight: 700;
   font-size: 14px;
