@@ -19,7 +19,7 @@ const RecommendedList = () => {
 
   function getPage(num) {
     dispatch(changePage(num));
-    dispatch(recommendedBooksThunk({ title, author, page, limit }));
+    dispatch(recommendedBooksThunk({ title, author, page: page + num, limit }));
   }
 
   return (
