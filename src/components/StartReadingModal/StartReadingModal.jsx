@@ -20,9 +20,12 @@ import {
   TextWrap,
   Title,
 } from "./StartReadingModal.Styled";
+import { useDispatch } from "react-redux";
+import { setBookId } from "../../store/books/booksSlise";
 
 export const StartReadingModal = ({ setModal, book }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   function handleClick(e) {
     if (e.target === e.currentTarget) {
@@ -36,8 +39,9 @@ export const StartReadingModal = ({ setModal, book }) => {
       document.removeEventListener("keydown", onWindowEscape);
     }
   }
-  function handleFetchBookInfo(id) {
-    navigate(`/reading/${id}`);
+  function handleStartReading(id) {
+    dispatch(setBookId(id));
+    navigate(`/reading`);
   }
 
   return (
@@ -64,7 +68,7 @@ export const StartReadingModal = ({ setModal, book }) => {
         </ContentWrap>
         <StartReadingtButton
           aria-label="Start reading"
-          onClick={() => handleFetchBookInfo(book._id)}
+          onClick={() => handleStartReading(book._id)}
         >
           {console.log(book._id)}
           Start reading

@@ -23,7 +23,7 @@ const persistConfigBooks = {
   key: "books",
   version: 1,
   storage,
-  whitelist: ["path", "option", "userBooks"],
+  whitelist: ["path", "option", "userBooks", "bookInfo"],
 };
 const persistedReducer = persistReducer(persistConfig, authReducer);
 const persistedReducerBooks = persistReducer(persistConfigBooks, booksReducer);

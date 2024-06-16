@@ -1,3 +1,4 @@
+import { Progress } from "../Progress/Progress";
 import { RecommendedBooks } from "../RecommendedBooks/RecommendedBooks";
 import { Workout } from "../Workout/Workout";
 import {
@@ -30,14 +31,10 @@ export const Dashboard = ({
       case "Start your workout":
         return <Workout />;
       case "Recommended books":
-        return (
-          <>
-            <RecommendedBooks />
-          </>
-        );
-      case "":
-        return <></>;
-      case "4":
+        return <RecommendedBooks />;
+      case "Progress":
+        return <Progress />;
+      case "Workout info":
         return <></>;
       case "statistics":
         return <></>;
@@ -50,7 +47,9 @@ export const Dashboard = ({
   return (
     <>
       <ContentWrap>
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form
+        // onSubmit={handleSubmit(onSubmit)}
+        >
           <FiltersFormWrap>
             <FiltersTitle>{title}</FiltersTitle>
             <InputWrap>
@@ -62,33 +61,28 @@ export const Dashboard = ({
                     <Input
                       placeholder={el.placeholder}
                       type={el.type}
-                      {...register(
-                        el.name,
-                        validation && {
-                          required: {
-                            value: true,
-                            message: "The field must not be empty!",
-                          },
-                        }
-                      )}
+                      // {...register(
+                      //   el.name,
+                      //   validation && {
+                      //     required: {
+                      //       value: true,
+                      //       message: "The field must not be empty!",
+                      //     },
+                      //   }
+                      // )}
                     ></Input>
-                    {console.log(register(el.name))}
+                    {/* {console.log(register(el.name))} */}
                   </Label>
                   {validation && (
                     <ErrorSpan>
-                      {errors[register(el.name).name]?.message}
+                      {/* {errors[register(el.name).name]?.message} */}
                     </ErrorSpan>
                   )}
                 </InputContainer>
               ))}
             </InputWrap>
           </FiltersFormWrap>
-          <SubmitButton
-            name="submit"
-            type="submit"
-            aria-label={titleButton}
-            // onSubmit={handleClick}
-          >
+          <SubmitButton name="submit" type="submit" aria-label={titleButton}>
             {titleButton}
           </SubmitButton>
         </Form>

@@ -21,7 +21,7 @@ const booksSlice = createSlice({
     },
     userBooks: [],
     filteredUserBooks: [],
-    bookInfo: null,
+    bookInfo: {},
     isLoading: false,
     error: null,
     path: null,
@@ -56,6 +56,9 @@ const booksSlice = createSlice({
       state.requestData.page = 1;
       state.requestData.title = payload.title;
       state.requestData.author = payload.author;
+    },
+    setBookId(state, { payload }) {
+      state.bookInfo._id = payload;
     },
   },
   extraReducers: (builder) => {
@@ -150,4 +153,5 @@ export const {
   setLimit,
   changePage,
   setRequestData,
+  setBookId,
 } = booksSlice.actions;

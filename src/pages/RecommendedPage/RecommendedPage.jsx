@@ -1,7 +1,5 @@
 import { useForm } from "react-hook-form";
 import { Dashboard } from "../../components/Dashboard/Dashboard";
-// import Filter from "../../components/Filter/Filter";
-
 import RecommendedList from "../../components/RecommendedList/RecommendedList";
 import { PageContainer } from "../MyLibraryPage/MyLibraryPage.Styled";
 import { useEffect } from "react";
@@ -12,7 +10,6 @@ import { setLimit, setRequestData } from "../../store/books/booksSlise";
 
 const RecommendedPage = () => {
   const dispatch = useDispatch();
-  // const page = useSelector(selectPage);
   const { limit } = useSelector(selectRequestData);
   const inputs = [
     {
@@ -29,11 +26,7 @@ const RecommendedPage = () => {
     },
   ];
 
-  const {
-    register,
-    handleSubmit,
-    // formState: { errors },
-  } = useForm({
+  const { register, handleSubmit } = useForm({
     mode: "onChange",
   });
 
@@ -48,9 +41,6 @@ const RecommendedPage = () => {
     dispatch(setLimit(limit));
     dispatch(
       recommendedBooksThunk({
-        // title,
-        // author,
-        // page,
         limit,
       })
     );
@@ -71,22 +61,10 @@ const RecommendedPage = () => {
         register={register}
         handleSubmit={handleSubmit}
         onSubmit={onSubmit}
-        //  errors={errors}
         validation={false}
       />
       <RecommendedList />
-      {/* {modal &&
-        createPortal(<AddBookModal setModal={setModal} />, document.body)} */}
     </PageContainer>
-    // <>
-    //   <>
-    //     <Filter />
-    //     {/* <Filters /> */}
-    //   </>
-    //   <>
-    //     <RecommendedList />
-    //   </>
-    // </>
   );
 };
 

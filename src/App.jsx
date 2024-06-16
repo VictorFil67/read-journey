@@ -1,7 +1,7 @@
 import { Suspense, useEffect } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
-import Reading from "./pages/Reading/Reading";
+// import Reading from "./pages/Reading/Reading";
 import { Loader } from "./components/Loader/Loader";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -15,6 +15,7 @@ import { setPath } from "./store/books/booksSlise";
 // import RecommendPage from "./pages/RecommendPage/RecommendPage";
 import MyLibraryPage from "./pages/MyLibraryPage/MyLibraryPage";
 import RecommendedPage from "./pages/RecommendedPage/RecommendedPage";
+import ReadingPage from "./pages/ReadingPage/ReadingPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -71,7 +72,7 @@ function App() {
               path="/reading"
               element={
                 <PrivateRoute>
-                  <Reading />
+                  <ReadingPage />
                 </PrivateRoute>
               }
             />
