@@ -6,6 +6,8 @@ import {
   getBookInfo,
   getUserBooks,
   recommendedBooksThunk,
+  saveFinishPage,
+  saveStartPage,
 } from "./operations";
 
 const booksSlice = createSlice({
@@ -19,16 +21,19 @@ const booksSlice = createSlice({
       page: 1,
       limit: 10,
     },
+    prevUserBooks: [],
     userBooks: [],
     filteredUserBooks: [],
     bookInfo: {},
     isLoading: false,
     error: null,
+    prevPath: null,
     path: null,
     option: null,
   },
   reducers: {
     setPath(state, { payload }) {
+      state.prevPath === state.path;
       state.path = payload;
     },
     getfilteredUserBooks(state, { payload }) {
@@ -106,6 +111,7 @@ const booksSlice = createSlice({
         state.error = null;
       })
       .addCase(getUserBooks.fulfilled, (state, { payload }) => {
+        state.prevUserBooks = state.userBooks;
         state.userBooks = payload;
         state.isLoading = false;
         state.error = null;
@@ -139,6 +145,32 @@ const booksSlice = createSlice({
         state.error = null;
       })
       .addCase(getBookInfo.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(saveStartPage.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(saveStartPage.fulfilled, (state, { payload }) => {
+        state.bookInfo = payload;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(saveStartPage.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(saveFinishPage.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(saveFinishPage.fulfilled, (state, { payload }) => {
+        state.bookInfo = payload;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(saveFinishPage.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       });

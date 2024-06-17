@@ -39,7 +39,9 @@ export const addBookFromRecommend = createAsyncThunk(
       const { data } = await api.post(`/books/add/${id}`);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(
+        error.response.data.message ?? error.message
+      );
     }
   }
 );
@@ -52,8 +54,9 @@ export const getUserBooks = createAsyncThunk(
       const { data } = await api("/books/own");
       return data;
     } catch (error) {
-      console.log("error", error);
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(
+        error.response.data.message ?? error.message
+      );
     }
   }
 );
@@ -66,8 +69,9 @@ export const deleteUserBook = createAsyncThunk(
       // console.log("data", data);
       return data;
     } catch (error) {
-      console.log("error", error);
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(
+        error.response.data.message ?? error.message
+      );
     }
   }
 );
@@ -77,35 +81,39 @@ export const getBookInfo = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const { data } = await api.get(`/books/${id}`);
-      console.log("data", data);
       return data;
     } catch (error) {
-      console.log("error", error);
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(
+        error.response.data.message ?? error.message
+      );
     }
   }
 );
 
-export const startReadingBook = createAsyncThunk(
-  "books/startReadingBook",
-  async ({ id, page }, thunkAPI) => {
+export const saveStartPage = createAsyncThunk(
+  "books/saveStartPage",
+  async (body, thunkAPI) => {
     try {
-      const { data } = await api.post("/books/reading/start", { id, page });
+      const { data } = await api.post("/books/reading/start", body);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(
+        error.response.data.message ?? error.message
+      );
     }
   }
 );
 
-export const finishReadingBook = createAsyncThunk(
-  "books/finishReadingBook",
-  async ({ id, page }, thunkAPI) => {
+export const saveFinishPage = createAsyncThunk(
+  "books/saveFinishPage",
+  async (body, thunkAPI) => {
     try {
-      const { data } = await api.post("/books/reading/finish", { id, page });
+      const { data } = await api.post("/books/reading/finish", body);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(
+        error.response.data.message ?? error.message
+      );
     }
   }
 );

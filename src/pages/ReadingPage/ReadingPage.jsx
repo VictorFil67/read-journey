@@ -1,33 +1,79 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectbookInfo } from "../../store/books/selectors";
 // import { useParams } from "react-router-dom";
-import { getBookInfo } from "../../store/books/operations";
-import { useEffect } from "react";
+import {
+  getBookInfo,
+  saveFinishPage,
+  saveStartPage,
+} from "../../store/books/operations";
+import { useEffect, useState } from "react";
 import { PageContainer } from "../MyLibraryPage/MyLibraryPage.Styled";
 import { Dashboard } from "../../components/Dashboard/Dashboard";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { createPortal } from "react-dom";
+import { BookIsReadModal } from "../../components/BookIsReadModal/BookIsReadModal";
 // import Progress from "../../components/Progress/Progress";
 // import ReadingBook from "../../components/ReadingBook/ReadingBook";
 
 const ReadingPage = () => {
-  const { _id, progress } = useSelector(selectbookInfo);
+  const { _id, progress, totalPages } = useSelector(selectbookInfo);
   const dispatch = useDispatch();
+  const [modal, setModal] = useState(false);
+
   const inputs = [
     {
       title: "Page number:",
       placeholder: "0",
-      name: "pageNumber",
+      name: "page",
       type: "number",
     },
   ];
 
-  // const { register, handleSubmit } = useForm({
-  //   mode: "onChange",
-  // });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: "onChange",
+  });
 
   useEffect(() => {
     console.log(_id);
     dispatch(getBookInfo(_id));
   }, [_id, dispatch]);
+
+  // function openModal() {
+  //   setModal(true);
+  // }
+
+  function onSubmit({ page }) {
+    console.log(_id, page);
+    console.log(totalPages);
+    console.log(page);
+
+    progress?.length === 0 ||
+    progress[progress?.length - 1].status === "inactive"
+      ? dispatch(saveStartPage({ id: _id, page }))
+          .unwrap()
+          .then(() => {
+            toast.success("You are reading the book now");
+          })
+          .catch((err) => {
+            toast.error(err);
+          })
+      : dispatch(saveFinishPage({ id: _id, page }))
+          .unwrap()
+          .then(() => {
+            toast.success("You stopped reading the book");
+            if (page == totalPages) {
+              setModal(true);
+            }
+          })
+          .catch((err) => {
+            toast.error(err);
+          });
+  }
 
   return (
     <PageContainer>
@@ -46,12 +92,15 @@ const ReadingPage = () => {
             : "To stop"
         }
         secondPart={progress?.length === 0 ? "Progress" : "Workout info"}
-        // register={register}
-        // handleSubmit={handleSubmit}
-        // onSubmit={onSubmit}
-        validation={false}
+        register={register}
+        handleSubmit={handleSubmit}
+        onSubmit={onSubmit}
+        validation={true}
+        errors={errors}
       />
       {/* <RecommendedList /> */}
+      {modal &&
+        createPortal(<BookIsReadModal setModal={setModal} />, document.body)}
     </PageContainer>
   );
 };

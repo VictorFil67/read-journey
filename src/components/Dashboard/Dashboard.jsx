@@ -47,9 +47,7 @@ export const Dashboard = ({
   return (
     <>
       <ContentWrap>
-        <Form
-        // onSubmit={handleSubmit(onSubmit)}
-        >
+        <Form onSubmit={handleSubmit(onSubmit)}>
           <FiltersFormWrap>
             <FiltersTitle>{title}</FiltersTitle>
             <InputWrap>
@@ -61,21 +59,20 @@ export const Dashboard = ({
                     <Input
                       placeholder={el.placeholder}
                       type={el.type}
-                      // {...register(
-                      //   el.name,
-                      //   validation && {
-                      //     required: {
-                      //       value: true,
-                      //       message: "The field must not be empty!",
-                      //     },
-                      //   }
-                      // )}
+                      {...register(
+                        el.name,
+                        validation && {
+                          required: {
+                            value: true,
+                            message: "The field must not be empty!",
+                          },
+                        }
+                      )}
                     ></Input>
-                    {/* {console.log(register(el.name))} */}
                   </Label>
                   {validation && (
                     <ErrorSpan>
-                      {/* {errors[register(el.name).name]?.message} */}
+                      {errors[register(el.name).name]?.message}
                     </ErrorSpan>
                   )}
                 </InputContainer>
