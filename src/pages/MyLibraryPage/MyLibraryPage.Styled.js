@@ -8,6 +8,7 @@ export const PageContainer = styled.div`
   gap: 10px;
   padding-bottom: 40px;
   max-width: 335px;
+  margin: 0 auto;
   @media only screen and (min-width: 768px) {
     padding-top: 16px;
     padding-bottom: 32px;

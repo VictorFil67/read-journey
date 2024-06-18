@@ -4,7 +4,8 @@ export const BookItem = styled.li`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  width: 137px;
+  width: calc((100% - 8px) / 2);
+  max-width: 137px;
 `;
 export const Cover = styled.div`
   border-radius: 8px;
@@ -16,6 +17,9 @@ export const Cover = styled.div`
 export const LibraryItemImg = styled.img`
   border-radius: 8px;
   height: 100%;
+  width: 100%;
+
+  object-fit: fill;
   /* display: ${(props) => (props.$image ? "blok" : "none")}; */
 `;
 export const CoverText = styled.p`
