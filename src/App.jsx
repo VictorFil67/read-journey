@@ -22,6 +22,8 @@ function App() {
   const user = useSelector(selectUser);
   const expireTime = useSelector(selectExpireTime);
   const { pathname } = useLocation();
+  const loading = useSelector((state) => state.loading.loading);
+  console.log(loading);
 
   console.log(pathname);
   useEffect(() => {
@@ -49,6 +51,7 @@ function App() {
   }, [dispatch, user, expireTime]);
   return (
     <>
+      {loading && <Loader />}
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Layout />}>

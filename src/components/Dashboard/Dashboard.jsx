@@ -1,5 +1,6 @@
 import { Progress } from "../Progress/Progress";
 import { RecommendedBooks } from "../RecommendedBooks/RecommendedBooks";
+import { Statistics } from "../Statistics/Statistics";
 import { Workout } from "../Workout/Workout";
 import {
   ContentWrap,
@@ -35,9 +36,9 @@ export const Dashboard = ({
       case "Progress":
         return <Progress />;
       case "Workout info":
-        return <></>;
-      case "statistics":
-        return <></>;
+        return <Statistics />;
+      // case "statistics":
+      //   return <></>;
 
       default:
         "Start your workout";

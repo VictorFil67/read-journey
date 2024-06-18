@@ -32,7 +32,7 @@ export const addBookThunk = createAsyncThunk(
   }
 );
 
-export const addBookFromRecommend = createAsyncThunk(
+export const addBookFromRecommendThunk = createAsyncThunk(
   "books/addRecommendBook",
   async (id, thunkAPI) => {
     try {
@@ -46,7 +46,7 @@ export const addBookFromRecommend = createAsyncThunk(
   }
 );
 
-export const getUserBooks = createAsyncThunk(
+export const getUserBooksThunk = createAsyncThunk(
   "books/own",
   async (_, thunkAPI) => {
     try {

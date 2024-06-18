@@ -7,4 +7,4 @@ export const selectUserBooks = (state) => state.books.userBooks;
 export const selectfilteredUserBooks = (state) => state.books.filteredUserBooks;
 export const selectRequestData = (state) => state.books.requestData;
 export const selectTotalPages = (state) => state.books.totalPages;
-export const selectbookInfo = (state) => state.books.bookInfo;
+export const selectBookInfo = (state) => state.books.bookInfo;

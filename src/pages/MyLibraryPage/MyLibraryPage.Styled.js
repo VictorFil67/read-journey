@@ -7,6 +7,7 @@ export const PageContainer = styled.div`
   flex-direction: column;
   gap: 10px;
   padding-bottom: 40px;
+  max-width: 335px;
   @media only screen and (min-width: 768px) {
     padding-top: 16px;
     padding-bottom: 32px;

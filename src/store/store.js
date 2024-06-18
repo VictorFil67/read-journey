@@ -12,6 +12,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import { authReducer } from "./auth/authSlice";
 import { booksReducer } from "./books/booksSlise";
+import { loadingReducer } from "./loading/loadingSlice";
 
 const persistConfig = {
   key: "auth",
@@ -29,7 +30,11 @@ const persistedReducer = persistReducer(persistConfig, authReducer);
 const persistedReducerBooks = persistReducer(persistConfigBooks, booksReducer);
 
 export const store = configureStore({
-  reducer: { auth: persistedReducer, books: persistedReducerBooks },
+  reducer: {
+    auth: persistedReducer,
+    books: persistedReducerBooks,
+    loading: loadingReducer,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

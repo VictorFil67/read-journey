@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
-  addBookFromRecommend,
+  addBookFromRecommendThunk,
   addBookThunk,
   deleteUserBook,
   getBookInfo,
-  getUserBooks,
+  getUserBooksThunk,
   recommendedBooksThunk,
   saveFinishPage,
   saveStartPage,
@@ -69,59 +69,59 @@ const booksSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(recommendedBooksThunk.pending, (state) => {
-        state.isLoading = true;
+        // state.isLoading = true;
         state.error = null;
       })
       .addCase(recommendedBooksThunk.fulfilled, (state, { payload }) => {
         state.recommendedBooks = payload.results;
         state.totalPages = payload.totalPages;
-        state.isLoading = false;
+        // state.isLoading = false;
         state.error = null;
       })
       .addCase(recommendedBooksThunk.rejected, (state, { payload }) => {
-        state.isLoading = false;
+        // state.isLoading = false;
         state.error = payload;
       })
       .addCase(addBookThunk.pending, (state) => {
-        state.isLoading = true;
+        // state.isLoading = true;
         state.error = null;
       })
       .addCase(addBookThunk.fulfilled, (state) => {
-        state.isLoading = false;
+        // state.isLoading = false;
         state.error = null;
       })
       .addCase(addBookThunk.rejected, (state, { payload }) => {
-        state.isLoading = false;
+        // state.isLoading = false;
         state.error = payload;
       })
-      .addCase(addBookFromRecommend.pending, (state) => {
-        state.isLoading = true;
+      .addCase(addBookFromRecommendThunk.pending, (state) => {
+        // state.isLoading = true;
         state.error = null;
       })
-      .addCase(addBookFromRecommend.fulfilled, (state) => {
-        state.isLoading = false;
+      .addCase(addBookFromRecommendThunk.fulfilled, (state) => {
+        // state.isLoading = false;
         state.error = null;
       })
-      .addCase(addBookFromRecommend.rejected, (state, { payload }) => {
-        state.isLoading = false;
+      .addCase(addBookFromRecommendThunk.rejected, (state, { payload }) => {
+        // state.isLoading = false;
         state.error = payload;
       })
-      .addCase(getUserBooks.pending, (state) => {
-        state.isLoading = true;
+      .addCase(getUserBooksThunk.pending, (state) => {
+        // state.isLoading = true;
         state.error = null;
       })
-      .addCase(getUserBooks.fulfilled, (state, { payload }) => {
+      .addCase(getUserBooksThunk.fulfilled, (state, { payload }) => {
         state.prevUserBooks = state.userBooks;
         state.userBooks = payload;
-        state.isLoading = false;
+        // state.isLoading = false;
         state.error = null;
       })
-      .addCase(getUserBooks.rejected, (state, { payload }) => {
-        state.isLoading = false;
+      .addCase(getUserBooksThunk.rejected, (state, { payload }) => {
+        // state.isLoading = false;
         state.error = payload;
       })
       .addCase(deleteUserBook.pending, (state) => {
-        state.isLoading = true;
+        // state.isLoading = true;
         state.error = null;
       })
       .addCase(deleteUserBook.fulfilled, (state, { payload }) => {
@@ -132,46 +132,46 @@ const booksSlice = createSlice({
         state.error = null;
       })
       .addCase(deleteUserBook.rejected, (state, { payload }) => {
-        state.isLoading = false;
+        // state.isLoading = false;
         state.error = payload;
       })
       .addCase(getBookInfo.pending, (state) => {
-        state.isLoading = true;
+        // state.isLoading = true;
         state.error = null;
       })
       .addCase(getBookInfo.fulfilled, (state, { payload }) => {
         state.bookInfo = payload;
-        state.isLoading = false;
+        // state.isLoading = false;
         state.error = null;
       })
       .addCase(getBookInfo.rejected, (state, { payload }) => {
-        state.isLoading = false;
+        // state.isLoading = false;
         state.error = payload;
       })
       .addCase(saveStartPage.pending, (state) => {
-        state.isLoading = true;
+        // state.isLoading = true;
         state.error = null;
       })
       .addCase(saveStartPage.fulfilled, (state, { payload }) => {
         state.bookInfo = payload;
-        state.isLoading = false;
+        // state.isLoading = false;
         state.error = null;
       })
       .addCase(saveStartPage.rejected, (state, { payload }) => {
-        state.isLoading = false;
+        // state.isLoading = false;
         state.error = payload;
       })
       .addCase(saveFinishPage.pending, (state) => {
-        state.isLoading = true;
+        // state.isLoading = true;
         state.error = null;
       })
       .addCase(saveFinishPage.fulfilled, (state, { payload }) => {
         state.bookInfo = payload;
-        state.isLoading = false;
+        // state.isLoading = false;
         state.error = null;
       })
       .addCase(saveFinishPage.rejected, (state, { payload }) => {
-        state.isLoading = false;
+        // state.isLoading = false;
         state.error = payload;
       });
   },

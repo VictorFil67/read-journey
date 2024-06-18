@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Author,
   BookItem,
@@ -11,28 +11,41 @@ import {
   TextWrap,
   Title,
 } from "./LibraryItem.Styled";
-import { deleteUserBook, getUserBooks } from "../../store/books/operations";
+import {
+  deleteUserBook,
+  getUserBooksThunk,
+} from "../../store/books/operations";
 import TrashCanSVG from "../../images/myLibraryBooksImages/TrashCanSVG";
 import { createPortal } from "react-dom";
 import { StartReadingModal } from "../StartReadingModal/StartReadingModal";
 import { useState } from "react";
 import { cutString } from "../../helpers/cutString";
 import {} from "../../store/books/selectors";
-// import { selectUserBooks } from "../../store/books/selectors";
+import { selectExpireTime } from "../../store/auth/selectors";
+import { currentThunk, refreshTokensThunk } from "../../store/auth/operations";
+import { toast } from "react-toastify";
 
 export const LibraryItem = ({ book }) => {
   const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
-  // const userBooks = useSelector(selectUserBooks)
+  const expireTime = useSelector(selectExpireTime);
 
   function deleteBook(id) {
+    if (expireTime < Date.now()) {
+      dispatch(refreshTokensThunk())
+        .unwrap()
+        .then(() => {
+          dispatch(currentThunk()).catch((error) => toast.error(error));
+        })
+        .then(() => {
+          dispatch(deleteUserBook(id));
+          dispatch(getUserBooksThunk());
+        })
+        .catch((error) => toast.error(error));
+    }
     dispatch(deleteUserBook(id));
-    dispatch(getUserBooks());
+    dispatch(getUserBooksThunk());
   }
-
-  // useEffect(() => {
-  //   dispatch(getUserBooks());
-  // }, [dispatch]);
 
   return (
     <>

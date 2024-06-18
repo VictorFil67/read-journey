@@ -2,8 +2,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import CloseSVG from "../../images/CloseSVG";
 import {
-  addBookFromRecommend,
-  getUserBooks,
+  addBookFromRecommendThunk,
+  getUserBooksThunk,
 } from "../../store/books/operations";
 import {
   CoverText,
@@ -55,11 +55,11 @@ export const AddBookModal = ({ setModal, book }) => {
       toast.error("Such book already exists");
       return;
     }
-    dispatch(addBookFromRecommend(id))
+    dispatch(addBookFromRecommendThunk(id))
       .unwrap()
       .then(() => {
         toast.success("Congratulations! The book is added successfully!");
-        dispatch(getUserBooks());
+        dispatch(getUserBooksThunk());
       })
       .catch((err) => {
         toast.error(err);

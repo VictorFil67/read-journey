@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectbookInfo } from "../../store/books/selectors";
+import { selectBookInfo } from "../../store/books/selectors";
 // import { useParams } from "react-router-dom";
 import {
   getBookInfo,
@@ -13,11 +13,12 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { createPortal } from "react-dom";
 import { BookIsReadModal } from "../../components/BookIsReadModal/BookIsReadModal";
+import { MyReading } from "../../components/MyReading/MyReading";
 // import Progress from "../../components/Progress/Progress";
 // import ReadingBook from "../../components/ReadingBook/ReadingBook";
 
 const ReadingPage = () => {
-  const { _id, progress, totalPages } = useSelector(selectbookInfo);
+  const { _id, progress, totalPages } = useSelector(selectBookInfo);
   const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
 
@@ -42,10 +43,6 @@ const ReadingPage = () => {
     console.log(_id);
     dispatch(getBookInfo(_id));
   }, [_id, dispatch]);
-
-  // function openModal() {
-  //   setModal(true);
-  // }
 
   function onSubmit({ page }) {
     console.log(_id, page);
@@ -98,7 +95,14 @@ const ReadingPage = () => {
         validation={true}
         errors={errors}
       />
-      {/* <RecommendedList /> */}
+      <MyReading
+        indicator={
+          progress?.length === 0 ||
+          progress[progress?.length - 1].status === "inactive"
+            ? false
+            : true
+        }
+      />
       {modal &&
         createPortal(<BookIsReadModal setModal={setModal} />, document.body)}
     </PageContainer>
