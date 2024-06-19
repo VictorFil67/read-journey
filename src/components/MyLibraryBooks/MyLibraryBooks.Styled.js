@@ -8,6 +8,9 @@ export const MyLibraryWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${(props) => (props.$length === 0 ? "63px" : "14px")};
+  @media only screen and (min-width: 768px) {
+    padding: 40px;
+  }
 `;
 export const TopWrap = styled.div`
   display: flex;
@@ -20,6 +23,11 @@ export const Title = styled.h1`
   letter-spacing: -0.02em;
   color: var(--white);
   align-self: flex-start;
+  @media only screen and (min-width: 768px) {
+    font-size: 28px;
+    line-height: 1.14286;
+    letter-spacing: 0.02em;
+  }
 `;
 export const ContentWrap = styled.div`
   display: flex;
