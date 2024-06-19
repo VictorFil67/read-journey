@@ -29,7 +29,7 @@ const booksSlice = createSlice({
     error: null,
     prevPath: null,
     path: null,
-    option: null,
+    option: "All books",
   },
   reducers: {
     setPath(state, { payload }) {

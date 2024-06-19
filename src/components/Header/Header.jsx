@@ -3,7 +3,11 @@ import Logo from "../../images/Logo";
 import {
   HeaderButtonBurger,
   HeaderContainer,
+  HeaderDivLink,
   HeaderIconUser,
+  HeaderLink,
+  HeaderTabletLogOut,
+  // HeaderTabletWrap,
   HeaderUserContainer,
 } from "./Header.Styled";
 import { selectUser } from "../../store/auth/selectors";
@@ -26,7 +30,7 @@ const Header = () => {
   const handleLogout = () => {
     dispatch(logoutThunk())
       .then(() => {
-        toast.success("Successfully logged out.");
+        toast.success("You  logged out successfully.");
         navigate("/login");
       })
       .catch((error) => {
@@ -60,15 +64,44 @@ const Header = () => {
       </>
       <HeaderContainer>
         <Logo />
-
+        {/* {window.innerWidth >= 768 ? ( */}
+        {/* <HeaderTabletWrap> */}
+        <HeaderDivLink>
+          <HeaderLink
+            to="/recommended"
+            aria-label="Home"
+            style={{ textDecoration: "none" }}
+          >
+            Home
+          </HeaderLink>
+          <HeaderLink
+            to="/library"
+            aria-label="My library"
+            style={{ textDecoration: "none" }}
+          >
+            My library
+          </HeaderLink>
+        </HeaderDivLink>
         <HeaderUserContainer>
+          <HeaderIconUser>
+            <span>{userName}</span>
+          </HeaderIconUser>
+          <HeaderTabletLogOut>Log out</HeaderTabletLogOut>
+          <HeaderButtonBurger onClick={handleBurgerOpen}>
+            <BurgerOpen />
+          </HeaderButtonBurger>
+        </HeaderUserContainer>
+        {/* </HeaderTabletWrap> */}
+        {/* ) : ( */}
+        {/* <HeaderUserContainer>
           <HeaderIconUser>
             <span>{userName}</span>
           </HeaderIconUser>
           <HeaderButtonBurger onClick={handleBurgerOpen}>
             <BurgerOpen />
           </HeaderButtonBurger>
-        </HeaderUserContainer>
+        </HeaderUserContainer> */}
+        {/* )} */}
       </HeaderContainer>
     </>
   );

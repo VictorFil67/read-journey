@@ -8,11 +8,20 @@ export const ContentWrap = styled.div`
   background: #1f1f1f;
   border-radius: 30px;
   padding: 18px 20px 20px;
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
+    padding: 32px;
+    gap: 32px;
+  }
 `;
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  @media only screen and (min-width: 768px) {
+    width: 295px;
+    gap: 38px;
+  }
 `;
 export const FiltersFormWrap = styled.div`
   display: flex;
@@ -66,6 +75,7 @@ export const InputTitle = styled.p`
   line-height: 1.33333;
   letter-spacing: -0.02em;
   text-align: center;
+  white-space: nowrap;
   @media only screen and (min-width: 768px) {
     padding: 16px 0 16px 14px;
     font-size: 14px;
@@ -93,6 +103,7 @@ export const Input = styled.input`
     color: var(--white);
   }
   @media only screen and (min-width: 768px) {
+    max-width: 145px;
     padding: 16px 16px 16px 0;
     font-size: 14px;
     line-height: 1.28571;
@@ -116,4 +127,9 @@ export const SubmitButton = styled.button`
   line-height: 1.29;
   letter-spacing: 0.02em;
   color: var(--white);
+  @media only screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.125;
+    padding: 12px 28px;
+  }
 `;

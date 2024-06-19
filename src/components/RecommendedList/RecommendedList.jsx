@@ -9,6 +9,9 @@ import { changePage } from "../../store/books/booksSlise";
 import { recommendedBooksThunk } from "../../store/books/operations";
 import { RecommendedItem } from "../RecommendedItem/RecommendedItem";
 import { MyBookList } from "../MyLibraryBooks/MyLibraryBooks.Styled";
+import PrevPageSVG from "../../images/PrevPageSVG";
+import NextPageSVG from "../../images/NextPageSVG";
+import { ChangePageButton, RecommendedWrap } from "./RecommendedList.Styled";
 
 const RecommendedList = () => {
   const booksList = useSelector(selectRecommendedBooks);
@@ -24,22 +27,24 @@ const RecommendedList = () => {
 
   return (
     <>
-      <div>
-        <h1>Recommended</h1>
+      <RecommendedWrap>
         <div>
-          <button
-            onClick={() => getPage(-1)}
-            disabled={page === 1 ? true : false}
-          >
-            Попередня
-          </button>
-          {/* {console.log(first)} */}
-          <button
-            onClick={() => getPage(1)}
-            disabled={page === totalPages ? true : false}
-          >
-            Наступна
-          </button>
+          <h1>Recommended</h1>
+          <div>
+            <ChangePageButton
+              onClick={() => getPage(-1)}
+              disabled={page === 1 ? true : false}
+            >
+              <PrevPageSVG disabled={page === 1 ? true : false} />
+            </ChangePageButton>
+            {/* {console.log(first)} */}
+            <ChangePageButton
+              onClick={() => getPage(1)}
+              disabled={page === totalPages ? true : false}
+            >
+              <NextPageSVG disabled={page === totalPages ? true : false} />
+            </ChangePageButton>
+          </div>
         </div>
         <div>
           <MyBookList>
@@ -48,7 +53,7 @@ const RecommendedList = () => {
             ))}
           </MyBookList>
         </div>
-      </div>
+      </RecommendedWrap>
     </>
   );
 };

@@ -10,11 +10,13 @@ export const PageContainer = styled.div`
   max-width: 335px;
   margin: 0 auto;
   @media only screen and (min-width: 768px) {
+    max-width: 704px;
     padding-top: 16px;
     padding-bottom: 32px;
     gap: 16px;
   }
   @media only screen and (min-width: 1280px) {
+    max-width: 1216px;
     padding: 27px;
   }
 `;
