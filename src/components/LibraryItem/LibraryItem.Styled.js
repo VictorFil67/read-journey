@@ -6,6 +6,9 @@ export const BookItem = styled.li`
   gap: 8px;
   width: calc((100% - 8px) / 2);
   max-width: 137px;
+  @media only screen and (min-width: 768px) {
+    gap: 10px;
+  }
 `;
 export const Cover = styled.div`
   border-radius: 8px;
@@ -61,6 +64,8 @@ export const Author = styled.p`
   color: var(--input-title);
 `;
 export const DeleteButton = styled.button`
+  height: 28px;
+  align-self: flex-end;
   background: transparent;
   border: none;
 `;

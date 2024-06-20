@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import Logo from "../../images/Logo";
+import LogoTitleSvg from "../../images/LogoTitleSvg";
 
 export const HeaderContainer = styled.div`
   background: #1f1f1f;
@@ -14,7 +16,26 @@ export const HeaderContainer = styled.div`
     padding-right: 16px;
     padding-left: 16px;
     margin-top: 32px;
+    height: 74px;
   }
+`;
+export const LogoStyled = styled(Logo)`
+  height: 17px;
+  @media only screen and (min-width: 1280px) {
+    display: none;
+  }
+`;
+export const LogoTitleSvgStyled = styled(LogoTitleSvg)`
+  height: 17px;
+  @media only screen and (max-width: 1279px) {
+    display: none;
+  }
+`;
+export const HeaderUserContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 `;
 export const HeaderIconUser = styled.div`
   width: 35px;
@@ -26,17 +47,21 @@ export const HeaderIconUser = styled.div`
   justify-content: center;
   align-items: center;
 `;
-export const HeaderUserContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+export const Name = styled.p`
+  @media only screen and (max-width: 1279px) {
+    display: none;
+  }
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.125;
+  letter-spacing: -0.02em;
+  color: var(--white);
 `;
 export const HeaderButtonBurger = styled.button`
   cursor: pointer;
   background: transparent;
   border: none;
-  transition: transform 0.6s ease;
+  transition: transform 0.3s ease;
 
   &:hover {
     transform: scale(1.1);
@@ -67,7 +92,7 @@ export const HeaderLink = styled(NavLink)`
   color: #686868;
   position: relative;
   cursor: pointer;
-  transition: color 0.5s ease;
+  transition: color 0.3s ease;
 
   &:hover {
     color: #f9f9f9;
@@ -83,7 +108,7 @@ export const HeaderLink = styled(NavLink)`
     height: 4px;
     background-color: #4f92f7;
     border-radius: 8px;
-    transition: width 0.5s ease-in-out;
+    transition: width 0.3s ease-in-out;
   }
   &.active {
     color: #f9f9f9;
@@ -97,11 +122,11 @@ export const HeaderLink = styled(NavLink)`
     width: 0;
     opacity: 0;
   }
-  transition: transform 0.6s ease;
+  transition: transform 0.3s ease;
 
   &:hover,
-  &:focus {
-    transform: scale(1.3);
+  &:active {
+    transform: scale(1.1);
   }
 `;
 export const HeaderTabletLogOut = styled.button`

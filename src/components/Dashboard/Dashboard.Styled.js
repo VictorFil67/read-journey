@@ -148,6 +148,6 @@ export const SubmitButton = styled.button`
   @media only screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.125;
-    padding: 12px 28px;
+    padding: 11px 28px;
   }
 `;

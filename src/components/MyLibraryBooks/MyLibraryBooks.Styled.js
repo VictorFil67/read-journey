@@ -5,12 +5,14 @@ export const MyLibraryWrap = styled.div`
   background-color: var(--dark-grey);
   border-radius: 30px;
   width: 100%;
+  min-height: 407px;
   display: flex;
   flex-direction: column;
   gap: ${(props) => (props.$length === 0 ? "63px" : "14px")};
   @media only screen and (min-width: 768px) {
     padding: 40px;
     gap: ${(props) => (props.$length === 0 ? "100px" : "28px")};
+    min-height: 518px;
   }
   @media only screen and (min-width: 1280px) {
     gap: ${(props) => (props.$length === 0 ? "161px" : "28px")};
@@ -41,6 +43,9 @@ export const ContentWrap = styled.div`
   align-items: center;
   width: 197px;
   margin-bottom: 60px;
+  @media only screen and (min-width: 768px) {
+    margin-bottom: 120px;
+  }
 `;
 export const Picture = styled.img`
   /* display: block; */

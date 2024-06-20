@@ -48,24 +48,27 @@ const MyBooksFilter = ({ selectedOption, setSelectedOption }) => {
         }),
         dropdownIndicator: (b, s) => ({
           ...b,
-          color: s.isFocused ? "var(--white)" : "var(--white)",
-          transform: s.isFocused ? "rotate(180deg)" : "rotate(0deg)",
+          color: "var(--white)",
+          transform: s.selectProps.menuIsOpen
+            ? "rotate(180deg)"
+            : "rotate(0deg)",
           ":hover": {
             color: "var(--white)",
-            transform: "rotate(180deg)",
+            // transform: "rotate(180deg)",
           },
           ":active": {
-            transform: "rotate(180deg)",
+            transform: "rotate(0deg)",
           },
         }),
         option: (b, s) => ({
           ...b,
           color: !s.isSelected ? "var(--input-title)" : "var(--white)",
           backgroundColor: "var(--input-bg)",
-          height: "22px",
+          // height: "22px",
           cursor: "pointer",
+          padding: "0 0 8px 0",
           "&:last-child": {
-            paddingBottom: "28px",
+            paddingBottom: "0px",
           },
           ":active": {
             color: s.isSelected ? "var(--white)" : "var(--input-title)",
@@ -75,6 +78,7 @@ const MyBooksFilter = ({ selectedOption, setSelectedOption }) => {
           ...styles,
           borderRadius: "12px",
           backgroundColor: "var(--input-bg)",
+          padding: "14px",
         }),
         placeholder: (defaultStyles) => ({
           ...defaultStyles,

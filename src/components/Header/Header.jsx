@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import Logo from "../../images/Logo";
+// import Logo from "../../images/Logo";
 import {
   HeaderButtonBurger,
   HeaderContainer,
@@ -9,6 +9,9 @@ import {
   HeaderTabletLogOut,
   // HeaderTabletWrap,
   HeaderUserContainer,
+  LogoStyled,
+  LogoTitleSvgStyled,
+  Name,
 } from "./Header.Styled";
 import { selectUser } from "../../store/auth/selectors";
 import BurgerOpen from "../../images/BurgerOpen";
@@ -18,11 +21,17 @@ import Backdrop from "../Backdrop/Backdrop";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { logoutThunk } from "../../store/auth/operations";
+import {
+  LogoLink,
+  // LogoStyled,
+  // LogoTitleSvgStyled,
+} from "../Login/Login.Styled";
 
 const Header = () => {
   const user = useSelector(selectUser);
   const [isMobaleBurger, setIsMobaleBurger] = useState(false);
-  const userName = user && user.name ? user.name.charAt(0) : "";
+  const userName = user && user.name;
+  const firstLetter = user && user.name ? user.name.charAt(0) : "";
   const [isBackdropActiveOpen, setIsBackdropActiveOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -63,9 +72,10 @@ const Header = () => {
         )}
       </>
       <HeaderContainer>
-        <Logo />
-        {/* {window.innerWidth >= 768 ? ( */}
-        {/* <HeaderTabletWrap> */}
+        <LogoLink to={"/register"}>
+          <LogoStyled />
+          <LogoTitleSvgStyled />
+        </LogoLink>
         <HeaderDivLink>
           <HeaderLink
             to="/recommended"
@@ -84,8 +94,9 @@ const Header = () => {
         </HeaderDivLink>
         <HeaderUserContainer>
           <HeaderIconUser>
-            <span>{userName}</span>
+            <span>{firstLetter}</span>
           </HeaderIconUser>
+          <Name>{userName}</Name>
           <HeaderTabletLogOut>Log out</HeaderTabletLogOut>
           <HeaderButtonBurger onClick={handleBurgerOpen}>
             <BurgerOpen />
