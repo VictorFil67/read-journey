@@ -37,7 +37,7 @@ export const RecommendedItem = ({ book }) => {
         </Cover>
         <Description>
           <TextWrap>
-            <Title>{cutString(book.title, 22)}</Title>
+            <Title>{cutString(book.title, 19)}</Title>
             <Author>{cutString(book.author, 25)}</Author>
           </TextWrap>
           {/* <DeleteButton onClick={() => dispatch(deleteUserBook(book._id))}> */}

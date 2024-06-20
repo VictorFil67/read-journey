@@ -16,7 +16,8 @@ export const PageContainer = styled.div`
     gap: 16px;
   }
   @media only screen and (min-width: 1280px) {
+    flex-direction: row;
     max-width: 1216px;
-    padding: 27px;
+    /* padding: 27px; */
   }
 `;

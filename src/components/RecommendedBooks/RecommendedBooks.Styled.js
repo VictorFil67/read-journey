@@ -10,6 +10,9 @@ export const RecommendedBooksWrap = styled.div`
     padding: 26px 20px 27px;
     width: 313px;
   }
+  @media only screen and (min-width: 1280px) {
+    padding: 20px 20px;
+  }
 `;
 export const Title = styled.h2`
   font-weight: 700;

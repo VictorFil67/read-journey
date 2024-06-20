@@ -10,6 +10,10 @@ export const MyLibraryWrap = styled.div`
   gap: ${(props) => (props.$length === 0 ? "63px" : "14px")};
   @media only screen and (min-width: 768px) {
     padding: 40px;
+    gap: ${(props) => (props.$length === 0 ? "100px" : "28px")};
+  }
+  @media only screen and (min-width: 1280px) {
+    gap: ${(props) => (props.$length === 0 ? "161px" : "28px")};
   }
 `;
 export const TopWrap = styled.div`

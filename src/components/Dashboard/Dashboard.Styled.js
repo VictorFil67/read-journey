@@ -13,6 +13,11 @@ export const ContentWrap = styled.div`
     padding: 32px;
     gap: 32px;
   }
+  @media only screen and (min-width: 1280px) {
+    flex-direction: column;
+    padding: 40px 20px 20px;
+    gap: 78px;
+  }
 `;
 export const Form = styled.form`
   display: flex;
@@ -21,6 +26,10 @@ export const Form = styled.form`
   @media only screen and (min-width: 768px) {
     width: 295px;
     gap: 38px;
+  }
+  @media only screen and (min-width: 1280px) {
+    width: 313px;
+    gap: 20px;
   }
 `;
 export const FiltersFormWrap = styled.div`
@@ -34,9 +43,13 @@ export const FiltersTitle = styled.h3`
   padding-left: 13px;
   font-weight: 500;
   font-size: 10px;
-  line-height: 120%;
+  line-height: 1.2;
   letter-spacing: -0.02em;
   color: #f9f9f9;
+  @media only screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 1.28571;
+  }
 `;
 // export const Rrrr = styled.div``;
 
@@ -94,6 +107,11 @@ export const Input = styled.input`
   font-size: 12px;
   line-height: 1.33333;
   letter-spacing: -0.02em;
+  &[type="number"]::-webkit-outer-spin-button,
+  &[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
   &::placeholder {
     background: var(--input-bg);
     color: var(--white);

@@ -23,9 +23,7 @@ function App() {
   const expireTime = useSelector(selectExpireTime);
   const { pathname } = useLocation();
   const loading = useSelector((state) => state.loading.loading);
-  console.log(loading);
 
-  console.log(pathname);
   useEffect(() => {
     if (pathname === "/register" || pathname === "/login") {
       return;

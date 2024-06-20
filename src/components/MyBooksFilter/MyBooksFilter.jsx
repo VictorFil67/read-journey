@@ -26,6 +26,9 @@ const MyBooksFilter = ({ selectedOption, setSelectedOption }) => {
           boxShadow: state.isFocused ? "#3e3e3e" : "#3e3e3e",
           borderRadius: "12px",
           width: "120px",
+          "@media only screen and (min-width: 768px)": {
+            width: "153px",
+          },
           height: "40px",
           cursor: "pointer",
           border: "1px solid #3e3e3e",
