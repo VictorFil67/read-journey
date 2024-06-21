@@ -117,3 +117,19 @@ export const saveFinishPage = createAsyncThunk(
     }
   }
 );
+
+export const deleteReadingThunk = createAsyncThunk(
+  "books/deleteRead",
+  async ({ bookId, readingId }, thunkAPI) => {
+    try {
+      const { data } = await api.delete(`/books/reading`, {
+        params: { bookId, readingId },
+      });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error.response?.data?.message ?? error.message
+      );
+    }
+  }
+);

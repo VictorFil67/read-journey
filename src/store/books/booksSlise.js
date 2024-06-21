@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   addBookFromRecommendThunk,
   addBookThunk,
+  deleteReadingThunk,
   deleteUserBook,
   getBookInfo,
   getUserBooksThunk,
@@ -174,6 +175,19 @@ const booksSlice = createSlice({
         state.error = null;
       })
       .addCase(saveFinishPage.rejected, (state, { payload }) => {
+        // state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(deleteReadingThunk.pending, (state) => {
+        // state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(deleteReadingThunk.fulfilled, (state, { payload }) => {
+        // state.isLoading = false;
+        state.bookInfo = payload;
+        state.error = null;
+      })
+      .addCase(deleteReadingThunk.rejected, (state, { payload }) => {
         // state.isLoading = false;
         state.error = payload;
       });
