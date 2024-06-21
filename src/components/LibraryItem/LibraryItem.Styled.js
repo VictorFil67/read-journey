@@ -21,9 +21,7 @@ export const LibraryItemImg = styled.img`
   border-radius: 8px;
   height: 100%;
   width: 100%;
-
   object-fit: fill;
-  /* display: ${(props) => (props.$image ? "blok" : "none")}; */
 `;
 export const CoverText = styled.p`
   font-weight: 500;
@@ -40,7 +38,6 @@ export const Span = styled.span`
 `;
 export const Description = styled.div`
   display: flex;
-  /* gap: 14px; */
   justify-content: space-between;
   align-items: center;
 `;

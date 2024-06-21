@@ -71,5 +71,4 @@ export const MyBookList = styled.ul`
   width: 100%;
   justify-content: space-between;
   row-gap: 10px;
-  /* gap: calc() */
 `;

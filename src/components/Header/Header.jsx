@@ -97,7 +97,9 @@ const Header = () => {
             <span>{firstLetter}</span>
           </HeaderIconUser>
           <Name>{userName}</Name>
-          <HeaderTabletLogOut>Log out</HeaderTabletLogOut>
+          <HeaderTabletLogOut onClick={handleLogout}>
+            Log out
+          </HeaderTabletLogOut>
           <HeaderButtonBurger onClick={handleBurgerOpen}>
             <BurgerOpen />
           </HeaderButtonBurger>

@@ -24,7 +24,9 @@ const booksSlice = createSlice({
     prevUserBooks: [],
     userBooks: [],
     filteredUserBooks: [],
-    bookInfo: {},
+    bookInfo: {
+      // progress: [],
+    },
     isLoading: false,
     error: null,
     prevPath: null,

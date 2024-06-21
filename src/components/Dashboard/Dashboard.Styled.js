@@ -1,5 +1,4 @@
 import styled from "styled-components";
-// import { ContentWraper, FiltersFormWraper } from "../Filters/Filters.Styled";
 
 export const ContentWrap = styled.div`
   display: flex;
@@ -51,15 +50,12 @@ export const FiltersTitle = styled.h3`
     line-height: 1.28571;
   }
 `;
-// export const Rrrr = styled.div``;
-
 export const InputWrap = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 8px;
   max-width: 472px;
   @media only screen and (min-width: 768px) {
-    /* gap: 14px; */
   }
 `;
 export const InputContainer = styled.li`
@@ -100,7 +96,6 @@ export const Input = styled.input`
   border-radius: 0 12px 12px 0;
   background: var(--input-bg);
   color: var(--white);
-  /* width: 100%; */
   outline: none;
   border: none;
   font-weight: 500;
@@ -137,7 +132,6 @@ export const SubmitButton = styled.button`
   border: 1px solid rgba(249, 249, 249, 0.2);
   border-radius: 30px;
   padding: 9px 20px;
-  /* cursor: pointer; */
   background: transparent;
   align-self: flex-start;
   font-weight: 700;

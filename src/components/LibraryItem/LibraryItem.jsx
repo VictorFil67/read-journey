@@ -42,9 +42,10 @@ export const LibraryItem = ({ book }) => {
           dispatch(getUserBooksThunk());
         })
         .catch((error) => toast.error(error));
+    } else {
+      dispatch(deleteUserBook(id));
+      dispatch(getUserBooksThunk());
     }
-    dispatch(deleteUserBook(id));
-    dispatch(getUserBooksThunk());
   }
 
   return (

@@ -8,4 +8,3 @@ export const selectfilteredUserBooks = (state) => state.books.filteredUserBooks;
 export const selectRequestData = (state) => state.books.requestData;
 export const selectTotalPages = (state) => state.books.totalPages;
 export const selectBookInfo = (state) => state.books.bookInfo;
-export const selectqwe = (state) => state.books.qwe;

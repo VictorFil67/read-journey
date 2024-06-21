@@ -11,9 +11,10 @@ export const DiaryComponent = () => {
       <ProgressWraper>
         <>
           <DiaryComponentUl>
-            {[...progress].reverse().map((el) => (
-              <DiaryItem key={el._id} progress={el} />
-            ))}
+            {progress &&
+              [...progress]
+                .reverse()
+                .map((el) => <DiaryItem key={el._id} progress={el} />)}
           </DiaryComponentUl>
         </>
       </ProgressWraper>

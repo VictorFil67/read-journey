@@ -1,5 +1,4 @@
 import styled from "styled-components";
-// import { Container } from "../../components/Layout/Layout.Styled";
 
 export const PageContainer = styled.div`
   padding-top: 10px;
@@ -18,6 +17,5 @@ export const PageContainer = styled.div`
   @media only screen and (min-width: 1280px) {
     flex-direction: row;
     max-width: 1216px;
-    /* padding: 27px; */
   }
 `;

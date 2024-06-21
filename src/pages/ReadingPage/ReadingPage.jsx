@@ -21,6 +21,7 @@ const ReadingPage = () => {
   const { _id, progress, totalPages } = useSelector(selectBookInfo);
   const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
+  console.log(progress);
 
   const inputs = [
     {
@@ -74,17 +75,21 @@ const ReadingPage = () => {
 
   return (
     <PageContainer>
+      {" "}
+      11111
       <Dashboard
         title={
           progress?.length === 0 ||
-          progress[progress?.length - 1].status === "inactive"
+          (progress?.length > 0 &&
+            progress[progress?.length - 1].status === "inactive")
             ? "Start page:"
             : "Stop page:"
         }
         inputs={inputs}
         titleButton={
           progress?.length === 0 ||
-          progress[progress?.length - 1].status === "inactive"
+          (progress?.length > 0 &&
+            progress[progress?.length - 1].status === "inactive")
             ? "To start"
             : "To stop"
         }
@@ -98,7 +103,8 @@ const ReadingPage = () => {
       <MyReading
         indicator={
           progress?.length === 0 ||
-          progress[progress?.length - 1].status === "inactive"
+          (progress?.length > 0 &&
+            progress[progress?.length - 1].status === "inactive")
             ? false
             : true
         }

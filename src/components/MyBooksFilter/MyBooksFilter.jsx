@@ -54,17 +54,12 @@ const MyBooksFilter = ({ selectedOption, setSelectedOption }) => {
             : "rotate(0deg)",
           ":hover": {
             color: "var(--white)",
-            // transform: "rotate(180deg)",
-          },
-          ":active": {
-            transform: "rotate(0deg)",
           },
         }),
         option: (b, s) => ({
           ...b,
           color: !s.isSelected ? "var(--input-title)" : "var(--white)",
           backgroundColor: "var(--input-bg)",
-          // height: "22px",
           cursor: "pointer",
           padding: "0 0 8px 0",
           "&:last-child": {
