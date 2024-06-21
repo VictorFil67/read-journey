@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { selectBookInfo } from "../../store/books/selectors";
 import { DiaryComponentUl, ProgressWraper } from "./DiaryComponent.Styled";
-import DiaryItem from "./DiaryItem/DiaryItem";
+import DiaryItem from "../DiaryItem/DiaryItem";
 
 export const DiaryComponent = () => {
   const { progress } = useSelector(selectBookInfo);

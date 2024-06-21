@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import DiarySVG from "../../images/DiarySVG";
 import StatisticsSVG from "../../images/StatisticsSVG";
 import { DiaryComponent } from "../DiaryComponent/DiaryComponent";
@@ -8,12 +8,12 @@ import {
   SectionSelectionWraper,
   StatisticsWraper,
 } from "./Statistics.Styled";
-import { useSelector } from "react-redux";
-import { selectBookInfo } from "../../store/books/selectors";
+// import { useSelector } from "react-redux";
+// import { selectBookInfo } from "../../store/books/selectors";
 
-export const Statistics = () => {
-  const [activeSection, setActiveSection] = useState("Diary");
-  const bookInfo = useSelector(selectBookInfo);
+export const Statistics = ({ activeSection, setActiveSection }) => {
+  // const [activeSection, setActiveSection] = useState("Diary");
+  // const bookInfo = useSelector(selectBookInfo);
 
   return (
     <>

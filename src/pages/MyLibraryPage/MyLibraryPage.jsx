@@ -12,6 +12,7 @@ import { AddBookModal } from "../../components/AddBookModal/AddBookModal";
 const MyLibraryPage = () => {
   const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
+  const [modalRead, setModalRead] = useState(false);
   const [size, setSize] = useState(false);
 
   const inputs = [
@@ -76,6 +77,17 @@ const MyLibraryPage = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (modal || modalRead) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [modal, modalRead]);
+
   return (
     <PageContainer>
       <Dashboard
@@ -89,7 +101,7 @@ const MyLibraryPage = () => {
         errors={errors}
         validation={true}
       />
-      <MyLibraryBooks />
+      <MyLibraryBooks modalRead={modalRead} setModalRead={setModalRead} />
       {modal &&
         createPortal(<AddBookModal setModal={setModal} />, document.body)}
     </PageContainer>

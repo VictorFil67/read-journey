@@ -8,19 +8,29 @@ import {
   Cover,
   CoverText,
   Description,
+  LeftTime,
   MyReadingWrap,
   Span,
   TextWrap,
+  TopWrap,
 } from "./MyReading.Styled";
 import { Title } from "../MyLibraryBooks/MyLibraryBooks.Styled";
 import PauseIndicatorSVG from "../../images/PauseIndicatorSVG";
 import ReadingIndicatorSVG from "../../images/ReadingIndicatorSVG";
 
-export const MyReading = ({ indicator }) => {
+export const MyReading = ({ indicator, activeSection, start }) => {
   const bookInfo = useSelector(selectBookInfo);
   return (
     <MyReadingWrap>
-      <Title>My reading</Title>
+      <TopWrap>
+        <Title>My reading</Title>
+        <LeftTime>
+          {activeSection === "Statistics" || !start
+            ? `${bookInfo.timeLeftToRead?.hours} hours and 
+          ${bookInfo.timeLeftToRead?.minutes} minutes left`
+            : ""}
+        </LeftTime>
+      </TopWrap>
       <Book>
         <Cover $image={bookInfo.imageUrl}>
           {bookInfo.imageUrl ? (
@@ -39,16 +49,6 @@ export const MyReading = ({ indicator }) => {
           {!indicator ? <PauseIndicatorSVG /> : <ReadingIndicatorSVG />}
         </Description>
       </Book>
-      {/* <>
-        <div>
-          <img src={bookInfo.imageUrl} alt={bookInfo.title} />
-          <>
-            <span>{bookInfo.title}</span>
-            <span>{bookInfo.author}</span>
-          </>
-          <button>Start</button>
-        </div>
-      </> */}
     </MyReadingWrap>
   );
 };

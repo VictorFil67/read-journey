@@ -25,10 +25,22 @@ import { selectExpireTime } from "../../store/auth/selectors";
 import { currentThunk, refreshTokensThunk } from "../../store/auth/operations";
 import { toast } from "react-toastify";
 
-export const LibraryItem = ({ book }) => {
+export const LibraryItem = ({ book, setModalRead }) => {
   const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
   const expireTime = useSelector(selectExpireTime);
+
+  // useEffect(() => {
+  //   if (modalPage) {
+  //     return;
+  //   }
+  //   if (modal) {
+  //     // setModalPage(true);
+  //     document.body.style.overflow = "hidden";
+  //   } else {
+  //     document.body.style.overflow = "auto";
+  //   }
+  // }, [modal, modalPage, setModalPage]);
 
   function deleteBook(id) {
     if (expireTime < Date.now()) {
@@ -47,11 +59,19 @@ export const LibraryItem = ({ book }) => {
       dispatch(getUserBooksThunk());
     }
   }
+  function handleClick() {
+    setModal(true);
+    setModalRead(true);
+  }
+  function handleCloseClick() {
+    setModal(false);
+    setModalRead(false);
+  }
 
   return (
     <>
       <BookItem>
-        <Cover $image={book.imageUrl} onClick={setModal}>
+        <Cover $image={book.imageUrl} onClick={handleClick}>
           {book.imageUrl ? (
             <LibraryItemImg src={book.imageUrl} alt={book.title} />
           ) : (
@@ -72,7 +92,7 @@ export const LibraryItem = ({ book }) => {
       </BookItem>
       {modal &&
         createPortal(
-          <StartReadingModal book={book} setModal={setModal} />,
+          <StartReadingModal book={book} handleCloseClick={handleCloseClick} />,
           document.body
         )}
     </>

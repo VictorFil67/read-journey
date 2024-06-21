@@ -26,6 +26,9 @@ export const Dashboard = ({
   onSubmit,
   errors,
   validation,
+  activeSection,
+  setActiveSection,
+  setStart,
 }) => {
   function chooseSecondPart(string) {
     switch (string) {
@@ -34,9 +37,14 @@ export const Dashboard = ({
       case "Recommended books":
         return <RecommendedBooks />;
       case "Progress":
-        return <Progress />;
+        return <Progress setStart={setStart} />;
       case "Workout info":
-        return <Statistics />;
+        return (
+          <Statistics
+            activeSection={activeSection}
+            setActiveSection={setActiveSection}
+          />
+        );
       // case "statistics":
       //   return <></>;
 

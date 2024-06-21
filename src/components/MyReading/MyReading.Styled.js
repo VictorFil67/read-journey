@@ -10,6 +10,18 @@ export const MyReadingWrap = styled.div`
   gap: 40px;
   align-items: center;
 `;
+export const TopWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
+export const LeftTime = styled.p`
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33333;
+  letter-spacing: -0.02em;
+  color: var(--input-title);
+`;
 export const Book = styled.div`
   display: flex;
   flex-direction: column;

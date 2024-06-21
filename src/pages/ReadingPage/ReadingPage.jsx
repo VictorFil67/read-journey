@@ -21,7 +21,16 @@ const ReadingPage = () => {
   const { _id, progress, totalPages } = useSelector(selectBookInfo);
   const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
-  console.log(progress);
+  const [activeSection, setActiveSection] = useState("Diary");
+  const [start, setStart] = useState(false);
+
+  useEffect(() => {
+    if (modal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [modal]);
 
   const inputs = [
     {
@@ -75,8 +84,6 @@ const ReadingPage = () => {
 
   return (
     <PageContainer>
-      {" "}
-      11111
       <Dashboard
         title={
           progress?.length === 0 ||
@@ -99,6 +106,9 @@ const ReadingPage = () => {
         onSubmit={onSubmit}
         validation={true}
         errors={errors}
+        activeSection={activeSection}
+        setActiveSection={setActiveSection}
+        setStart={setStart}
       />
       <MyReading
         indicator={
@@ -108,6 +118,8 @@ const ReadingPage = () => {
             ? false
             : true
         }
+        activeSection={activeSection}
+        start={start}
       />
       {modal &&
         createPortal(<BookIsReadModal setModal={setModal} />, document.body)}

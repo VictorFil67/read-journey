@@ -1,7 +1,12 @@
 import { NotStartedComponent, StarWraper } from "./ProgressStyled";
 import Star from "../../images/Star.png";
+import { useEffect } from "react";
 
-export const Progress = () => {
+export const Progress = ({ setStart }) => {
+  useEffect(() => {
+    setStart(true);
+  }, [setStart]);
+
   return (
     <NotStartedComponent>
       <div>

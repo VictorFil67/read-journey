@@ -1,8 +1,8 @@
-import { differenceInMinutes, differenceInSeconds, format } from "date-fns";
+import { format } from "date-fns";
 
-import { selectBookInfo } from "../../../store/books/selectors";
+import { selectBookInfo } from "../../store/books/selectors";
 import { useSelector } from "react-redux";
-import BlackWhiteSquare from "../../../images/BlackWhiteSquare";
+import BlackWhiteSquare from "../../images/BlackWhiteSquare";
 import {
   BlackWhiteSquareWrapper,
   DeleteRecordButton,
@@ -18,8 +18,8 @@ import {
   PerHour,
   ReadingSpeed,
 } from "./DiaryItem.Styled";
-import VectorSVG from "../../../images/VectorSVG";
-import DeleteRecord from "../../../images/DeleteRecord";
+import VectorSVG from "../../images/VectorSVG";
+import DeleteRecord from "../../images/DeleteRecord";
 
 const DiaryItem = ({ progress }) => {
   const bookInfo = useSelector(selectBookInfo);
@@ -27,61 +27,36 @@ const DiaryItem = ({ progress }) => {
   const startTime = new Date(progress.startReading);
   const endTime = new Date(progress.finishReading);
 
-  const sessionDurationHours = (endTime - startTime) / (1000 * 60 * 60);
-  const diffSec = ((endTime - startTime) / 1000).toFixed(0);
-  console.log("diffSec: " + diffSec);
+  const diffSec = ((endTime - startTime) / 1000).toFixed();
+  const diffMin = ((endTime - startTime) / (60 * 1000)).toFixed();
+  // console.log("diffSec: " + diffSec);
+  // console.log("diffMin: " + diffMin);
+  // console.log(progress.startPage);
+  // console.log(progress.finishPage);
 
-  let hours;
-  if (Math.trunc(diffSec / 3600) > 0) {
-    hours = ` ${Math.trunc(diffSec / 3600)}h:`;
-  } else {
-    hours = "";
+  let time;
+  if (diffSec) {
+    if (diffSec < 60) {
+      time = `${diffSec} seconds`;
+    } else if (diffSec >= 60 && diffSec < 90) {
+      time = `${diffMin} minute`;
+    } else {
+      time = `${diffMin} minutes`;
+    }
   }
-  console.log("hours: " + hours);
-  let min;
-  if (Math.trunc((diffSec % (60 * 60)) / 60) > 0) {
-    min = ` ${Math.trunc((diffSec % (60 * 60)) / 60)}m`;
+
+  let pagesRead;
+  if (progress.finishPage && progress.startPage) {
+    pagesRead = progress.finishPage - progress.startPage;
   } else {
-    min = "";
+    pagesRead = 0;
   }
-  let sec;
-  if (
-    Math.trunc((diffSec % (60 * 60)) / 60) < 3 &&
-    Math.trunc((diffSec % (60 * 60)) / 60) > 0
-  ) {
-    sec = ` :${Math.trunc((diffSec % (60 * 60)) % 60)}s`;
-  } else if (Math.trunc((diffSec % (60 * 60)) / 60) === 0) {
-    sec = `${Math.trunc((diffSec % (60 * 60)) % 60)}s`;
+
+  let percentageRead;
+  if (pagesRead) {
+    percentageRead = ((pagesRead / bookInfo.totalPages) * 100).toFixed(1);
   } else {
-    sec = "";
-  }
-  console.log("min: " + min);
-  console.log("sec: " + sec);
-  const time = `${hours}${min}${sec}`;
-
-  const percentageRead = (
-    (progress.finishPage / bookInfo.totalPages) *
-    100
-  ).toFixed(1);
-
-  const pagesRead = progress.finishPage - progress.startPage;
-
-  const readingSpeed = pagesRead / sessionDurationHours;
-  const formattedReadingSpeed = readingSpeed.toFixed(0);
-
-  let durationText;
-  if (sessionDurationHours < 1) {
-    const readingDurationSeconds = differenceInSeconds(
-      new Date(progress.finishReading),
-      new Date(progress.startReading)
-    );
-    durationText = `${readingDurationSeconds} seconds`;
-  } else {
-    const readingDurationMinutes = differenceInMinutes(
-      new Date(progress.finishReading),
-      new Date(progress.startReading)
-    );
-    durationText = `${readingDurationMinutes} minutes`;
+    percentageRead = 0;
   }
 
   return (
@@ -101,7 +76,7 @@ const DiaryItem = ({ progress }) => {
 
                   <DiaryDatePercentageWraper>
                     <span>{percentageRead}%</span>
-                    <span>{durationText}</span>
+                    {/* <span>{durationText}</span> */}
                     <span>{time}</span>
                   </DiaryDatePercentageWraper>
                 </DiaryDateWraper>
@@ -125,7 +100,7 @@ const DiaryItem = ({ progress }) => {
                   </DeleteRecordWraper>
 
                   <DeleteRecordPageHourDiv>
-                    <ReadingSpeed>{formattedReadingSpeed} pages</ReadingSpeed>
+                    <ReadingSpeed>{progress.speed} pages</ReadingSpeed>
                     <PerHour>per hour</PerHour>
                   </DeleteRecordPageHourDiv>
                 </DeleteRecordVectorWraper>

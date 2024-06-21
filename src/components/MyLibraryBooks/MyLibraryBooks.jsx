@@ -26,7 +26,7 @@ import { LibraryItem } from "../LibraryItem/LibraryItem";
 import { useEffect, useState } from "react";
 import { getfilteredUserBooks, setOption } from "../../store/books/booksSlise";
 
-export const MyLibraryBooks = () => {
+export const MyLibraryBooks = ({ modalRead, setModalRead }) => {
   const userBooks = useSelector(selectUserBooks);
   const prevUserBooks = useSelector(selectPrevUserBooks);
   const prevPath = useSelector(selectPrevPath);
@@ -34,7 +34,6 @@ export const MyLibraryBooks = () => {
   const filteredUserBooks = useSelector(selectfilteredUserBooks);
   const option = useSelector(selectOption);
   const [selectedOption, setSelectedOption] = useState(option);
-  console.log(option);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -79,10 +78,20 @@ export const MyLibraryBooks = () => {
         <MyBookList>
           {!selectedOption
             ? userBooks.map((book) => (
-                <LibraryItem key={book._id} book={book} />
+                <LibraryItem
+                  key={book._id}
+                  book={book}
+                  modalRead={modalRead}
+                  setModalRead={setModalRead}
+                />
               ))
             : filteredUserBooks.map((book) => (
-                <LibraryItem key={book._id} book={book} />
+                <LibraryItem
+                  key={book._id}
+                  book={book}
+                  modalRead={modalRead}
+                  setModalRead={setModalRead}
+                />
               ))}
         </MyBookList>
       )}

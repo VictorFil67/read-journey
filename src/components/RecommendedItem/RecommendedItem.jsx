@@ -1,27 +1,29 @@
-// import { useDispatch } from "react-redux";
 import {
   Author,
   BookItem,
   Cover,
   CoverText,
-  // DeleteButton,
   Description,
   LibraryItemImg,
   Span,
   TextWrap,
   Title,
 } from "../LibraryItem/LibraryItem.Styled";
-// import { deleteUserBook } from "../../store/books/operations";
-// import TrashCanSVG from "../../images/myLibraryBooksImages/TrashCanSVG";
 import { createPortal } from "react-dom";
-// import { StartReadingModal } from "../StartReadingModal/StartReadingModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cutString } from "../../helpers/cutString";
 import { AddBookModal } from "../AddToLibrarymodal/AddToLibrarymodal";
 
 export const RecommendedItem = ({ book }) => {
-  // const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
+
+  useEffect(() => {
+    if (modal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [modal]);
 
   return (
     <>
@@ -40,9 +42,6 @@ export const RecommendedItem = ({ book }) => {
             <Title>{cutString(book.title, 19)}</Title>
             <Author>{cutString(book.author, 25)}</Author>
           </TextWrap>
-          {/* <DeleteButton onClick={() => dispatch(deleteUserBook(book._id))}> */}
-          {/* <TrashCanSVG />
-          </DeleteButton> */}
         </Description>
       </BookItem>
       {modal &&

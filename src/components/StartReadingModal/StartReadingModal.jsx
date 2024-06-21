@@ -23,19 +23,19 @@ import {
 import { useDispatch } from "react-redux";
 import { setBookId } from "../../store/books/booksSlise";
 
-export const StartReadingModal = ({ setModal, book }) => {
+export const StartReadingModal = ({ handleCloseClick, book }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   function handleClick(e) {
     if (e.target === e.currentTarget) {
-      setModal(false);
+      handleCloseClick();
     }
   }
   document.addEventListener("keydown", onWindowEscape);
   function onWindowEscape(e) {
     if (e.code === "Escape") {
-      setModal(false);
+      handleCloseClick();
       document.removeEventListener("keydown", onWindowEscape);
     }
   }
@@ -47,7 +47,7 @@ export const StartReadingModal = ({ setModal, book }) => {
   return (
     <Overlay onClick={handleClick}>
       <Modal>
-        <CloseButton onClick={() => setModal(false)}>
+        <CloseButton onClick={handleCloseClick}>
           <CloseSVG />
         </CloseButton>
         <ContentWrap>
