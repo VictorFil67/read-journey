@@ -24,9 +24,7 @@ const booksSlice = createSlice({
     prevUserBooks: [],
     userBooks: [],
     filteredUserBooks: [],
-    bookInfo: {
-      // progress: [],
-    },
+    bookInfo: {},
     isLoading: false,
     error: null,
     prevPath: null,
@@ -130,7 +128,10 @@ const booksSlice = createSlice({
         state.userBooks = state.userBooks.filter(
           (book) => book._id !== payload.id
         );
-        state.isLoading = false;
+        if (state.bookInfo._id === payload.id) {
+          state.bookInfo = {};
+        }
+        // state.isLoading = false;
         state.error = null;
       })
       .addCase(deleteUserBook.rejected, (state, { payload }) => {
