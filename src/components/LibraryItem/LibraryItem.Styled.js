@@ -7,7 +7,6 @@ export const BookItem = styled.li`
   width: calc((100% - 8px) / 2);
   max-width: 137px;
   @media only screen and (min-width: 768px) {
-    gap: 10px;
   }
 `;
 export const Cover = styled.div`

@@ -72,20 +72,20 @@ const Header = () => {
         )}
       </>
       <HeaderContainer>
-        <LogoLink to={"/register"}>
+        <LogoLink to={"/recommended"}>
           <LogoStyled />
           <LogoTitleSvgStyled />
         </LogoLink>
         <HeaderDivLink>
           <HeaderLink
-            to="/recommended"
+            to={"/recommended"}
             aria-label="Home"
             style={{ textDecoration: "none" }}
           >
             Home
           </HeaderLink>
           <HeaderLink
-            to="/library"
+            to={"/library"}
             aria-label="My library"
             style={{ textDecoration: "none" }}
           >

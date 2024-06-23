@@ -8,12 +8,15 @@ export const RecommendedWrap = styled.div`
     padding: 40px 40px;
   }
   @media (min-width: 1280px) {
-    padding: 40px 42px;
+    padding: 40px 42px 28px 40px;
   }
   & > :first-child {
     display: flex;
     justify-content: space-between;
     padding-bottom: 22px;
+    @media (min-width: 768px) {
+      padding-bottom: 20px;
+    }
 
     & > :first-child {
       font-weight: 700;
@@ -34,6 +37,10 @@ export const ChangePageButton = styled.button`
   background-color: transparent;
   margin: 0 auto;
   border: none;
+  height: 32px;
+  @media only screen and (min-width: 768px) {
+    height: 40px;
+  }
 `;
 
 export const RecommBooksListUl = styled.ul`

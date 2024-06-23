@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { LinksWrap } from "../RecommendedBooks/RecommendedBooks.Styled";
+// import { Link } from "react-router-dom";
 // import NextSVG from "../../images/NextSVG";
 // import { Link } from "react-router-dom";
 
@@ -11,6 +12,10 @@ export const WorkoutWrap = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 20px;
+  @media only screen and (min-width: 768px) {
+    width: 313px;
+    padding: 20px;
+  }
 `;
 export const Title = styled.h2`
   font-weight: 700;
@@ -18,6 +23,10 @@ export const Title = styled.h2`
   font-size: 18px;
   letter-spacing: -0.02em;
   color: var(--white);
+  @media only screen and (min-width: 768px) {
+    padding-bottom: 20px;
+    font-size: 20px;
+  }
 `;
 export const WorkoutNamredWraper = styled.div`
   font-weight: 700;
@@ -39,6 +48,10 @@ export const WorkoutItemContainer = styled.div`
   gap: 12px;
   padding-left: 10px;
   padding-right: 10px;
+  @media only screen and (min-width: 768px) {
+    padding: 0;
+    width: 253px;
+  }
 `;
 export const WorkoutItemSpan = styled.span`
   display: inline;
@@ -56,4 +69,8 @@ export const WorkoutItemP = styled.p`
 `;
 export const LinksBlock = styled(LinksWrap)`
   padding-left: 10px;
+  margin-top: -2px;
+  @media only screen and (min-width: 768px) {
+    margin-top: 0;
+  }
 `;

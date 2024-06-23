@@ -53,6 +53,7 @@ export const LinkNextSVG = styled(Link)`
   width: 20px;
   height: 20px;
   display: flex;
+  align-self: flex-start;
   @media only screen and (min-width: 768px) {
     width: 24px;
     height: 24px;

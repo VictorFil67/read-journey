@@ -17,5 +17,6 @@ export const PageContainer = styled.div`
   @media only screen and (min-width: 1280px) {
     flex-direction: row;
     max-width: 1216px;
+    padding-bottom: 27px;
   }
 `;

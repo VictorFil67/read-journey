@@ -1,23 +1,20 @@
-// import { useState } from "react";
+// import { useSelector } from "react-redux";
 import DiarySVG from "../../images/DiarySVG";
 import StatisticsSVG from "../../images/StatisticsSVG";
 import { DiaryComponent } from "../DiaryComponent/DiaryComponent";
 import { StatisticsComponent } from "../StatisticsComponent/StatisticsComponent";
 import {
+  DataWrap,
   ReadingStatisticsButton,
-  SectionSelectionWraper,
-  StatisticsWraper,
+  StatisticsText,
+  StatisticsWrap,
+  TopWrap,
 } from "./Statistics.Styled";
-// import { useSelector } from "react-redux";
-// import { selectBookInfo } from "../../store/books/selectors";
 
 export const Statistics = ({ activeSection, setActiveSection }) => {
-  // const [activeSection, setActiveSection] = useState("Diary");
-  // const bookInfo = useSelector(selectBookInfo);
-
   return (
-    <>
-      <SectionSelectionWraper>
+    <StatisticsWrap>
+      <TopWrap>
         <h1>{activeSection}</h1>
         <div>
           <ReadingStatisticsButton onClick={() => setActiveSection("Diary")}>
@@ -29,11 +26,19 @@ export const Statistics = ({ activeSection, setActiveSection }) => {
             <StatisticsSVG active={activeSection === "Statistics"} />
           </ReadingStatisticsButton>
         </div>
-      </SectionSelectionWraper>
-      <StatisticsWraper>
+      </TopWrap>
+      {activeSection === "Statistics" && (
+        <StatisticsText>
+          Each page, each chapter is a new round of knowledge, a new step
+          towards understanding. By rewriting statistics, we create our own
+          reading history.
+        </StatisticsText>
+      )}
+
+      <DataWrap>
         {activeSection === "Diary" && <DiaryComponent />}
         {activeSection === "Statistics" && <StatisticsComponent />}
-      </StatisticsWraper>
-    </>
+      </DataWrap>
+    </StatisticsWrap>
   );
 };

@@ -3,19 +3,34 @@ import styled from "styled-components";
 export const ContentWrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: ${(props) => (props.$path !== "/reading" ? "20px" : "40px")};
   background: #1f1f1f;
   border-radius: 30px;
   padding: 18px 20px 20px;
   @media only screen and (min-width: 768px) {
     flex-direction: row;
-    padding: 32px;
-    gap: 32px;
+    padding: ${(props) =>
+      props.$stat === "Workout info" ? "32px 16px 16px 32px" : "32px"};
+    gap: ${(props) => (props.$path !== "/reading" ? "32px" : "40px")};
   }
   @media only screen and (min-width: 1280px) {
     flex-direction: column;
     padding: 40px 20px 20px;
-    gap: 78px;
+    gap: ${
+      (props) =>
+        props.$path === "/reading"
+          ? "40px"
+          : props.$path === "/library"
+          ? "78px"
+          : "20px"
+      // ? "40px"
+      // : // : props.$path === "/library"
+      //   // ? "78px"
+      //   "20px"};
+    };
+    /* @media only screen and (min-width: 1280px) {
+      gap: 40px;
+    } */
   }
 `;
 export const Form = styled.form`
@@ -24,7 +39,7 @@ export const Form = styled.form`
   gap: 20px;
   @media only screen and (min-width: 768px) {
     width: 295px;
-    gap: 38px;
+    gap: ${(props) => (props.$path === "/library" ? "38px" : "20px")};
   }
   @media only screen and (min-width: 1280px) {
     width: 313px;
@@ -39,13 +54,15 @@ export const FiltersFormWrap = styled.div`
   /* padding-bottom: 20px; */
 `;
 export const FiltersTitle = styled.h3`
-  padding-left: 13px;
+  padding-left: 14px;
   font-weight: 500;
   font-size: 10px;
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: #f9f9f9;
+  padding-top: ${(props) => props.$path !== "/library" && "2px"};
   @media only screen and (min-width: 768px) {
+    padding-top: 0;
     font-size: 14px;
     line-height: 1.28571;
   }
@@ -131,7 +148,7 @@ export const ErrorSpan = styled.span`
 export const SubmitButton = styled.button`
   border: 1px solid rgba(249, 249, 249, 0.2);
   border-radius: 30px;
-  padding: 9px 20px;
+  padding: 9px 19px;
   background: transparent;
   align-self: flex-start;
   font-weight: 700;
@@ -144,4 +161,24 @@ export const SubmitButton = styled.button`
     line-height: 1.125;
     padding: 11px 28px;
   }
+`;
+export const BooksDeskWrap = styled.div`
+  display: flex;
+
+  gap: 14px;
+  background: #262626;
+  border-radius: 12px;
+  align-items: center;
+  padding: 15px 20px 14px;
+`;
+export const Text = styled.p`
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: var(--input-title);
+  max-width: 219px;
+`;
+export const Span = styled.span`
+  color: var(--white);
 `;

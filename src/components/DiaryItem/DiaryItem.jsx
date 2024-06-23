@@ -18,7 +18,7 @@ import {
   PerHour,
   ReadingSpeed,
 } from "./DiaryItem.Styled";
-import VectorSVG from "../../images/VectorSVG";
+import VectorSVG from "../../images/reading/VectorSVG";
 import DeleteRecord from "../../images/DeleteRecord";
 
 const DiaryItem = ({ progress, handleDeleteRecord }) => {
@@ -38,10 +38,17 @@ const DiaryItem = ({ progress, handleDeleteRecord }) => {
   if (diffSec) {
     if (diffSec < 60) {
       time = `${diffSec} seconds`;
+      console.log(startTime);
+      console.log(endTime);
     } else if (diffSec >= 60 && diffSec < 90) {
       time = `${diffMin} minute`;
-    } else {
+      console.log("diffSec >= 60 && diffSec < 90");
+    } else if (diffSec > 90) {
       time = `${diffMin} minutes`;
+      console.log("minutes");
+    } else {
+      time = `0 minutes`;
+      console.log(`0 minutes`);
     }
   }
 
@@ -62,28 +69,21 @@ const DiaryItem = ({ progress, handleDeleteRecord }) => {
   return (
     <>
       <DiaryDateLi>
-        <>
-          <DiaryDateLeftWraper>
-            <>
-              <>
-                <BlackWhiteSquareWrapper>
-                  <BlackWhiteSquare />
-                </BlackWhiteSquareWrapper>
-              </>
-              <>
-                <DiaryDateWraper>
-                  <span>{formattedDate}</span>
+        <DiaryDateLeftWraper>
+          <BlackWhiteSquareWrapper>
+            <BlackWhiteSquare />
+          </BlackWhiteSquareWrapper>
 
-                  <DiaryDatePercentageWraper>
-                    <span>{percentageRead}%</span>
-                    {/* <span>{durationText}</span> */}
-                    <span>{time}</span>
-                  </DiaryDatePercentageWraper>
-                </DiaryDateWraper>
-              </>
-            </>
-          </DiaryDateLeftWraper>
-        </>
+          <DiaryDateWraper>
+            <span>{formattedDate}</span>
+
+            <DiaryDatePercentageWraper>
+              <span>{percentageRead}%</span>
+              {/* <span>{durationText}</span> */}
+              <span>{time}</span>
+            </DiaryDatePercentageWraper>
+          </DiaryDateWraper>
+        </DiaryDateLeftWraper>
         <>
           <DiaryDateRightWraper>
             <>
@@ -102,7 +102,9 @@ const DiaryItem = ({ progress, handleDeleteRecord }) => {
                   </DeleteRecordWraper>
 
                   <DeleteRecordPageHourDiv>
-                    <ReadingSpeed>{progress.speed} pages</ReadingSpeed>
+                    <ReadingSpeed>
+                      {progress.speed ? progress.speed : 0} pages
+                    </ReadingSpeed>
                     <PerHour>per hour</PerHour>
                   </DeleteRecordPageHourDiv>
                 </DeleteRecordVectorWraper>

@@ -9,6 +9,14 @@ export const MyReadingWrap = styled.div`
   flex-direction: column;
   gap: 40px;
   align-items: center;
+  @media only screen and (min-width: 768px) {
+    padding: 40px 40px 25px;
+    gap: 32px;
+  }
+  @media only screen and (min-width: 1280px) {
+    gap: 44px;
+    padding-bottom: 53px;
+  }
 `;
 export const TopWrap = styled.div`
   display: flex;
@@ -18,9 +26,13 @@ export const TopWrap = styled.div`
 export const LeftTime = styled.p`
   font-weight: 500;
   font-size: 12px;
-  line-height: 1.33333;
+  line-height: 1.28571;
   letter-spacing: -0.02em;
   color: var(--input-title);
+  @media only screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 1.33333;
+  }
 `;
 export const Book = styled.div`
   display: flex;
@@ -28,6 +40,10 @@ export const Book = styled.div`
   gap: 10px;
   width: 146px;
   align-items: center;
+  @media only screen and (min-width: 768px) {
+    min-width: 169px;
+    gap: 25px;
+  }
 `;
 export const Cover = styled.div`
   border-radius: 8px;
@@ -35,6 +51,14 @@ export const Cover = styled.div`
   height: 208px;
   cursor: pointer;
   border: ${(props) => (props.$image ? "none" : "1px solid #3e3e3e")};
+  @media only screen and (min-width: 768px) {
+    width: 169px;
+    height: 256px;
+  }
+  @media only screen and (min-width: 1280px) {
+    width: 224px;
+    height: 340px;
+  }
 `;
 export const BookImg = styled.img`
   border-radius: 8px;
@@ -60,11 +84,21 @@ export const Description = styled.div`
   width: 137px;
   gap: 20px;
   align-items: center;
+  @media only screen and (min-width: 768px) {
+    min-width: 317px;
+    gap: 16px;
+  }
+  @media only screen and (min-width: 1280px) {
+    gap: 25px;
+  }
 `;
 export const TextWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
+  @media only screen and (min-width: 768px) {
+    gap: 4px;
+  }
 `;
 export const BookTitle = styled.h3`
   font-weight: 700;
@@ -73,6 +107,10 @@ export const BookTitle = styled.h3`
   letter-spacing: -0.02em;
   color: var(--white);
   text-align: center;
+  @media only screen and (min-width: 768px) {
+    font-size: 20px;
+    line-height: 1;
+  }
 `;
 export const Author = styled.p`
   font-weight: 500;
@@ -81,4 +119,9 @@ export const Author = styled.p`
   letter-spacing: -0.02em;
   color: var(--input-title);
   text-align: center;
+  @media only screen and (min-width: 768px) {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.28571;
+  }
 `;

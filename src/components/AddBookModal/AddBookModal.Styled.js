@@ -14,13 +14,13 @@ export const Overlay = styled.div`
   z-index: 3;
   overflow: auto;
   @media only screen and (min-width: 768px) {
-    padding-top: 330px;
+    padding-top: 350px;
   }
 `;
 export const Modal = styled.div`
   position: relative;
   border: 1px solid rgba(104, 104, 104, 0.2);
-  padding: 60px 46px;
+  padding: 59px 46px;
   background-color: var(--dark-grey);
   border-radius: 12px;
   max-width: 335px;
@@ -81,6 +81,7 @@ export const Text = styled.p`
   line-height: 1.28571;
   letter-spacing: -0.02em;
   color: var(--input-title);
+  text-align: center;
 `;
 export const Span = styled.span`
   font-weight: 500;

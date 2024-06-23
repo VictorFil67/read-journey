@@ -1,8 +1,10 @@
+import { useSelector } from "react-redux";
 import { Progress } from "../Progress/Progress";
 import { RecommendedBooks } from "../RecommendedBooks/RecommendedBooks";
 import { Statistics } from "../Statistics/Statistics";
 import { Workout } from "../Workout/Workout";
 import {
+  BooksDeskWrap,
   ContentWrap,
   ErrorSpan,
   FiltersFormWrap,
@@ -13,8 +15,12 @@ import {
   InputTitle,
   InputWrap,
   Label,
+  Span,
   SubmitButton,
+  Text,
 } from "./Dashboard.Styled";
+import { selectPath } from "../../store/books/selectors";
+import booksDesk from "../../images/booksDesk.png";
 
 export const Dashboard = ({
   title,
@@ -30,6 +36,8 @@ export const Dashboard = ({
   setActiveSection,
   setStart,
 }) => {
+  const path = useSelector(selectPath);
+  console.log(path);
   function chooseSecondPart(string) {
     switch (string) {
       case "Start your workout":
@@ -53,12 +61,13 @@ export const Dashboard = ({
         break;
     }
   }
+
   return (
     <>
-      <ContentWrap>
-        <Form onSubmit={handleSubmit(onSubmit)}>
+      <ContentWrap $path={path} $stat={secondPart}>
+        <Form $path={path} onSubmit={handleSubmit(onSubmit)}>
           <FiltersFormWrap>
-            <FiltersTitle>{title}</FiltersTitle>
+            <FiltersTitle $path={path}>{title}</FiltersTitle>
             <InputWrap>
               {inputs.map((el, idx) => (
                 <InputContainer key={idx}>
@@ -91,8 +100,18 @@ export const Dashboard = ({
           <SubmitButton name="submit" type="submit" aria-label={titleButton}>
             {titleButton}
           </SubmitButton>
+          {/* {path === "/reading" <EmtyBlock/>} */}
         </Form>
         <div>{chooseSecondPart(secondPart)}</div>
+        {window.innerWidth >= 1280 && (
+          <BooksDeskWrap>
+            <img src={booksDesk} alt="Books" />
+            <Text>
+              &ldquo;Books are <Span>windows</Span> to the world, and reading is
+              a journey into the unknown.&rdquo;
+            </Text>
+          </BooksDeskWrap>
+        )}
       </ContentWrap>
     </>
   );

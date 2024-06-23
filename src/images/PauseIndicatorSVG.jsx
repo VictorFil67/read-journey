@@ -1,13 +1,24 @@
 const PauseIndicatorSVG = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={40}
-    height={40}
+    width={window.innerWidth < 768 ? 40 : 50}
+    height={window.innerWidth < 768 ? 40 : 50}
     fill="none"
     {...props}
   >
-    <circle cx={20} cy={20} r={15} fill="#E90516" />
-    <circle cx={20} cy={20} r={19} stroke="#F9F9F9" strokeWidth={2} />
+    <circle
+      cx={window.innerWidth < 768 ? 20 : 25}
+      cy={window.innerWidth < 768 ? 20 : 25}
+      r={window.innerWidth < 768 ? 15 : 20}
+      fill="#E90516"
+    />
+    <circle
+      cx={window.innerWidth < 768 ? 20 : 25}
+      cy={window.innerWidth < 768 ? 20 : 25}
+      r={window.innerWidth < 768 ? 19 : 24}
+      stroke="#F9F9F9"
+      strokeWidth={2}
+    />
   </svg>
 );
 export default PauseIndicatorSVG;

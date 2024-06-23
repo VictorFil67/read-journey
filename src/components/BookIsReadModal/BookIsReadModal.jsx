@@ -1,9 +1,6 @@
 import CloseSVG from "../../images/CloseSVG";
-import goodJob from "../../images/addBookImages/goodJob.png";
-import goodJob2x from "../../images/addBookImages/goodJob@2x.png";
-import goodJobMobile from "../../images/addBookImages/goodJobMobile.png";
-import goodJobMobile2x from "../../images/addBookImages/goodJobMobile@2x.png";
-// import { Overlay } from "../AddBookModal/AddBookModal.Styled";
+import read from "../../images/reading/read.png";
+import read2x from "../../images/reading/read@2x.png";
 import {
   CloseButton,
   ContentWrap,
@@ -38,18 +35,14 @@ export const BookIsReadModal = ({ setModal }) => {
         </CloseButton>
         <ContentWrap>
           <picture>
-            <source
-              media="(max-width:767px)"
-              srcSet={goodJobMobile + " 1x, " + goodJobMobile2x + " 2x"}
-            />
-            <source srcSet={goodJob + " 1x, " + goodJob2x + " 2x"} />
-            <Picture src={goodJobMobile} alt="Good job" loading="lazy" />
+            <source srcSet={read + " 1x, " + read2x + " 2x"} />
+            <Picture src={read} alt="The book is read" loading="lazy" />
           </picture>
           <TextWrap>
-            <Title>Good job</Title>
+            <Title>The book is read</Title>
             <Text>
-              Your book is now in <Span>the library!</Span> The joy knows no
-              bounds and now you can start your training
+              It was an <Span>exciting journey</Span>, where each page revealed
+              new horizons, and the characters became inseparable friends.
             </Text>
           </TextWrap>
         </ContentWrap>

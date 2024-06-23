@@ -21,7 +21,7 @@ export const StatisticsComponent = () => {
   const [totalPage, setTotalPage] = useState(0);
 
   useEffect(() => {
-    if (bookInfo && progress.length > 0) {
+    if (bookInfo && progress?.length > 0) {
       const lastProgress = progress[progress.length - 1];
       const lastPage = lastProgress.finishPage || lastProgress.startPage;
       const percentageRead = ((lastPage / bookInfo.totalPages) * 100).toFixed(
@@ -40,6 +40,7 @@ export const StatisticsComponent = () => {
     <>
       <StatisticsComponentWraper>
         <ContainerRange>
+          {/* <ProgressCircle viewBox="0 0 200 200"> */}
           <ProgressCircle viewBox="0 0 200 200">
             <CircleBackground cx="100" cy="100" r={radius} />
             <CircleProgress

@@ -18,16 +18,24 @@ import { Title } from "../MyLibraryBooks/MyLibraryBooks.Styled";
 import PauseIndicatorSVG from "../../images/PauseIndicatorSVG";
 import ReadingIndicatorSVG from "../../images/ReadingIndicatorSVG";
 
-export const MyReading = ({ indicator, activeSection, start }) => {
+export const MyReading = ({ indicator, activeSection }) => {
   const bookInfo = useSelector(selectBookInfo);
   return (
     <MyReadingWrap>
       <TopWrap>
         <Title>My reading</Title>
         <LeftTime>
-          {activeSection === "Statistics" || !start
-            ? `${bookInfo.timeLeftToRead?.hours} hours and 
-          ${bookInfo.timeLeftToRead?.minutes} minutes left`
+          {activeSection === "Statistics"
+            ? `${
+                bookInfo.timeLeftToRead.hours
+                  ? bookInfo.timeLeftToRead?.hours
+                  : 0
+              } hours and 
+          ${
+            bookInfo.timeLeftToRead?.minutes
+              ? bookInfo.timeLeftToRead?.minutes
+              : 0
+          } minutes left`
             : ""}
         </LeftTime>
       </TopWrap>
