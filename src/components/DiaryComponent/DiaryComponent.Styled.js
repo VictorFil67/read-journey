@@ -30,11 +30,6 @@ export const ProgressWraper = styled.div`
   &::-webkit-scrollbar-thumb {
     border-radius: 5px;
     background-color: #262626;
-    /* scroll-padding: 3px;
-    scroll-margin: 3px; */
-    /* border: 3px solid orange;
-    margin-left: 2px;
-    padding: 2px; */
   }
 
   &::-webkit-scrollbar-thumb:hover {
@@ -51,36 +46,89 @@ export const ProgressWraper = styled.div`
     height: 373px;
   }
 `;
-// *::-webkit-scrollbar {
-//   height: 5px;
-//   width: 5px;
-// }
-// *::-webkit-scrollbar-track {
-//   border-radius: 15px;
-//   background-color: #1F1F1F;
-// }
-
-// *::-webkit-scrollbar-track:hover {
-//   background-color: #1F1F1F;
-// }
-
-// *::-webkit-scrollbar-track:active {
-//   background-color: #1F1F1F;
-// }
-
-// *::-webkit-scrollbar-thumb {
-//   border-radius: 5px;
-//   background-color: #262626;
-// }
-
-// *::-webkit-scrollbar-thumb:hover {
-//   background-color: #262626;
-// }
-
-// *::-webkit-scrollbar-thumb:active {
-//   background-color: #262626;
-// }
 export const DiaryComponentUl = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  & > :not(:first-child) > div > div > div > span:first-child {
+    color: var(--input-title);
+  }
+  & > :not(:first-child) > div > div > div:first-child {
+    opacity: 0.3;
+  }
+
+  @media only screen and (min-width: 768px) {
+    gap: 14px;
+  }
+`;
+export const DateLi = styled.li`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 28px;
+
+  /* justify-content: space-between; */
+`;
+export const TopWrap = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+`;
+export const DateLeftWrap = styled.div`
+  display: flex;
+  gap: 9px;
+`;
+export const DateWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  & > :first-child {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.33;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    height: 16px;
+    @media only screen and (min-width: 768px) {
+      font-size: 16px;
+      line-height: 1.125;
+    }
+  }
+`;
+export const BlackWhiteSquareWrapper = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    background: #1f1f1f;
+    top: 100%;
+    left: 45%;
+
+    height: 292px;
+  }
+`;
+export const DateRightWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  @media only screen and (min-width: 768px) {
+    gap: 18px;
+  }
+`;
+export const PagesSpan = styled.span`
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 133%;
+  letter-spacing: -0.02em;
+  text-align: start;
+  color: #686868;
+  padding-right: 22px;
+`;
+export const DateUl = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 17px;

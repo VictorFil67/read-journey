@@ -22,6 +22,7 @@ export const DiaryDateLi = styled.li`
   display: flex;
   width: 100%;
   justify-content: space-between;
+  padding-left: 25px;
 `;
 
 export const DiaryDatePercentageWraper = styled.div`
@@ -78,6 +79,7 @@ export const DeleteRecordButton = styled.button`
 export const DeleteRecordWraper = styled.div`
   display: flex;
   gap: 5px;
+  align-items: center;
 `;
 
 export const DeleteRecordPageHourDiv = styled.div`

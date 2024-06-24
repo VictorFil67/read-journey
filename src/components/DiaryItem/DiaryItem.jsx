@@ -1,13 +1,13 @@
-import { format } from "date-fns";
+// import { format } from "date-fns";
 
 import { selectBookInfo } from "../../store/books/selectors";
 import { useSelector } from "react-redux";
-import BlackWhiteSquare from "../../images/BlackWhiteSquare";
+// import BlackWhiteSquare from "../../images/BlackWhiteSquare";
 import {
-  BlackWhiteSquareWrapper,
+  // BlackWhiteSquareWrapper,
   DeleteRecordButton,
   DeleteRecordPageHourDiv,
-  DeleteRecordPagesSpan,
+  // DeleteRecordPagesSpan,
   DeleteRecordVectorWraper,
   DeleteRecordWraper,
   DiaryDateLeftWraper,
@@ -21,18 +21,20 @@ import {
 import VectorSVG from "../../images/reading/VectorSVG";
 import DeleteRecord from "../../images/DeleteRecord";
 
-const DiaryItem = ({ progress, handleDeleteRecord }) => {
+const DiaryItem = ({ progress, handleDeleteRecord, setdayPages }) => {
   const bookInfo = useSelector(selectBookInfo);
-  const formattedDate = format(new Date(progress.startReading), "dd.MM.yyyy");
   const startTime = new Date(progress.startReading);
   const endTime = new Date(progress.finishReading);
 
   const diffSec = ((endTime - startTime) / 1000).toFixed();
   const diffMin = ((endTime - startTime) / (60 * 1000)).toFixed();
-  // console.log("diffSec: " + diffSec);
-  // console.log("diffMin: " + diffMin);
-  // console.log(progress.startPage);
-  // console.log(progress.finishPage);
+
+  // useEffect(() => {
+  // const totalPages =
+  //   progress[0]?.finishPage - progress[progress.length - 1]?.startPage;
+  // setdayPages(totalPages);
+  // console.log(progress);
+  // }, [progress, setdayPages]);
 
   let time;
   if (diffSec) {
@@ -70,12 +72,12 @@ const DiaryItem = ({ progress, handleDeleteRecord }) => {
     <>
       <DiaryDateLi>
         <DiaryDateLeftWraper>
-          <BlackWhiteSquareWrapper>
+          {/* <BlackWhiteSquareWrapper>
             <BlackWhiteSquare />
-          </BlackWhiteSquareWrapper>
+          </BlackWhiteSquareWrapper> */}
 
           <DiaryDateWraper>
-            <span>{formattedDate}</span>
+            {/* <span>{formattedDate}</span> */}
 
             <DiaryDatePercentageWraper>
               <span>{percentageRead}%</span>
@@ -88,7 +90,7 @@ const DiaryItem = ({ progress, handleDeleteRecord }) => {
           <DiaryDateRightWraper>
             <>
               <>
-                <DeleteRecordPagesSpan>{pagesRead} pages</DeleteRecordPagesSpan>
+                {/* <DeleteRecordPagesSpan>{pagesRead} pages</DeleteRecordPagesSpan> */}
               </>
               <>
                 <DeleteRecordVectorWraper>

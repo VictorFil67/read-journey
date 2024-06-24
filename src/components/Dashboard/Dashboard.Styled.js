@@ -163,7 +163,7 @@ export const SubmitButton = styled.button`
   }
 `;
 export const BooksDeskWrap = styled.div`
-  display: flex;
+  display: ${(props) => (props.$path === "/recommended" ? "flex" : "none")};
 
   gap: 14px;
   background: #262626;

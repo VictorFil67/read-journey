@@ -26,6 +26,7 @@ const booksSlice = createSlice({
     userBooks: [],
     filteredUserBooks: [],
     bookInfo: {},
+    progressByDate: [],
     isLoading: false,
     error: null,
     prevPath: null,
@@ -65,6 +66,9 @@ const booksSlice = createSlice({
     },
     setBookId(state, { payload }) {
       state.bookInfo._id = payload;
+    },
+    setProgressByDate(state, { payload }) {
+      state.progressByDate = payload;
     },
   },
   extraReducers: (builder) => {
@@ -203,4 +207,5 @@ export const {
   changePage,
   setRequestData,
   setBookId,
+  setProgressByDate,
 } = booksSlice.actions;

@@ -21,6 +21,7 @@ import {
 } from "./Dashboard.Styled";
 import { selectPath } from "../../store/books/selectors";
 import booksDesk from "../../images/booksDesk.png";
+import { useEffect, useState } from "react";
 
 export const Dashboard = ({
   title,
@@ -37,7 +38,18 @@ export const Dashboard = ({
   setStart,
 }) => {
   const path = useSelector(selectPath);
-  console.log(path);
+  const [desktop, setDesktop] = useState(window.innerWidth >= 1280);
+
+  useEffect(() => {
+    function handleSize() {
+      setDesktop(window.innerWidth >= 1280);
+    }
+    window.addEventListener("resize", handleSize);
+    return () => {
+      window.removeEventListener("resize", handleSize);
+    };
+  }, []);
+
   function chooseSecondPart(string) {
     switch (string) {
       case "Start your workout":
@@ -53,9 +65,6 @@ export const Dashboard = ({
             setActiveSection={setActiveSection}
           />
         );
-      // case "statistics":
-      //   return <></>;
-
       default:
         "Start your workout";
         break;
@@ -100,11 +109,10 @@ export const Dashboard = ({
           <SubmitButton name="submit" type="submit" aria-label={titleButton}>
             {titleButton}
           </SubmitButton>
-          {/* {path === "/reading" <EmtyBlock/>} */}
         </Form>
         <div>{chooseSecondPart(secondPart)}</div>
-        {window.innerWidth >= 1280 && (
-          <BooksDeskWrap>
+        {desktop && (
+          <BooksDeskWrap $path={path}>
             <img src={booksDesk} alt="Books" />
             <Text>
               &ldquo;Books are <Span>windows</Span> to the world, and reading is
