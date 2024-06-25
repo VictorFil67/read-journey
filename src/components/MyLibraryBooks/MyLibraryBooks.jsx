@@ -41,7 +41,7 @@ export const MyLibraryBooks = ({ modalRead, setModalRead }) => {
 
     if (
       selectedOption ||
-      prevUserBooks?.length !== userBooks?.length ||
+      // prevUserBooks?.length !== userBooks?.length ||
       (prevPath && prevPath !== path)
     ) {
       dispatch(getfilteredUserBooks(selectedOption.value));
