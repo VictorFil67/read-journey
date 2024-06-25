@@ -1,11 +1,10 @@
-import { Watch } from "react-loader-spinner";
+import { Hourglass } from "react-loader-spinner";
 import { LoaderWrap } from "./Loader.styled";
-// import { LoaderWrap } from "../Header/Header.Styled.js";
 
 export const Loader = () => {
   return (
     <LoaderWrap>
-      <Watch
+      <Hourglass
         visible={true}
         height={
           window.innerWidth > 319 && window.innerWidth < 768 ? "250" : "400"
@@ -13,11 +12,10 @@ export const Loader = () => {
         width={
           window.innerWidth > 319 && window.innerWidth < 768 ? "250" : "400"
         }
-        radius="48"
-        color="#54be96"
-        ariaLabel="watch-loading"
+        ariaLabel="hourglass-loading"
         wrapperStyle={{}}
         wrapperClass=""
+        colors={["#686868", "#f9f9f9"]}
       />
     </LoaderWrap>
   );

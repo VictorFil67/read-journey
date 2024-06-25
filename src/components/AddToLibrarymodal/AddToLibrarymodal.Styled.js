@@ -33,7 +33,6 @@ export const Title = styled.h2`
   letter-spacing: -0.02em;
   color: var(--white);
   text-align: center;
-  /* margin-bottom: 2px; */
 `;
 export const AddToLibraryBtn = styled.button`
   border: 1px solid rgba(249, 249, 249, 0.2);

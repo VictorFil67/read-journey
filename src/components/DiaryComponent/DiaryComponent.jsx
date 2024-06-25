@@ -61,9 +61,6 @@ export const DiaryComponent = () => {
     return transformedProgress;
   }
 
-  // const ulHeight = ulRef.current?.getBoundingClientRect().height;
-  // console.log(ulHeight);
-
   const handleDeleteRecord = async (readingId) => {
     try {
       await dispatch(deleteReadingThunk({ bookId: _id, readingId })).unwrap();
@@ -78,10 +75,7 @@ export const DiaryComponent = () => {
       <ProgressWraper>
         <>
           <DiaryComponentUl ref={ulRef}>
-            {/* {progress && */}
             {progressByDate &&
-              // [...progress]
-              //   .reverse()
               progressByDate.map((el) => (
                 <DateLi key={el.date}>
                   <TopWrap>
@@ -106,9 +100,7 @@ export const DiaryComponent = () => {
                       <DiaryItem
                         key={item._id}
                         progress={item}
-                        // date={el}
                         handleDeleteRecord={handleDeleteRecord}
-                        // setdayPages={setdayPages}
                       />
                     ))}
                   </DateUl>

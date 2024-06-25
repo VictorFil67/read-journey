@@ -1,4 +1,3 @@
-// import { useSelector } from "react-redux";
 import DiarySVG from "../../images/DiarySVG";
 import StatisticsSVG from "../../images/StatisticsSVG";
 import { DiaryComponent } from "../DiaryComponent/DiaryComponent";

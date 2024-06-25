@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-// import Logo from "../../images/Logo";
 import {
   HeaderButtonBurger,
   HeaderContainer,
@@ -7,7 +6,6 @@ import {
   HeaderIconUser,
   HeaderLink,
   HeaderTabletLogOut,
-  // HeaderTabletWrap,
   HeaderUserContainer,
   LogoStyled,
   LogoTitleSvgStyled,
@@ -21,11 +19,7 @@ import Backdrop from "../Backdrop/Backdrop";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { logoutThunk } from "../../store/auth/operations";
-import {
-  LogoLink,
-  // LogoStyled,
-  // LogoTitleSvgStyled,
-} from "../Login/Login.Styled";
+import { LogoLink } from "../Login/Login.Styled";
 
 const Header = () => {
   const user = useSelector(selectUser);
@@ -104,17 +98,6 @@ const Header = () => {
             <BurgerOpen />
           </HeaderButtonBurger>
         </HeaderUserContainer>
-        {/* </HeaderTabletWrap> */}
-        {/* ) : ( */}
-        {/* <HeaderUserContainer>
-          <HeaderIconUser>
-            <span>{userName}</span>
-          </HeaderIconUser>
-          <HeaderButtonBurger onClick={handleBurgerOpen}>
-            <BurgerOpen />
-          </HeaderButtonBurger>
-        </HeaderUserContainer> */}
-        {/* )} */}
       </HeaderContainer>
     </>
   );

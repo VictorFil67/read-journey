@@ -1,5 +1,3 @@
-// import styled, { keyframes } from "styled-components";
-
 import styled from "styled-components";
 
 export const NotStartedComponent = styled.div`
@@ -66,14 +64,6 @@ export const TopWrap = styled.div`
     gap: 8px;
   }
 `;
-// const hoverAnimation = keyframes`
-//     0% {
-//       transform: scale(1);
-//     }
-//     100% {
-//       transform: scale(1.1);
-//     }
-//   `;
 export const ReadingStatisticsButton = styled.button`
   cursor: pointer;
   background-color: transparent;
@@ -81,11 +71,6 @@ export const ReadingStatisticsButton = styled.button`
   justify-content: center;
   margin: 0 auto;
   border: none;
-  /* transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.2);
-  } */
 `;
 export const StatisticsText = styled.p`
   display: none;

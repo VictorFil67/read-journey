@@ -90,7 +90,6 @@ const MyLibraryPage = () => {
 
   return (
     <PageContainer>
-      <div>Test12345</div>
       <Dashboard
         title={size ? "Create your library:" : "Filters:"}
         inputs={inputs}

@@ -12,9 +12,6 @@ export const AuthImageWrap = styled.div`
     width: 50%;
     display: block;
     padding: 87px 97px 0;
-    /* padding-left: 97px;
-    padding-right: 97px;
-    padding-bottom: 0; */
   }
 `;
 export const Picture = styled.img`

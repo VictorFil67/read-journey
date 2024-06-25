@@ -10,7 +10,6 @@ import { signInThunk, signUpThunk } from "../../store/auth/operations";
 import { selectIsLoading } from "../../store/auth/selectors";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
-// import { Container } from "../Layout/Layout.Styled";
 import {
   AuthEyeBtn,
   AuthForm,

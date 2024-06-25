@@ -32,7 +32,6 @@ export const Modal = styled.div`
     max-width: 342px;
   }
   @media only screen and (min-width: 1280px) {
-    /* max-width: 500px; */
   }
 `;
 export const CloseButton = styled.button`

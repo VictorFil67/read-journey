@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectBookInfo } from "../../store/books/selectors";
-// import { useParams } from "react-router-dom";
 import {
   getBookInfo,
   saveFinishPage,
@@ -14,8 +13,6 @@ import { toast } from "react-toastify";
 import { createPortal } from "react-dom";
 import { BookIsReadModal } from "../../components/BookIsReadModal/BookIsReadModal";
 import { MyReading } from "../../components/MyReading/MyReading";
-// import Progress from "../../components/Progress/Progress";
-// import ReadingBook from "../../components/ReadingBook/ReadingBook";
 
 const ReadingPage = () => {
   const { _id, progress, totalPages } = useSelector(selectBookInfo);

@@ -48,7 +48,6 @@ export const ContentWrap = styled.div`
   }
 `;
 export const Picture = styled.img`
-  /* display: block; */
   margin: 0 auto;
 `;
 export const Text = styled.p`

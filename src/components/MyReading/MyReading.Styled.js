@@ -63,7 +63,6 @@ export const Cover = styled.div`
 export const BookImg = styled.img`
   border-radius: 8px;
   height: 100%;
-  /* display: ${(props) => (props.$image ? "blok" : "none")}; */
 `;
 export const CoverText = styled.p`
   font-weight: 500;

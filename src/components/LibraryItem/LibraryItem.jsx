@@ -30,18 +30,6 @@ export const LibraryItem = ({ book, setModalRead }) => {
   const [modal, setModal] = useState(false);
   const expireTime = useSelector(selectExpireTime);
 
-  // useEffect(() => {
-  //   if (modalPage) {
-  //     return;
-  //   }
-  //   if (modal) {
-  //     // setModalPage(true);
-  //     document.body.style.overflow = "hidden";
-  //   } else {
-  //     document.body.style.overflow = "auto";
-  //   }
-  // }, [modal, modalPage, setModalPage]);
-
   function deleteBook(id) {
     if (expireTime < Date.now()) {
       dispatch(refreshTokensThunk())

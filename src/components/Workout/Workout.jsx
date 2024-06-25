@@ -1,9 +1,7 @@
 import {
   LinkNextSVG,
   LinkStyled,
-  //   LinksWrap,
   NextSVGStyled,
-  //   Title,
 } from "../RecommendedBooks/RecommendedBooks.Styled";
 import {
   LinksBlock,

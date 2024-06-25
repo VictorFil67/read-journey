@@ -12,6 +12,5 @@ export const AuthContainer = styled(Container)`
   @media only screen and (min-width: 1280px) {
     flex-direction: row;
     gap: 16px;
-    /* padding: 32px; */
   }
 `;

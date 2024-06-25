@@ -13,10 +13,7 @@ import {
   Modal,
   Overlay,
   Pages,
-  //   Picture,
-  //   Span,
   StartReadingtButton,
-  //   Text,
   TextWrap,
   Title,
 } from "./StartReadingModal.Styled";

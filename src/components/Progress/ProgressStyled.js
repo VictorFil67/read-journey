@@ -12,24 +12,6 @@ export const ProgressWrap = styled.div`
   @media only screen and (min-width: 1280px) {
     gap: 60px;
   }
-  /* & > div {
-    h1 {
-      font-weight: 700;
-      font-size: 18px;
-      line-height: 100%;
-      letter-spacing: -0.02em;
-      color: #f9f9f9;
-      padding: 20px 0 14px;
-    }
-
-    span {
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 129%;
-      letter-spacing: -0.02em;
-      color: #686868;
-    }
-  } */
 `;
 
 export const Title = styled.h2`
@@ -38,7 +20,6 @@ export const Title = styled.h2`
   font-size: 18px;
   letter-spacing: -0.02em;
   color: var(--white);
-  /* padding-top: 20px; */
   padding-bottom: 14px;
   @media only screen and (min-width: 768px) {
     font-size: 20px;

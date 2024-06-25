@@ -1,6 +1,5 @@
 import {
   Picture,
-  // NotStartedComponent,
   ProgressWrap,
   StarWraper,
   Text,
@@ -35,7 +34,6 @@ export const Progress = ({ setStart }) => {
           <source srcSet={StarTab + " 1x, " + StarTab2x + " 2x"} />
           <Picture src={Star} alt="Star" loading="lazy" />
         </picture>
-        {/* <img src={Star} alt="Star" /> */}
       </StarWraper>
     </ProgressWrap>
   );

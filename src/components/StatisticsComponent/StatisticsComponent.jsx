@@ -40,7 +40,6 @@ export const StatisticsComponent = () => {
     <>
       <StatisticsComponentWraper>
         <ContainerRange>
-          {/* <ProgressCircle viewBox="0 0 200 200"> */}
           <ProgressCircle viewBox="0 0 200 200">
             <CircleBackground cx="100" cy="100" r={radius} />
             <CircleProgress

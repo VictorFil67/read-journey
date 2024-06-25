@@ -76,7 +76,6 @@ export const TextWrap = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  /* gap: 2px; */
 `;
 export const Title = styled.h2`
   font-weight: 700;
@@ -113,8 +112,6 @@ export const StartReadingtButton = styled.button`
   border: 1px solid rgba(249, 249, 249, 0.2);
   border-radius: 30px;
   padding: 11px 24px;
-  /* width: 141px;
-  height: 42px; */
   background: transparent;
   font-weight: 700;
   font-size: 14px;

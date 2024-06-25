@@ -50,7 +50,6 @@ export const getUserBooksThunk = createAsyncThunk(
   "books/own",
   async (_, thunkAPI) => {
     try {
-      // const config = status ? { params: { status } } : {};
       const { data } = await api("/books/own");
       return data;
     } catch (error) {

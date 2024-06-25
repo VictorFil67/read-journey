@@ -16,21 +16,12 @@ export const ContentWrap = styled.div`
   @media only screen and (min-width: 1280px) {
     flex-direction: column;
     padding: 40px 20px 20px;
-    gap: ${
-      (props) =>
-        props.$path === "/reading"
-          ? "40px"
-          : props.$path === "/library"
-          ? "78px"
-          : "20px"
-      // ? "40px"
-      // : // : props.$path === "/library"
-      //   // ? "78px"
-      //   "20px"};
-    };
-    /* @media only screen and (min-width: 1280px) {
-      gap: 40px;
-    } */
+    gap: ${(props) =>
+      props.$path === "/reading"
+        ? "40px"
+        : props.$path === "/library"
+        ? "78px"
+        : "20px"};
   }
 `;
 export const Form = styled.form`
@@ -51,7 +42,6 @@ export const FiltersFormWrap = styled.div`
   width: 100%;
   gap: 8px;
   flex-direction: column;
-  /* padding-bottom: 20px; */
 `;
 export const FiltersTitle = styled.h3`
   padding-left: 14px;

@@ -1,13 +1,8 @@
-// import { format } from "date-fns";
-
 import { selectBookInfo } from "../../store/books/selectors";
 import { useSelector } from "react-redux";
-// import BlackWhiteSquare from "../../images/BlackWhiteSquare";
 import {
-  // BlackWhiteSquareWrapper,
   DeleteRecordButton,
   DeleteRecordPageHourDiv,
-  // DeleteRecordPagesSpan,
   DeleteRecordVectorWraper,
   DeleteRecordWraper,
   DiaryDateLeftWraper,
@@ -28,13 +23,6 @@ const DiaryItem = ({ progress, handleDeleteRecord }) => {
 
   const diffSec = ((endTime - startTime) / 1000).toFixed();
   const diffMin = ((endTime - startTime) / (60 * 1000)).toFixed();
-
-  // useEffect(() => {
-  // const totalPages =
-  //   progress[0]?.finishPage - progress[progress.length - 1]?.startPage;
-  // setdayPages(totalPages);
-
-  // }, [progress, setdayPages]);
 
   let time;
   if (diffSec) {
@@ -67,46 +55,32 @@ const DiaryItem = ({ progress, handleDeleteRecord }) => {
     <>
       <DiaryDateLi>
         <DiaryDateLeftWraper>
-          {/* <BlackWhiteSquareWrapper>
-            <BlackWhiteSquare />
-          </BlackWhiteSquareWrapper> */}
-
           <DiaryDateWraper>
-            {/* <span>{formattedDate}</span> */}
-
             <DiaryDatePercentageWraper>
               <span>{percentageRead}%</span>
-              {/* <span>{durationText}</span> */}
+
               <span>{time}</span>
             </DiaryDatePercentageWraper>
           </DiaryDateWraper>
         </DiaryDateLeftWraper>
         <>
           <DiaryDateRightWraper>
-            <>
-              <>
-                {/* <DeleteRecordPagesSpan>{pagesRead} pages</DeleteRecordPagesSpan> */}
-              </>
-              <>
-                <DeleteRecordVectorWraper>
-                  <DeleteRecordWraper>
-                    <VectorSVG />
-                    <DeleteRecordButton
-                      onClick={() => handleDeleteRecord(progress._id)}
-                    >
-                      <DeleteRecord />
-                    </DeleteRecordButton>
-                  </DeleteRecordWraper>
-
-                  <DeleteRecordPageHourDiv>
-                    <ReadingSpeed>
-                      {progress.speed ? progress.speed : 0} pages
-                    </ReadingSpeed>
-                    <PerHour>per hour</PerHour>
-                  </DeleteRecordPageHourDiv>
-                </DeleteRecordVectorWraper>
-              </>
-            </>
+            <DeleteRecordVectorWraper>
+              <DeleteRecordWraper>
+                <VectorSVG />
+                <DeleteRecordButton
+                  onClick={() => handleDeleteRecord(progress._id)}
+                >
+                  <DeleteRecord />
+                </DeleteRecordButton>
+              </DeleteRecordWraper>
+              <DeleteRecordPageHourDiv>
+                <ReadingSpeed>
+                  {progress.speed ? progress.speed : 0} pages
+                </ReadingSpeed>
+                <PerHour>per hour</PerHour>
+              </DeleteRecordPageHourDiv>
+            </DeleteRecordVectorWraper>
           </DiaryDateRightWraper>
         </>
       </DiaryDateLi>

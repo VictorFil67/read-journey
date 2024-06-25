@@ -66,8 +66,6 @@ export const DateLi = styled.li`
   flex-direction: column;
   width: 100%;
   gap: 28px;
-
-  /* justify-content: space-between; */
 `;
 export const TopWrap = styled.div`
   display: flex;

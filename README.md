@@ -1,39 +1,77 @@
-Welcome to Our Psychologist Services Application
+Read Journey Application
+Welcome to Read Journey, your personal reading companion! Here's what you can expect from our app, tailored to offer a seamless and engaging reading experience.
 
-Our application is designed to connect you with professional psychologists easily and efficiently. Here’s a quick guide to help you navigate through the application and make the most of its features.
+Adaptive Design
+Our app is designed to look great on any device, ensuring a responsive and adaptive interface:
 
-Application Overview
-Home Page
-The Home page is your entry point to the application. Here’s what you’ll find:
+Mobile: From 320px (fluid) to 375px (adaptive)
+Tablet: From 768px
+Desktop: From 1440px
+Technical Features
+HTML5 Semantics: Adhering to HTML5 standards for a structured and accessible web experience.
+Font Integration: Custom fonts are integrated to enhance readability and aesthetics.
+Optimized Graphics: Both vector and raster graphics are optimized for performance and clarity.
+Retina Display Support: High-resolution images ensure sharp visuals on retina screens.
+Efficient Image Loading: Optimized image loading for faster performance.
+Sprite Icons: All icons are served via a sprite for efficiency.
+Favicon: A distinctive favicon is displayed on your browser tab for easy identification.
+User Experience
+Non-Authenticated User
+Register Page (/register)
 
-Site Title: Clearly displays the name of our service.
-Company Slogan: A short, catchy phrase that sums up our mission and the benefits we offer.
-Call-to-Action Link: A prominent link inviting you to start exploring our services. Clicking this link will take you to the Psychologists page.
-Unique Design: Styled based on the provided mockup to ensure a unique and engaging user experience.
-Psychologists Page
-On the Psychologists page, you can browse through our list of available psychologists. Key features include:
+RegisterForm: Includes inputs for Name, Email, and Password.
+Validation: Utilizes react-hook-form and Yup for validation.
+Name: String
+Email: String with pattern /^\w+@[a-zA-Z_]+?.[a-zA-Z]{2,3}$/
+Password: String, minimum 7 characters
+Error Handling: Invalid inputs display error messages; data is not sent to the backend.
+Success Handling: Valid data is sent to the backend; successful registration leads to automatic login and redirection to the Recommended page (/recommended).
+Error Notification: Backend errors are displayed to the user via notifications.
+Login Page (/login)
 
-Comprehensive List: View detailed profiles of psychologists including their names, photos, experience, reviews, hourly rates, ratings, licenses, specializations, initial consultation offers, and a brief description.
-Sorting Options: Easily sort the list based on your preferences:
-Alphabetically: From A to Z or Z to A.
-By Price: From the lowest to highest price or vice versa.
-By Popularity: From the lowest to highest rating or vice versa.
-Favorites Page
-The Favorites page is a private area where you can save and manage your favorite psychologists. Here’s how it works:
+LoginForm: Includes inputs for Email and Password.
+Validation: Utilizes react-hook-form and Yup for validation.
+Email: String with pattern /^\w+@[a-zA-Z_]+?.[a-zA-Z]{2,3}$/
+Password: String, minimum 7 characters
+Error Handling: Invalid inputs display error messages; data is not sent to the backend.
+Success Handling: Valid data is sent to the backend; successful login redirects to the Recommended page (/recommended).
+Error Notification: Backend errors are displayed to the user via notifications.
+Authenticated User
+Main Layout (/)
 
-Private Access: Only accessible to users who are logged in.
-Favorites List: View all the psychologists you’ve added to your favorites list for quick and easy access.
-Key Features
-Responsive Design: Our application works seamlessly on all devices, from mobile phones to desktops, ensuring you can access our services anytime, anywhere.
-User Authentication: Register, log in, and manage your account securely through Firebase authentication.
-Interactive Forms: Register and log in using forms created with react-hook-form and yup, ensuring all required fields are validated for a smooth experience.
-Favorites Functionality: Add psychologists to your favorites list for easy access:
-Non-authenticated Users: If you try to use the favorites feature without logging in, you’ll receive a prompt to log in first.
-Authenticated Users: Easily add or remove psychologists from your favorites list. Your selections will be saved and remain persistent even if you reload the page.
-How to Get Started
-To start using our application:
+Header: Displayed on all authenticated user pages.
+Logo: Company logo
+UserNav: Navigation routes
+/recommended: Redirects to Recommended page
+/library: Redirects to My Library page
+UserBar: Displays current user information
+Log out Button: Logs out the user, clears the session, and redirects to the Welcome page. Notifications display any errors.
+Recommended Page (/recommended)
 
-Explore the Home Page: Get a feel for our services and click the call-to-action link to begin.
-Browse Psychologists: Visit the Psychologists page, sort through the list, and find a psychologist that meets your needs.
-Manage Favorites: If you find psychologists you like, add them to your favorites for easy access later. Make sure to log in to use this feature.
-We hope our application helps you find the right psychologist with ease. If you have any questions or need assistance, feel free to reach out to our support team.
+Dashboard: Universal component containing:
+Filters: Form with inputs and a submit button ("To apply") to filter recommended books.
+App Functionality Overview: Short description with a link to My Library page.
+Quote Block: Displays a static quote.
+RecommendedBooks:
+Page Header: Displays the title of the page.
+Pagination: Server-side pagination with navigation arrows.
+Book List: Displays a list of recommended books as cards.
+Book Card: Includes cover image, title, and author. Clicking opens a modal with book details and an "Add to library" button.
+My Library Page (/library)
+
+Dashboard: Universal component containing:
+AddBook: Form with inputs and a submit button ("Add book") to add a new book.
+Recommended Books Link: Link to the Recommended page.
+MyLibraryBooks:
+Page Header: Displays the title of the page.
+Status Filter: Dropdown to filter books by reading status.
+Book List: Displays a list of the user's books as cards.
+Book Card: Includes cover image, title, author, and a delete button. Clicking opens a modal with book details and a "Start reading" button.
+Reading Page (/reading)
+
+Dashboard: Universal component containing:
+AddReading: Form with input and a submit button ("To start" or "To stop") to track reading progress.
+Details: Displays reading details as a diary or statistics chart.
+Diary: Logs reading events with date, pages read, reading time, and percentage completed.
+Statistics: Chart to track reading progress.
+Enjoy your reading journey with us! Happy reading!

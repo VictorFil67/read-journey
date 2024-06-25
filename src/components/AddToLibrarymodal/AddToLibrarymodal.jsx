@@ -1,4 +1,3 @@
-// import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import CloseSVG from "../../images/CloseSVG";
 import {
@@ -13,9 +12,7 @@ import {
 import {
   Author,
   CloseButton,
-  //   ContentWrap,
   Cover,
-  //   Modal,
   Overlay,
   Pages,
   TextWrap,

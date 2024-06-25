@@ -1,8 +1,5 @@
 import styled from "styled-components";
 import { LinksWrap } from "../RecommendedBooks/RecommendedBooks.Styled";
-// import { Link } from "react-router-dom";
-// import NextSVG from "../../images/NextSVG";
-// import { Link } from "react-router-dom";
 
 export const WorkoutWrap = styled.div`
   background: var(--input-bg);

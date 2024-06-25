@@ -5,8 +5,6 @@ import {
   CloseButton,
   ContentWrap,
   Modal,
-  // Overlay,
-  // Picture,
   Span,
   Text,
   TextWrap,
