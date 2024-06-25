@@ -20,7 +20,7 @@ import { toast } from "react-toastify";
 import { deleteReadingThunk } from "../../store/books/operations";
 import { useEffect, useRef } from "react";
 import { setProgressByDate } from "../../store/books/booksSlise";
-// import { BlackWhiteSquareWrapper } from "../DiaryItem/DiaryItem.Styled";
+
 import BlackWhiteSquare from "../../images/BlackWhiteSquare";
 
 export const DiaryComponent = () => {
@@ -28,9 +28,6 @@ export const DiaryComponent = () => {
   const progressByDate = useSelector(selectProgressByDate);
   const dispatch = useDispatch();
   const ulRef = useRef();
-  // const [dayPages, setdayPages] = useState(0);
-  console.log("bookProgress", progress);
-  console.log("progressByDate", progressByDate);
 
   useEffect(() => {
     if (progress?.length > 0) {
@@ -40,34 +37,32 @@ export const DiaryComponent = () => {
 
   function transform(arr) {
     const datesObject = arr.reduce((acc, progress) => {
-      console.log(acc);
       const date = new Date(progress.startReading).toLocaleDateString();
-      console.log(acc[date]);
+
       if (!acc[date]) {
         acc[date] = [];
       }
       acc[date].push(progress);
-      console.log(acc);
-      console.log(acc[date]);
+
       return acc;
     }, {});
-    console.log(datesObject);
+
     const dates = [...Object.keys(datesObject)].sort((a, b) =>
       b.localeCompare(a)
     );
-    console.log(dates);
+
     const transformedProgress = dates.map((date) => ({
       date,
       progress: datesObject[date].sort((a, b) =>
         b.startReading.localeCompare(a.startReading)
       ),
     }));
-    console.log(transformedProgress);
+
     return transformedProgress;
   }
 
-  const ulHeight = ulRef.current?.getBoundingClientRect().height;
-  console.log(ulHeight);
+  // const ulHeight = ulRef.current?.getBoundingClientRect().height;
+  // console.log(ulHeight);
 
   const handleDeleteRecord = async (readingId) => {
     try {

@@ -33,24 +33,19 @@ const DiaryItem = ({ progress, handleDeleteRecord }) => {
   // const totalPages =
   //   progress[0]?.finishPage - progress[progress.length - 1]?.startPage;
   // setdayPages(totalPages);
-  // console.log(progress);
+
   // }, [progress, setdayPages]);
 
   let time;
   if (diffSec) {
     if (diffSec < 60) {
       time = `${diffSec} seconds`;
-      console.log(startTime);
-      console.log(endTime);
     } else if (diffSec >= 60 && diffSec < 90) {
       time = `${diffMin} minute`;
-      console.log("diffSec >= 60 && diffSec < 90");
     } else if (diffSec > 90) {
       time = `${diffMin} minutes`;
-      console.log("minutes");
     } else {
       time = `0 minutes`;
-      console.log(`0 minutes`);
     }
   }
 

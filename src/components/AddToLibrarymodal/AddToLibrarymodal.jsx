@@ -32,7 +32,6 @@ import { selectUserBooks } from "../../store/books/selectors";
 export const AddBookModal = ({ setModal, book }) => {
   const dispatch = useDispatch();
   const userBooks = useSelector(selectUserBooks);
-  console.log(userBooks);
 
   function handleClick(e) {
     if (e.target === e.currentTarget) {
@@ -50,7 +49,7 @@ export const AddBookModal = ({ setModal, book }) => {
     const searchBook = userBooks.find((book) => {
       return book.title === title;
     });
-    console.log(searchBook);
+
     if (searchBook) {
       toast.error("Such book already exists");
       return;
@@ -92,7 +91,6 @@ export const AddBookModal = ({ setModal, book }) => {
           aria-label="Add to library"
           onClick={() => addBookClick(book._id, book.title)}
         >
-          {console.log(book._id)}
           Add to library
         </AddToLibraryBtn>
       </Modal>

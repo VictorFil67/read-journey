@@ -24,17 +24,13 @@ const AppTest = () => {
   const expireTime = useSelector(selectExpireTime);
   const { pathname } = useLocation();
 
-  // const [location, setLocation] = useState(pathname);
-  console.log(pathname);
   useEffect(() => {
     if (pathname === "/register" || pathname === "/login") {
       return;
     }
     dispatch(setPath(pathname));
-    // setLocation(pathname);
   });
 
-  // console.log(user);
   useEffect(() => {
     if (!user) {
       if (expireTime >= Date.now()) {
