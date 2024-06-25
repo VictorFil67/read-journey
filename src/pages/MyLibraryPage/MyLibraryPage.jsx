@@ -102,7 +102,7 @@ const MyLibraryPage = () => {
         errors={errors}
         validation={true}
       /> */}
-      {/* <MyLibraryBooks modalRead={modalRead} setModalRead={setModalRead} /> */}
+      <MyLibraryBooks modalRead={modalRead} setModalRead={setModalRead} />
       {modal &&
         createPortal(<AddBookModal setModal={setModal} />, document.body)}
     </PageContainer>
