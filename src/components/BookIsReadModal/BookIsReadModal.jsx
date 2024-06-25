@@ -5,13 +5,14 @@ import {
   CloseButton,
   ContentWrap,
   Modal,
-  Overlay,
-  Picture,
+  // Overlay,
+  // Picture,
   Span,
   Text,
   TextWrap,
   Title,
 } from "../AddBookModal/AddBookModal.Styled";
+import { Overlay, Picture } from "./BookIsReadModal.Styled";
 
 export const BookIsReadModal = ({ setModal }) => {
   function handleClick(e) {

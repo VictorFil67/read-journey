@@ -16,6 +16,9 @@ export const Overlay = styled.div`
   @media only screen and (min-width: 768px) {
     padding-top: 350px;
   }
+  @media only screen and (min-width: 1280px) {
+    padding-top: 280px;
+  }
 `;
 export const Modal = styled.div`
   position: relative;
@@ -29,7 +32,7 @@ export const Modal = styled.div`
     max-width: 342px;
   }
   @media only screen and (min-width: 1280px) {
-    max-width: 500px;
+    /* max-width: 500px; */
   }
 `;
 export const CloseButton = styled.button`

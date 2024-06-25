@@ -21,9 +21,13 @@ export const RecommendedWrap = styled.div`
     & > :first-child {
       font-weight: 700;
       font-size: 20px;
-      line-height: 100%;
+      line-height: 1;
       letter-spacing: -0.02em;
       color: #f9f9f9;
+      @media (min-width: 768px) {
+        font-size: 28px;
+        line-height: 1.14286;
+      }
     }
     & > :nth-child(2) {
       display: flex;

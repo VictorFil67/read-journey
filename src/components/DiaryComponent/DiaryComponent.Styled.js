@@ -108,7 +108,7 @@ export const BlackWhiteSquareWrapper = styled.div`
     top: 100%;
     left: 45%;
 
-    height: 292px;
+    height: ${(props) => props.ulHeight && "292px"};
   }
 `;
 export const DateRightWrap = styled.div`

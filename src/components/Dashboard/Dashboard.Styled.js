@@ -79,6 +79,9 @@ export const InputContainer = styled.li`
   display: flex;
   flex-direction: column;
   position: relative;
+  &:last-child input {
+    max-width: 120px;
+  }
   @media only screen and (min-width: 768px) {
   }
 `;

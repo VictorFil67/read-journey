@@ -1,5 +1,11 @@
 import { Suspense, useEffect } from "react";
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 // import Reading from "./pages/Reading/Reading";
 import { Loader } from "./components/Loader/Loader";
@@ -23,6 +29,7 @@ function App() {
   const expireTime = useSelector(selectExpireTime);
   const { pathname } = useLocation();
   const loading = useSelector((state) => state.loading.loading);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (pathname === "/register" || pathname === "/login") {
@@ -30,6 +37,12 @@ function App() {
     }
     dispatch(setPath(pathname));
   });
+
+  useEffect(() => {
+    if (pathname === "/") {
+      navigate("/recommended");
+    }
+  }, [pathname, navigate]);
 
   useEffect(() => {
     if (!user) {

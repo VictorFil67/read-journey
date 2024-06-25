@@ -9,15 +9,21 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 254px;
+  padding-top: 250px;
   background: rgba(20, 20, 20, 0.6);
   z-index: 3;
   overflow: auto;
+  @media only screen and (min-width: 768px) {
+    padding-top: 270px;
+  }
+  @media only screen and (min-width: 1280px) {
+    padding-top: 182px;
+  }
 `;
 export const Modal = styled.div`
   position: relative;
   border: 1px solid rgba(104, 104, 104, 0.2);
-  padding: 52px 70px 40px;
+  padding: 40px 70px;
   background-color: var(--dark-grey);
   border-radius: 12px;
   max-width: 335px;
@@ -25,6 +31,13 @@ export const Modal = styled.div`
   flex-direction: column;
   gap: 20px;
   align-items: center;
+  @media only screen and (min-width: 768px) {
+    max-width: 500px;
+    max-height: 483px;
+    width: 500px;
+    padding: 50px 70px;
+    gap: 32px;
+  }
 `;
 export const CloseButton = styled.button`
   position: absolute;
@@ -37,7 +50,7 @@ export const CloseButton = styled.button`
 export const ContentWrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 16px;
   align-items: center;
   max-width: 100%;
 `;
@@ -46,6 +59,10 @@ export const Cover = styled.div`
   width: 140px;
   height: 213px;
   border: ${(props) => (props.$image ? "none" : "1px solid #3e3e3e")};
+  @media only screen and (min-width: 768px) {
+    width: 153px;
+    height: 233px;
+  }
 `;
 export const LibraryItemImg = styled.img`
   display: ${(props) => (props.$image ? "blok" : "none")};
@@ -59,6 +76,7 @@ export const TextWrap = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  /* gap: 2px; */
 `;
 export const Title = styled.h2`
   font-weight: 700;
@@ -67,7 +85,9 @@ export const Title = styled.h2`
   letter-spacing: -0.02em;
   color: var(--white);
   text-align: center;
-  /* margin-bottom: 2px; */
+  @media only screen and (min-width: 768px) {
+    font-size: 20px;
+  }
 `;
 export const Author = styled.p`
   font-weight: 500;
@@ -76,6 +96,11 @@ export const Author = styled.p`
   letter-spacing: -0.02em;
   color: var(--input-title);
   margin-top: 2px;
+  margin-bottom: 4px;
+  @media only screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 1.28571;
+  }
 `;
 export const Pages = styled.p`
   font-weight: 500;
@@ -87,7 +112,7 @@ export const Pages = styled.p`
 export const StartReadingtButton = styled.button`
   border: 1px solid rgba(249, 249, 249, 0.2);
   border-radius: 30px;
-  padding: 12px 24px;
+  padding: 11px 24px;
   /* width: 141px;
   height: 42px; */
   background: transparent;
@@ -96,4 +121,8 @@ export const StartReadingtButton = styled.button`
   line-height: 1.29;
   letter-spacing: 0.02em;
   color: var(--white);
+  @media only screen and (min-width: 768px) {
+    width: 159px;
+    height: 46px;
+  }
 `;

@@ -21,7 +21,7 @@ import {
 import VectorSVG from "../../images/reading/VectorSVG";
 import DeleteRecord from "../../images/DeleteRecord";
 
-const DiaryItem = ({ progress, handleDeleteRecord, setdayPages }) => {
+const DiaryItem = ({ progress, handleDeleteRecord }) => {
   const bookInfo = useSelector(selectBookInfo);
   const startTime = new Date(progress.startReading);
   const endTime = new Date(progress.finishReading);
