@@ -101,6 +101,7 @@ const ReadingPage = () => {
         activeSection={activeSection}
         setActiveSection={setActiveSection}
         setStart={setStart}
+        totalPages={totalPages}
       />
       <MyReading
         indicator={

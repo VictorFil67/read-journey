@@ -36,6 +36,7 @@ export const Dashboard = ({
   activeSection,
   setActiveSection,
   setStart,
+  totalPages,
 }) => {
   const path = useSelector(selectPath);
   const [desktop, setDesktop] = useState(window.innerWidth >= 1280);
@@ -92,6 +93,10 @@ export const Dashboard = ({
                           required: {
                             value: true,
                             message: "The field must not be empty!",
+                          },
+                          max: {
+                            value: totalPages,
+                            message: `Max value can't be more ${totalPages}`,
                           },
                         }
                       )}
