@@ -70,7 +70,6 @@ export const StartReadingModal = ({ handleCloseClick, book }) => {
           aria-label="Start reading"
           onClick={() => handleStartReading(book._id)}
         >
-          {console.log(book._id)}
           Start reading
         </StartReadingtButton>
       </Modal>

@@ -37,30 +37,30 @@ export const MyLibraryBooks = ({ modalRead, setModalRead }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(selectedOption);
     dispatch(setOption(selectedOption));
-    console.log(prevUserBooks.length, userBooks.length);
+
     if (
       selectedOption ||
       prevUserBooks.length !== userBooks.length ||
       prevPath !== path
     ) {
       dispatch(getfilteredUserBooks(selectedOption.value));
-      console.log(selectedOption.value);
     }
   }, [dispatch, selectedOption, prevUserBooks, userBooks, prevPath, path]);
 
   return (
-    <MyLibraryWrap $length={userBooks?.length}>
-      <div>Test54321</div>
-      <TopWrap>
+    <MyLibraryWrap
+    // $length={userBooks?.length}
+    >
+      <div>Test543fghfgh21</div>
+      {/* <TopWrap>
         <Title>My library</Title>
         <MyBooksFilter
           selectedOption={selectedOption}
           setSelectedOption={setSelectedOption}
         />
-      </TopWrap>
-      {/* {userBooks?.length === 0 ? (
+      </TopWrap> */}
+      {userBooks?.length === 0 ? (
         <ContentWrap>
           <picture>
             <source
@@ -95,7 +95,7 @@ export const MyLibraryBooks = ({ modalRead, setModalRead }) => {
                 />
               ))}
         </MyBookList>
-      )} */}
+      )}
     </MyLibraryWrap>
   );
 };

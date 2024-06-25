@@ -41,7 +41,6 @@ const booksSlice = createSlice({
     getfilteredUserBooks(state, { payload }) {
       if (state.userBooks.length !== 0) {
         if (payload === "all-books") {
-          console.log(payload);
           state.filteredUserBooks = state.userBooks;
         } else {
           state.filteredUserBooks = state.userBooks.filter(

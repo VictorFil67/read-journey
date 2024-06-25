@@ -18,7 +18,6 @@ const RecommendedList = () => {
   const dispatch = useDispatch();
   const { title, author, page, limit } = useSelector(selectRequestData);
   const totalPages = useSelector(selectTotalPages);
-  console.log(booksList);
 
   function getPage(num) {
     dispatch(changePage(num));
@@ -37,7 +36,7 @@ const RecommendedList = () => {
             >
               <PrevPageSVG disabled={page === 1 ? true : false} />
             </ChangePageButton>
-            {/* {console.log(first)} */}
+
             <ChangePageButton
               onClick={() => getPage(1)}
               disabled={page === totalPages ? true : false}

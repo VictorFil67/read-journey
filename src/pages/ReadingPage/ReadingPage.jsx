@@ -50,15 +50,10 @@ const ReadingPage = () => {
   });
 
   useEffect(() => {
-    console.log(_id);
     dispatch(getBookInfo(_id));
   }, [_id, dispatch]);
 
   function onSubmit({ page }) {
-    console.log(_id, page);
-    console.log(totalPages);
-    console.log(page);
-
     progress?.length === 0 ||
     progress[progress?.length - 1].status === "inactive"
       ? dispatch(saveStartPage({ id: _id, page }))

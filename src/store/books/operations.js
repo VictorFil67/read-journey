@@ -8,7 +8,7 @@ export const recommendedBooksThunk = createAsyncThunk(
       const { data } = await api("/books/recommend", {
         params: { title, author, page, limit },
       });
-      console.log(data);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
@@ -66,7 +66,7 @@ export const deleteUserBook = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const { data } = await api.delete(`/books/remove/${id}`);
-      // console.log("data", data);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
