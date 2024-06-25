@@ -110,7 +110,7 @@ export const Dashboard = ({
             {titleButton}
           </SubmitButton>
         </Form>
-        <div>{chooseSecondPart(secondPart)}</div>
+        {/* <div>{chooseSecondPart(secondPart)}</div> */}
         {desktop && (
           <BooksDeskWrap $path={path}>
             <img src={booksDesk} alt="Books" />

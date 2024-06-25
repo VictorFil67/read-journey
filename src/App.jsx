@@ -4,7 +4,7 @@ import {
   Route,
   Routes,
   useLocation,
-  useNavigate,
+  // useNavigate,
 } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 // import Reading from "./pages/Reading/Reading";
@@ -29,7 +29,7 @@ function App() {
   const expireTime = useSelector(selectExpireTime);
   const { pathname } = useLocation();
   const loading = useSelector((state) => state.loading.loading);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     if (pathname === "/register" || pathname === "/login") {
@@ -38,11 +38,11 @@ function App() {
     dispatch(setPath(pathname));
   });
 
-  useEffect(() => {
-    if (pathname === "/") {
-      navigate("/recommended");
-    }
-  }, [pathname, navigate]);
+  // useEffect(() => {
+  //   if (pathname === "/") {
+  //     navigate("/recommended");
+  //   }
+  // }, [pathname, navigate]);
 
   useEffect(() => {
     if (!user) {

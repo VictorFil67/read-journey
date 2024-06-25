@@ -75,25 +75,26 @@ export const MyLibraryBooks = ({ modalRead, setModalRead }) => {
           </Text>
         </ContentWrap>
       ) : (
-        <MyBookList>
-          {!selectedOption
-            ? userBooks.map((book) => (
-                <LibraryItem
-                  key={book._id}
-                  book={book}
-                  modalRead={modalRead}
-                  setModalRead={setModalRead}
-                />
-              ))
-            : filteredUserBooks.map((book) => (
-                <LibraryItem
-                  key={book._id}
-                  book={book}
-                  modalRead={modalRead}
-                  setModalRead={setModalRead}
-                />
-              ))}
-        </MyBookList>
+        <></>
+        // <MyBookList>
+        //   {!selectedOption
+        //     ? userBooks.map((book) => (
+        //         <LibraryItem
+        //           key={book._id}
+        //           book={book}
+        //           modalRead={modalRead}
+        //           setModalRead={setModalRead}
+        //         />
+        //       ))
+        //     : filteredUserBooks.map((book) => (
+        //         <LibraryItem
+        //           key={book._id}
+        //           book={book}
+        //           modalRead={modalRead}
+        //           setModalRead={setModalRead}
+        //         />
+        //       ))}
+        // </MyBookList>
       )}
     </MyLibraryWrap>
   );
