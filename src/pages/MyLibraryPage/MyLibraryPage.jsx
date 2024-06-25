@@ -90,8 +90,8 @@ const MyLibraryPage = () => {
 
   return (
     <PageContainer>
-      <div>Test123</div>
-      {/* <Dashboard
+      <div>Test12345</div>
+      <Dashboard
         title={size ? "Create your library:" : "Filters:"}
         inputs={inputs}
         titleButton={"Add book"}
@@ -101,8 +101,8 @@ const MyLibraryPage = () => {
         onSubmit={onSubmit}
         errors={errors}
         validation={true}
-      /> */}
-      <MyLibraryBooks modalRead={modalRead} setModalRead={setModalRead} />
+      />
+      {/* <MyLibraryBooks modalRead={modalRead} setModalRead={setModalRead} /> */}
       {modal &&
         createPortal(<AddBookModal setModal={setModal} />, document.body)}
     </PageContainer>
