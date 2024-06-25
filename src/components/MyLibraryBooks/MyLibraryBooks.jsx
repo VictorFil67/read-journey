@@ -42,7 +42,7 @@ export const MyLibraryBooks = ({ modalRead, setModalRead }) => {
     if (
       selectedOption ||
       prevUserBooks?.length !== userBooks?.length ||
-      prevPath !== path
+      (prevPath && prevPath !== path)
     ) {
       dispatch(getfilteredUserBooks(selectedOption.value));
     }
@@ -50,7 +50,6 @@ export const MyLibraryBooks = ({ modalRead, setModalRead }) => {
 
   return (
     <MyLibraryWrap $length={userBooks?.length}>
-      <div>Test543fghfgh21</div>
       <TopWrap>
         <Title>My library</Title>
         <MyBooksFilter
