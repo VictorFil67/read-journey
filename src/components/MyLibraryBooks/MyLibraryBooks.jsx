@@ -5,9 +5,9 @@ import bookMobile from "../../images/myLibraryBooksImages/bookMobile.png";
 import bookMobile2x from "../../images/myLibraryBooksImages/bookMobile@2x.png";
 import {
   selectOption,
-  // selectPath,
-  // selectPrevPath,
-  // selectPrevUserBooks,
+  selectPath,
+  selectPrevPath,
+  selectPrevUserBooks,
   selectUserBooks,
   selectfilteredUserBooks,
 } from "../../store/books/selectors";
@@ -28,9 +28,9 @@ import { getfilteredUserBooks, setOption } from "../../store/books/booksSlise";
 
 export const MyLibraryBooks = ({ modalRead, setModalRead }) => {
   const userBooks = useSelector(selectUserBooks);
-  //   const prevUserBooks = useSelector(selectPrevUserBooks);
-  //   const prevPath = useSelector(selectPrevPath);
-  //   const path = useSelector(selectPath);
+  const prevUserBooks = useSelector(selectPrevUserBooks);
+  const prevPath = useSelector(selectPrevPath);
+  const path = useSelector(selectPath);
   const filteredUserBooks = useSelector(selectfilteredUserBooks);
   const option = useSelector(selectOption);
   const [selectedOption, setSelectedOption] = useState(option);
@@ -40,21 +40,13 @@ export const MyLibraryBooks = ({ modalRead, setModalRead }) => {
     dispatch(setOption(selectedOption));
 
     if (
-      selectedOption
-      // ||
-      // prevUserBooks.length !== userBooks.length ||
-      // prevPath !== path
+      selectedOption ||
+      prevUserBooks?.length !== userBooks?.length ||
+      prevPath !== path
     ) {
       dispatch(getfilteredUserBooks(selectedOption.value));
     }
-  }, [
-    dispatch,
-    selectedOption,
-    // prevUserBooks,
-    userBooks,
-    // prevPath,
-    // path
-  ]);
+  }, [dispatch, selectedOption, prevUserBooks, userBooks, prevPath, path]);
 
   return (
     <MyLibraryWrap $length={userBooks?.length}>

@@ -1,5 +1,5 @@
-const Reading = () => {
-  return <div>Reading</div>;
-};
+// const Reading = () => {
+//   return <div>Reading</div>;
+// };
 
-export default Reading;
+// export default Reading;

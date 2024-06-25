@@ -4,10 +4,9 @@ import {
   Route,
   Routes,
   useLocation,
-  // useNavigate,
+  useNavigate,
 } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
-// import Reading from "./pages/Reading/Reading";
 import { Loader } from "./components/Loader/Loader";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -18,7 +17,6 @@ import PublicRoute from "./routes/PublicRoute";
 import PrivateRoute from "./routes/PrivateRoute";
 import { toast } from "react-toastify";
 import { setPath } from "./store/books/booksSlise";
-// import RecommendPage from "./pages/RecommendPage/RecommendPage";
 import MyLibraryPage from "./pages/MyLibraryPage/MyLibraryPage";
 import RecommendedPage from "./pages/RecommendedPage/RecommendedPage";
 import ReadingPage from "./pages/ReadingPage/ReadingPage";
@@ -29,7 +27,7 @@ function App() {
   const expireTime = useSelector(selectExpireTime);
   const { pathname } = useLocation();
   const loading = useSelector((state) => state.loading.loading);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (pathname === "/register" || pathname === "/login") {
@@ -38,11 +36,11 @@ function App() {
     dispatch(setPath(pathname));
   });
 
-  // useEffect(() => {
-  //   if (pathname === "/") {
-  //     navigate("/recommended");
-  //   }
-  // }, [pathname, navigate]);
+  useEffect(() => {
+    if (pathname === "/") {
+      navigate("/recommended");
+    }
+  }, [pathname, navigate]);
 
   useEffect(() => {
     if (!user) {
